@@ -1,0 +1,2254 @@
+From: "Saved by Internet Explorer 11"
+Subject: SAS Output
+Date: Sat, 14 Sep 2019 05:17:36 -0400
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="Windows-1252"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file://G:\saswork\_TD7976_OWNER-PC_\sashtml.htm
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.24158
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><META content=3D"IE=3D5.0000" =
+http-equiv=3D"X-UA-Compatible">
+<TITLE>SAS Output</TITLE>
+<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.19400">
+<META content=3D"text/html; charset=3Dwindows-1252" =
+http-equiv=3DContent-type>
+<STYLE type=3Dtext/css>.aftercaption {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; PADDING-TOP: 4pt; =
+BORDER-SPACING: 0px; BACKGROUND-COLOR: #fafbfe
+}
+.batch {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 1px solid; FONT-FAMILY: 'SAS =
+Monospace', 'Courier New', Courier, monospace; BORDER-RIGHT: #c1c1c1 1px =
+solid; BORDER-COLLAPSE: separate; BORDER-BOTTOM: #c1c1c1 1px solid; =
+FONT-WEIGHT: normal; COLOR: #000000; PADDING-BOTTOM: 7px; FONT-STYLE: =
+normal; PADDING-TOP: 7px; PADDING-LEFT: 7px; BORDER-SPACING: 1px; =
+BORDER-LEFT: #c1c1c1 1px solid; PADDING-RIGHT: 7px; BACKGROUND-COLOR: =
+#fafbfe
+}
+.beforecaption {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BORDER-SPACING: =
+0px; BACKGROUND-COLOR: #fafbfe
+}
+.body {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; MARGIN-LEFT: =
+8px; BACKGROUND-COLOR: #fafbfe; MARGIN-RIGHT: 8px
+}
+.bodydate {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+WIDTH: 100%; VERTICAL-ALIGN: top; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; TEXT-ALIGN: right; BORDER-SPACING: 0px; =
+BACKGROUND-COLOR: #fafbfe
+}
+.bycontentfolder {
+	LIST-STYLE-TYPE: none; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; MARGIN-LEFT: 6pt
+}
+.byline {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BORDER-SPACING: =
+0px; BACKGROUND-COLOR: #fafbfe
+}
+.bylinecontainer {
+	FONT-SIZE: x-small; BORDER-TOP: #000000 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #000000 0px solid; WIDTH: =
+100%; BORDER-BOTTOM: #000000 0px solid; FONT-WEIGHT: normal; COLOR: =
+#000000; FONT-STYLE: normal; BORDER-SPACING: 1px; BORDER-LEFT: #000000 =
+0px solid; BACKGROUND-COLOR: #fafbfe
+}
+.caption {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BORDER-SPACING: =
+0px; BACKGROUND-COLOR: #fafbfe
+}
+.cell {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.container {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.contentfolder {
+	LIST-STYLE-TYPE: none; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; MARGIN-LEFT: 6pt
+}
+.contentitem {
+	LIST-STYLE-TYPE: none; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; MARGIN-LEFT: 6pt
+}
+.contentproclabel {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.contentprocname {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.contents {
+	LIST-STYLE-TYPE: decimal; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; MARGIN-LEFT: 8px; BACKGROUND-COLOR: #fafbfe; =
+MARGIN-RIGHT: 8px
+}
+.contentsdate {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+WIDTH: 100%; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.contenttitle {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: italic; BACKGROUND-COLOR: =
+#fafbfe
+}
+.continued {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+WIDTH: 100%; FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; =
+BORDER-SPACING: 0px; BACKGROUND-COLOR: #fafbfe
+}
+.data {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-BOTTOM: #c1c1c1 1px solid; FONT-WEIGHT: normal; FONT-STYLE: =
+normal; BORDER-LEFT: #c1c1c1 0px solid; BACKGROUND-COLOR: #ffffff
+}
+.dataemphasis {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-BOTTOM: #c1c1c1 1px solid; FONT-WEIGHT: normal; FONT-STYLE: =
+normal; BORDER-LEFT: #c1c1c1 0px solid; BACKGROUND-COLOR: #ffffff
+}
+.dataemphasisfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-BOTTOM: #c1c1c1 1px solid; FONT-WEIGHT: normal; FONT-STYLE: =
+italic; BORDER-LEFT: #c1c1c1 0px solid; BACKGROUND-COLOR: #ffffff
+}
+.dataempty {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-BOTTOM: #c1c1c1 1px solid; FONT-WEIGHT: normal; FONT-STYLE: =
+normal; BORDER-LEFT: #c1c1c1 0px solid; BACKGROUND-COLOR: #ffffff
+}
+.datafixed {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 0px solid; FONT-FAMILY: =
+'Courier New', Courier; BORDER-RIGHT: #c1c1c1 1px solid; BORDER-BOTTOM: =
+#c1c1c1 1px solid; FONT-WEIGHT: normal; FONT-STYLE: normal; BORDER-LEFT: =
+#c1c1c1 0px solid; BACKGROUND-COLOR: #ffffff
+}
+.datastrong {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-BOTTOM: #c1c1c1 1px solid; FONT-WEIGHT: bold; COLOR: #000000; =
+FONT-STYLE: normal; BORDER-LEFT: #c1c1c1 0px solid; BACKGROUND-COLOR: =
+#ffffff
+}
+.datastrongfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-BOTTOM: #c1c1c1 1px solid; FONT-WEIGHT: bold; COLOR: #000000; =
+FONT-STYLE: normal; BORDER-LEFT: #c1c1c1 0px solid; BACKGROUND-COLOR: =
+#ffffff
+}
+.date {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+WIDTH: 100%; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.document {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+A:link {
+	COLOR: #0000ff
+}
+A:visited {
+	COLOR: #800080
+}
+A:active {
+	COLOR: #800080
+}
+.errorbanner {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.errorcontent {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.errorcontentfixed {
+	FONT-SIZE: x-small; FONT-FAMILY: 'Courier New', Courier; FONT-WEIGHT: =
+normal; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.extendedpage {
+	FONT-SIZE: x-small; BORDER-TOP: #000000 1pt solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #000000 1pt solid; =
+BORDER-BOTTOM: #000000 1pt solid; FONT-WEIGHT: normal; COLOR: #112277; =
+FONT-STYLE: italic; TEXT-ALIGN: center; BORDER-LEFT: #000000 1pt solid; =
+BACKGROUND-COLOR: #fafbfe
+}
+.fatalbanner {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.fatalcontent {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.fatalcontentfixed {
+	FONT-SIZE: x-small; FONT-FAMILY: 'Courier New', Courier; FONT-WEIGHT: =
+normal; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.folderaction {
+	LIST-STYLE-TYPE: none; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; MARGIN-LEFT: 6pt
+}
+.footer {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.footeremphasis {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; =
+FONT-STYLE: italic; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.footeremphasisfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; =
+FONT-STYLE: italic; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.footerempty {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.footerfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier; BORDER-RIGHT: #b0b7bb 1px solid; BORDER-BOTTOM: =
+#b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: =
+normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: #edf2f9
+}
+.footerstrong {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.footerstrongfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.frame {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.graph {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 1px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-COLLAPSE: separate; BORDER-BOTTOM: #c1c1c1 1px solid; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; BORDER-SPACING: =
+1px; BORDER-LEFT: #c1c1c1 1px solid; BACKGROUND-COLOR: #fafbfe
+}
+.header {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.headeremphasis {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: italic; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#d8dbd3
+}
+.headeremphasisfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: italic; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#d8dbd3
+}
+.headerempty {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.headerfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier; BORDER-RIGHT: #b0b7bb 1px solid; BORDER-BOTTOM: =
+#b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: =
+normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: #edf2f9
+}
+.headersandfooters {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #000000; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#edf2f9
+}
+.headerstrong {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #000000; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#d8dbd3
+}
+.headerstrongfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #000000; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#d8dbd3
+}
+.index {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.indexaction {
+	LIST-STYLE-TYPE: none; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; MARGIN-LEFT: 6pt
+}
+.indexitem {
+	LIST-STYLE-TYPE: none; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; MARGIN-LEFT: 6pt
+}
+.indexprocname {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.indextitle {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: italic; BACKGROUND-COLOR: =
+#fafbfe
+}
+.layoutcontainer {
+	BORDER-TOP: #000000 0px solid; BORDER-RIGHT: #000000 0px solid; =
+BORDER-BOTTOM: #000000 0px solid; BORDER-SPACING: 30px; BORDER-LEFT: =
+#000000 0px solid
+}
+.layoutregion {
+	BORDER-TOP: #000000 0px solid; BORDER-RIGHT: #000000 0px solid; =
+BORDER-BOTTOM: #000000 0px solid; BORDER-SPACING: 30px; BORDER-LEFT: =
+#000000 0px solid
+}
+.linecontent {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-BOTTOM: #c1c1c1 1px solid; FONT-WEIGHT: normal; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #c1c1c1 0px solid; BACKGROUND-COLOR: =
+#fafbfe
+}
+.list {
+	LIST-STYLE-TYPE: disc; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; BACKGROUND-COLOR: #fafbfe
+}
+.list10 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.list2 {
+	LIST-STYLE-TYPE: circle; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.list3 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.list4 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.list5 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.list6 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.list7 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.list8 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.list9 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem {
+	LIST-STYLE-TYPE: disc; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem10 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem2 {
+	LIST-STYLE-TYPE: circle; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem3 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem4 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem5 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem6 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem7 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem8 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.listitem9 {
+	LIST-STYLE-TYPE: square; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.note {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.notebanner {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.notecontent {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.notecontentfixed {
+	FONT-SIZE: x-small; FONT-FAMILY: 'Courier New', Courier; FONT-WEIGHT: =
+normal; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.output {
+	FONT-SIZE: x-small; BORDER-TOP: #c1c1c1 1px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #c1c1c1 1px solid; =
+BORDER-COLLAPSE: separate; BORDER-BOTTOM: #c1c1c1 1px solid; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; BORDER-SPACING: =
+1px; BORDER-LEFT: #c1c1c1 1px solid; BACKGROUND-COLOR: #fafbfe
+}
+.pageno {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+VERTICAL-ALIGN: top; FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: =
+normal; TEXT-ALIGN: right; BORDER-SPACING: 0px; BACKGROUND-COLOR: =
+#fafbfe
+}
+.pages {
+	LIST-STYLE-TYPE: decimal; FONT-SIZE: x-small; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; =
+FONT-STYLE: normal; MARGIN-LEFT: 8px; BACKGROUND-COLOR: #fafbfe; =
+MARGIN-RIGHT: 8px
+}
+.pagesdate {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+WIDTH: 100%; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.pagesitem {
+	LIST-STYLE-TYPE: none; FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany =
+AMT', Helvetica, Helv; FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: =
+normal; MARGIN-LEFT: 6pt
+}
+.pagesproclabel {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.pagesprocname {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.pagestitle {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: italic; BACKGROUND-COLOR: =
+#fafbfe
+}
+.paragraph {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #000000; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.parskip {
+	FONT-SIZE: x-small; BORDER-TOP: #000000 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #000000 0px solid; =
+BORDER-BOTTOM: #000000 0px solid; FONT-WEIGHT: bold; FONT-STYLE: normal; =
+BORDER-SPACING: 0px; BORDER-LEFT: #000000 0px solid
+}
+.prepage {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; TEXT-ALIGN: =
+left; BACKGROUND-COLOR: #fafbfe
+}
+.proctitle {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.proctitlefixed {
+	FONT-SIZE: x-small; FONT-FAMILY: 'Courier New', Courier, monospace; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.rowfooter {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowfooteremphasis {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; =
+FONT-STYLE: italic; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowfooteremphasisfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; =
+FONT-STYLE: italic; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowfooterempty {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowfooterfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier; BORDER-RIGHT: #b0b7bb 1px solid; BORDER-BOTTOM: =
+#b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: =
+normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: #edf2f9
+}
+.rowfooterstrong {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowfooterstrongfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowheader {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowheaderemphasis {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; =
+FONT-STYLE: italic; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowheaderemphasisfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; =
+FONT-STYLE: italic; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowheaderempty {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowheaderfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier; BORDER-RIGHT: #b0b7bb 1px solid; BORDER-BOTTOM: =
+#b0b7bb 1px solid; FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: =
+normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: #edf2f9
+}
+.rowheaderstrong {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.rowheaderstrongfixed {
+	FONT-SIZE: x-small; BORDER-TOP: #b0b7bb 0px solid; FONT-FAMILY: =
+'Courier New', Courier, monospace; BORDER-RIGHT: #b0b7bb 1px solid; =
+BORDER-BOTTOM: #b0b7bb 1px solid; FONT-WEIGHT: bold; COLOR: #112277; =
+FONT-STYLE: normal; BORDER-LEFT: #b0b7bb 0px solid; BACKGROUND-COLOR: =
+#edf2f9
+}
+.systemfooter {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter10 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter2 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter3 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter4 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter5 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter6 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter7 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter8 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemfooter9 {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.systemtitle {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle10 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle2 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle3 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle4 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle5 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle6 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle7 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle8 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systemtitle9 {
+	FONT-SIZE: small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.systitleandfootercontainer {
+	FONT-SIZE: x-small; BORDER-TOP: #000000 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #000000 0px solid; WIDTH: =
+100%; BORDER-BOTTOM: #000000 0px solid; FONT-WEIGHT: normal; COLOR: =
+#000000; FONT-STYLE: normal; BORDER-SPACING: 1px; BORDER-LEFT: #000000 =
+0px solid; BACKGROUND-COLOR: #fafbfe
+}
+.table {
+	BORDER-TOP: #c1c1c1 1px solid; BORDER-RIGHT: #c1c1c1 0px solid; =
+BORDER-COLLAPSE: collapse; BORDER-BOTTOM: #c1c1c1 0px solid; =
+BORDER-SPACING: 0px; BORDER-LEFT: #c1c1c1 1px solid
+}
+.top_stacked_value {
+	BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: =
+1px; BORDER-LEFT: 0px
+}
+.middle_stacked_value {
+	BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-BOTTOM: =
+1px; PADDING-TOP: 1px; BORDER-LEFT: 0px
+}
+.bottom_stacked_value {
+	BORDER-TOP: 0px; BORDER-RIGHT: 0px; BORDER-BOTTOM: 0px; PADDING-TOP: =
+1px; BORDER-LEFT: 0px
+}
+.titleandnotecontainer {
+	FONT-SIZE: x-small; BORDER-TOP: #000000 0px solid; FONT-FAMILY: Arial, =
+'Albany AMT', Helvetica, Helv; BORDER-RIGHT: #000000 0px solid; WIDTH: =
+100%; BORDER-BOTTOM: #000000 0px solid; FONT-WEIGHT: normal; COLOR: =
+#000000; FONT-STYLE: normal; BORDER-SPACING: 1px; BORDER-LEFT: #000000 =
+0px solid; BACKGROUND-COLOR: #fafbfe
+}
+.titlesandfooters {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.usertext {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.warnbanner {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: bold; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: =
+#fafbfe
+}
+.warncontent {
+	FONT-SIZE: x-small; FONT-FAMILY: Arial, 'Albany AMT', Helvetica, Helv; =
+FONT-WEIGHT: normal; COLOR: #112277; FONT-STYLE: normal; =
+BACKGROUND-COLOR: #fafbfe
+}
+.warncontentfixed {
+	FONT-SIZE: x-small; FONT-FAMILY: 'Courier New', Courier; FONT-WEIGHT: =
+normal; COLOR: #112277; FONT-STYLE: normal; BACKGROUND-COLOR: #fafbfe
+}
+.l {
+	TEXT-ALIGN: left
+}
+.c {
+	TEXT-ALIGN: center
+}
+.r {
+	TEXT-ALIGN: right
+}
+.d {
+	TEXT-ALIGN: right
+}
+.j {
+	TEXT-ALIGN: justify
+}
+.t {
+	VERTICAL-ALIGN: top
+}
+.m {
+	VERTICAL-ALIGN: middle
+}
+.b {
+	VERTICAL-ALIGN: bottom
+}
+TD {
+	VERTICAL-ALIGN: top
+}
+TH {
+	VERTICAL-ALIGN: top
+}
+.stacked_cell {
+	PADDING-BOTTOM: 0px; PADDING-TOP: 0px; PADDING-LEFT: 0px; =
+PADDING-RIGHT: 0px
+}
+</STYLE>
+
+<SCRIPT language=3Djavascript type=3Dtext/javascript>
+<!--=20
+function startup(){
+
+}
+function shutdown(){
+
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY class=3Dbody onload=3Dstartup() onunload=3Dshutdown()>
+<SCRIPT language=3Djavascript type=3Dtext/javascript>
+<!--=20
+var _info =3D navigator.userAgent
+var _ie =3D (_info.indexOf("MSIE") > 0
+          && _info.indexOf("Win") > 0
+          && _info.indexOf("Windows 3.1") < 0);
+var _ie64 =3D _info.indexOf("x64") > 0
+
+//-->
+</SCRIPT>
+
+<DIV class=3Dbranch><A name=3DIDX></A>
+<TABLE class=3Dsystitleandfootercontainer cellSpacing=3D1 =
+cellPadding=3D1 rules=3Dnone=20
+width=3D"100%" summary=3D"Page Layout" border=3D0 frame=3Dvoid>
+  <TBODY>
+  <TR>
+    <TD class=3D"c systemtitle">The SAS =
+System</TD></TR></TBODY></TABLE><BR>
+<DIV class=3D"c proctitle">The LOGISTIC Procedure</DIV>
+<P>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Model Information" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D2 scope=3Dcolgroup>Model=20
+  Information</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Data Set</TH>
+    <TD class=3D"l data">SASDATA.ORIGINATIONS_MODEL_RANDOM</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Response Variable</TH>
+    <TD class=3D"l data">test_subprime</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Number of Response Levels</TH>
+    <TD class=3D"l data">2</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Model</TH>
+    <TD class=3D"l data">binary logit</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Optimization Technique</TH>
+    <TD class=3D"l data">Fisher's scoring</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Likelihood Penalty</TH>
+    <TD class=3D"l data">Firth's bias=20
+correction</TD></TR></TBODY></TABLE></DIV></DIV><BR><A name=3DIDX1></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Observations Summary" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL></COLGROUP>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Number of Observations =
+Read</TH>
+    <TD class=3D"r data">55062221</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Number of Observations =
+Used</TH>
+    <TD class=3D"r =
+data">55062221</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX2></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Response Profile" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D3 scope=3Dcolgroup>Response =
+Profile</TH></TR>
+  <TR>
+    <TH class=3D"r b header" scope=3Dcol>Ordered<BR>Value</TH>
+    <TH class=3D"l b header" scope=3Dcol>test_subprime</TH>
+    <TH class=3D"r b header" =
+scope=3Dcol>Total<BR>Frequency</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>1</TH>
+    <TD class=3D"l data">0</TD>
+    <TD class=3D"r data">49283093</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>2</TH>
+    <TD class=3D"l data">1</TD>
+    <TD class=3D"r data">5779128</TD></TR></TBODY></TABLE></DIV><BR>
+<P>
+<DIV align=3Dcenter>
+<TABLE class=3Dproctitle>
+  <TBODY>
+  <TR>
+    <TD class=3D"c proctitle">Probability modeled is=20
+  test_subprime=3D1.</TD></TR></TBODY></TABLE></DIV>
+<P></P></DIV><BR><A name=3DIDX3></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Class Level Information" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D7 scope=3Dcolgroup>Class Level=20
+  Information</TH></TR>
+  <TR>
+    <TH class=3D"l b header" scope=3Dcol>Class</TH>
+    <TH class=3D"l b header" scope=3Dcol>Value</TH>
+    <TH class=3D"c b header" colSpan=3D5 scope=3Dcolgroup>Design=20
+  Variables</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>purpose</TH>
+    <TH class=3D"l rowheader" scope=3Drow>PURCHASE</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>REFI</TH>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Asian</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Black</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Hispanic</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Other</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>White</TH>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sex</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Female</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Male</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Other</TH>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>preapproval</TH>
+    <TH class=3D"l rowheader" scope=3Drow>1</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>2</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>3</TH>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>lien</TH>
+    <TH class=3D"l rowheader" scope=3Drow>1</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>2</TH>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">&nbsp;</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread</TH>
+    <TH class=3D"l rowheader" scope=3Drow>0</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>1</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>2</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>3</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>4</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>5</TH>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim</TH>
+    <TH class=3D"l rowheader" scope=3Drow>COMMERCIAL BANK</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>GSE</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>HELD FOR INVESTMENT</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>INSURANCE/MORTGAGE BANK</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>OTHER</TH>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">0</TD>
+    <TD class=3D"r data">1</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TH class=3D"l rowheader" scope=3Drow>PRIVATE SECURITY</TH>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" noWrap>-1</TD>
+    <TD class=3D"r data" =
+noWrap>-1</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX4></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Convergence Status" frame=3Dbox>
+  <COLGROUP>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" scope=3Dcol>Intercept-Only Model =
+Convergence=20
+  Status</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD class=3D"c data">Convergence criterion (GCONV=3D1E-8)=20
+  satisfied.</TD></TR></TBODY></TABLE></DIV></DIV><BR><A =
+name=3DIDX5></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Convergence Status" frame=3Dbox>
+  <COLGROUP>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" scope=3Dcol>Model Convergence =
+Status</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD class=3D"c data">Convergence criterion (GCONV=3D1E-8)=20
+  satisfied.</TD></TR></TBODY></TABLE></DIV></DIV><BR><A =
+name=3DIDX6></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Fit Statistics" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D3 scope=3Dcolgroup>Model Fit =
+Statistics</TH></TR>
+  <TR>
+    <TH class=3D"l b header" scope=3Dcol>Criterion</TH>
+    <TH class=3D"r b header" scope=3Dcol>Intercept Only</TH>
+    <TH class=3D"r b header" scope=3Dcol>Intercept =
+and<BR>Covariates</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>AIC</TH>
+    <TD class=3D"r data">36983747</TD>
+    <TD class=3D"r data">30836080</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>SC</TH>
+    <TD class=3D"r data">36983763</TD>
+    <TD class=3D"r data">30836413</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>-2 Log L</TH>
+    <TD class=3D"r data">36983745</TD>
+    <TD class=3D"r =
+data">30836038</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX7></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: R-Square and Max-rescaled R-Square" =
+frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>R-Square</TH>
+    <TD class=3D"r data">0.1056</TD>
+    <TH class=3D"l rowheader" scope=3Drow>Max-rescaled R-Square</TH>
+    <TD class=3D"r =
+data">0.2160</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX8></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Global Tests" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D4 scope=3Dcolgroup>Testing Global =
+Null=20
+      Hypothesis: BETA=3D0</TH></TR>
+  <TR>
+    <TH class=3D"l b header" scope=3Dcol>Test</TH>
+    <TH class=3D"r b header" scope=3Dcol>Chi-Square</TH>
+    <TH class=3D"r b header" scope=3Dcol>DF</TH>
+    <TH class=3D"r b header" =
+scope=3Dcol>Pr&nbsp;&gt;&nbsp;ChiSq</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Likelihood Ratio</TH>
+    <TD class=3D"r data">6147706.64</TD>
+    <TD class=3D"r data">20</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Score</TH>
+    <TD class=3D"r data">6752831.52</TD>
+    <TD class=3D"r data">20</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Wald</TH>
+    <TD class=3D"r data">4483446.85</TD>
+    <TD class=3D"r data">20</TD>
+    <TD class=3D"r =
+data">&lt;.0001</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX9></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Type 3 Tests" frame=3Dbox>
+  <COLGROUP>
+  <COL></COLGROUP>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D4 scope=3Dcolgroup>Type 3 =
+Analysis of=20
+    Effects</TH></TR>
+  <TR>
+    <TH class=3D"l b header" scope=3Dcol>Effect</TH>
+    <TH class=3D"r b header" scope=3Dcol>DF</TH>
+    <TH class=3D"r b header" scope=3Dcol>Wald<BR>Chi-Square</TH>
+    <TH class=3D"r b header" =
+scope=3Dcol>Pr&nbsp;&gt;&nbsp;ChiSq</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim</TH>
+    <TD class=3D"r data">5</TD>
+    <TD class=3D"r data">3698982.62</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>purpose</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">49706.7680</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2</TH>
+    <TD class=3D"r data">4</TD>
+    <TD class=3D"r data">284852.526</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sex</TH>
+    <TD class=3D"r data">2</TD>
+    <TD class=3D"r data">15907.9390</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>preapproval</TH>
+    <TD class=3D"r data">2</TD>
+    <TD class=3D"r data">84529.4376</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>lien</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">286757.043</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread</TH>
+    <TD class=3D"r data">5</TD>
+    <TD class=3D"r data">58817.8228</TD>
+    <TD class=3D"r =
+data">&lt;.0001</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX10></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Parameter Estimates" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL></COLGROUP>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D10 scope=3Dcolgroup>Analysis of =
+Penalized=20
+      Maximum Likelihood Estimates</TH></TR>
+  <TR>
+    <TH class=3D"l b header" scope=3Dcol>Parameter</TH>
+    <TH class=3D"l b header" scope=3Dcol>&nbsp;</TH>
+    <TH class=3D"r b header" scope=3Dcol>DF</TH>
+    <TH class=3D"r b header" scope=3Dcol>Estimate</TH>
+    <TH class=3D"r b header" scope=3Dcol>Standard<BR>Error</TH>
+    <TH class=3D"r b header" scope=3Dcol>Wald<BR>Chi-Square</TH>
+    <TH class=3D"r b header" scope=3Dcol>Pr&nbsp;&gt;&nbsp;ChiSq</TH>
+    <TH class=3D"r b header" scope=3Dcol>Standardized<BR>Estimate</TH>
+    <TH class=3D"r b header" scope=3Dcol>Exp(Est)</TH>
+    <TH class=3D"l b header" scope=3Dcol>Label</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Intercept</TH>
+    <TH class=3D"l rowheader" scope=3Drow>&nbsp;</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-2.8669</TD>
+    <TD class=3D"r data">0.00196</TD>
+    <TD class=3D"r data">2140106.00</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">&nbsp;</TD>
+    <TD class=3D"r data">0.057</TD>
+    <TD class=3D"l data">Intercept: test_subprime=3D0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim</TH>
+    <TH class=3D"l rowheader" scope=3Drow>COMMERCIAL BANK</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.6310</TD>
+    <TD class=3D"r data">0.00163</TD>
+    <TD class=3D"r data">149614.163</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.1060</TD>
+    <TD class=3D"r data">1.880</TD>
+    <TD class=3D"l data">sold_to_slim COMMERCIAL BANK</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim</TH>
+    <TH class=3D"l rowheader" scope=3Drow>GSE</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.9146</TD>
+    <TD class=3D"r data">0.00106</TD>
+    <TD class=3D"r data">751499.938</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.2403</TD>
+    <TD class=3D"r data">2.496</TD>
+    <TD class=3D"l data">sold_to_slim GSE</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim</TH>
+    <TH class=3D"l rowheader" scope=3Drow>HELD FOR INVESTMENT</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-0.1541</TD>
+    <TD class=3D"r data">0.00107</TD>
+    <TD class=3D"r data">20592.8496</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.0484</TD>
+    <TD class=3D"r data">0.857</TD>
+    <TD class=3D"l data">sold_to_slim HELD FOR INVESTMENT</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim</TH>
+    <TH class=3D"l rowheader" scope=3Drow>INSURANCE/MORTGAGE BANK</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-1.4222</TD>
+    <TD class=3D"r data">0.00262</TD>
+    <TD class=3D"r data">295576.250</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.2849</TD>
+    <TD class=3D"r data">0.241</TD>
+    <TD class=3D"l data">sold_to_slim INSURANCE/MORTGAGE BANK</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim</TH>
+    <TH class=3D"l rowheader" scope=3Drow>OTHER</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-2.1794</TD>
+    <TD class=3D"r data">0.00271</TD>
+    <TD class=3D"r data">646582.329</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.5387</TD>
+    <TD class=3D"r data">0.113</TD>
+    <TD class=3D"l data">sold_to_slim OTHER</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>purpose</TH>
+    <TH class=3D"l rowheader" scope=3Drow>PURCHASE</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-0.1401</TD>
+    <TD class=3D"r data">0.000628</TD>
+    <TD class=3D"r data">49706.7680</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.0770</TD>
+    <TD class=3D"r data">0.869</TD>
+    <TD class=3D"l data">purpose PURCHASE</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Asian</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.2843</TD>
+    <TD class=3D"r data">0.00174</TD>
+    <TD class=3D"r data">26834.0741</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.0883</TD>
+    <TD class=3D"r data">1.329</TD>
+    <TD class=3D"l data">race_2 Asian</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Black</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-0.2970</TD>
+    <TD class=3D"r data">0.00154</TD>
+    <TD class=3D"r data">37198.8841</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.1043</TD>
+    <TD class=3D"r data">0.743</TD>
+    <TD class=3D"l data">race_2 Black</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Hispanic</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.2358</TD>
+    <TD class=3D"r data">0.00121</TD>
+    <TD class=3D"r data">37746.7353</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.0898</TD>
+    <TD class=3D"r data">1.266</TD>
+    <TD class=3D"l data">race_2 Hispanic</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Other</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.1397</TD>
+    <TD class=3D"r data">0.00143</TD>
+    <TD class=3D"r data">9553.3659</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.0543</TD>
+    <TD class=3D"r data">1.150</TD>
+    <TD class=3D"l data">race_2 Other</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sex</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Female</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.1058</TD>
+    <TD class=3D"r data">0.00101</TD>
+    <TD class=3D"r data">10967.5445</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.0316</TD>
+    <TD class=3D"r data">1.112</TD>
+    <TD class=3D"l data">sex Female</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sex</TH>
+    <TH class=3D"l rowheader" scope=3Drow>Male</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-0.0210</TD>
+    <TD class=3D"r data">0.000947</TD>
+    <TD class=3D"r data">492.8771</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.00689</TD>
+    <TD class=3D"r data">0.979</TD>
+    <TD class=3D"l data">sex Male</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>preapproval</TH>
+    <TH class=3D"l rowheader" scope=3Drow>1</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-0.7188</TD>
+    <TD class=3D"r data">0.00273</TD>
+    <TD class=3D"r data">69486.1350</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.2063</TD>
+    <TD class=3D"r data">0.487</TD>
+    <TD class=3D"l data">preapproval 1</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>preapproval</TH>
+    <TH class=3D"l rowheader" scope=3Drow>2</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.4478</TD>
+    <TD class=3D"r data">0.00154</TD>
+    <TD class=3D"r data">84102.7619</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.1945</TD>
+    <TD class=3D"r data">1.565</TD>
+    <TD class=3D"l data">preapproval 2</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>lien</TH>
+    <TH class=3D"l rowheader" scope=3Drow>1</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.5034</TD>
+    <TD class=3D"r data">0.000940</TD>
+    <TD class=3D"r data">286757.043</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.2114</TD>
+    <TD class=3D"r data">1.654</TD>
+    <TD class=3D"l data">lien 1</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread</TH>
+    <TH class=3D"l rowheader" scope=3Drow>0</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.0898</TD>
+    <TD class=3D"r data">0.00163</TD>
+    <TD class=3D"r data">3052.4819</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.0235</TD>
+    <TD class=3D"r data">1.094</TD>
+    <TD class=3D"l data">bin_income_spread 0</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread</TH>
+    <TH class=3D"l rowheader" scope=3Drow>1</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-0.2137</TD>
+    <TD class=3D"r data">0.00105</TD>
+    <TD class=3D"r data">41449.8842</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.0731</TD>
+    <TD class=3D"r data">0.808</TD>
+    <TD class=3D"l data">bin_income_spread 1</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread</TH>
+    <TH class=3D"l rowheader" scope=3Drow>2</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-0.0359</TD>
+    <TD class=3D"r data">0.00103</TD>
+    <TD class=3D"r data">1210.4936</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.0121</TD>
+    <TD class=3D"r data">0.965</TD>
+    <TD class=3D"l data">bin_income_spread 2</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread</TH>
+    <TH class=3D"l rowheader" scope=3Drow>3</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data" noWrap>-0.0147</TD>
+    <TD class=3D"r data">0.00104</TD>
+    <TD class=3D"r data">201.0329</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data" noWrap>-0.00494</TD>
+    <TD class=3D"r data">0.985</TD>
+    <TD class=3D"l data">bin_income_spread 3</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread</TH>
+    <TH class=3D"l rowheader" scope=3Drow>4</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">0.0222</TD>
+    <TD class=3D"r data">0.00104</TD>
+    <TD class=3D"r data">459.1806</TD>
+    <TD class=3D"r data">&lt;.0001</TD>
+    <TD class=3D"r data">0.00745</TD>
+    <TD class=3D"r data">1.022</TD>
+    <TD class=3D"l data">bin_income_spread=20
+4</TD></TR></TBODY></TABLE></DIV></DIV><BR><A name=3DIDX11></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Odds Ratios" frame=3Dbox>
+  <COLGROUP>
+  <COL></COLGROUP>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D4 scope=3Dcolgroup>Odds Ratio =
+Estimates</TH></TR>
+  <TR>
+    <TH class=3D"l b header" scope=3Dcol>Effect</TH>
+    <TH class=3D"r b header" scope=3Dcol>Point Estimate</TH>
+    <TH class=3D"c b header" colSpan=3D2 scope=3Dcolgroup>95% =
+Wald<BR>Confidence=20
+      Limits</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim COMMERCIAL BANK =
+vs PRIVATE=20
+      SECURITY</TH>
+    <TD class=3D"r data">0.206</TD>
+    <TD class=3D"r data">0.205</TD>
+    <TD class=3D"r data">0.207</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim GSE vs PRIVATE =
+SECURITY</TH>
+    <TD class=3D"r data">0.274</TD>
+    <TD class=3D"r data">0.273</TD>
+    <TD class=3D"r data">0.275</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim HELD FOR =
+INVESTMENT vs=20
+      PRIVATE SECURITY</TH>
+    <TD class=3D"r data">0.094</TD>
+    <TD class=3D"r data">0.094</TD>
+    <TD class=3D"r data">0.094</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim =
+INSURANCE/MORTGAGE BANK vs=20
+      PRIVATE SECURITY</TH>
+    <TD class=3D"r data">0.026</TD>
+    <TD class=3D"r data">0.026</TD>
+    <TD class=3D"r data">0.027</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sold_to_slim OTHER vs PRIVATE=20
+SECURITY</TH>
+    <TD class=3D"r data">0.012</TD>
+    <TD class=3D"r data">0.012</TD>
+    <TD class=3D"r data">0.012</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>purpose PURCHASE vs REFI</TH>
+    <TD class=3D"r data">0.756</TD>
+    <TD class=3D"r data">0.754</TD>
+    <TD class=3D"r data">0.757</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2 Asian vs White</TH>
+    <TD class=3D"r data">1.910</TD>
+    <TD class=3D"r data">1.902</TD>
+    <TD class=3D"r data">1.918</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2 Black vs White</TH>
+    <TD class=3D"r data">1.068</TD>
+    <TD class=3D"r data">1.064</TD>
+    <TD class=3D"r data">1.072</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2 Hispanic vs White</TH>
+    <TD class=3D"r data">1.820</TD>
+    <TD class=3D"r data">1.815</TD>
+    <TD class=3D"r data">1.825</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>race_2 Other vs White</TH>
+    <TD class=3D"r data">1.653</TD>
+    <TD class=3D"r data">1.647</TD>
+    <TD class=3D"r data">1.659</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sex Female vs Other</TH>
+    <TD class=3D"r data">1.210</TD>
+    <TD class=3D"r data">1.204</TD>
+    <TD class=3D"r data">1.216</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>sex Male vs Other</TH>
+    <TD class=3D"r data">1.066</TD>
+    <TD class=3D"r data">1.061</TD>
+    <TD class=3D"r data">1.071</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>preapproval 1 vs 3</TH>
+    <TD class=3D"r data">0.372</TD>
+    <TD class=3D"r data">0.369</TD>
+    <TD class=3D"r data">0.375</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>preapproval 2 vs 3</TH>
+    <TD class=3D"r data">1.193</TD>
+    <TD class=3D"r data">1.190</TD>
+    <TD class=3D"r data">1.197</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>lien 1 vs 2</TH>
+    <TD class=3D"r data">2.737</TD>
+    <TD class=3D"r data">2.727</TD>
+    <TD class=3D"r data">2.747</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread 0 vs 5</TH>
+    <TD class=3D"r data">0.939</TD>
+    <TD class=3D"r data">0.935</TD>
+    <TD class=3D"r data">0.943</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread 1 vs 5</TH>
+    <TD class=3D"r data">0.693</TD>
+    <TD class=3D"r data">0.691</TD>
+    <TD class=3D"r data">0.696</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread 2 vs 5</TH>
+    <TD class=3D"r data">0.828</TD>
+    <TD class=3D"r data">0.826</TD>
+    <TD class=3D"r data">0.831</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread 3 vs 5</TH>
+    <TD class=3D"r data">0.846</TD>
+    <TD class=3D"r data">0.844</TD>
+    <TD class=3D"r data">0.849</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>bin_income_spread 4 vs 5</TH>
+    <TD class=3D"r data">0.878</TD>
+    <TD class=3D"r data">0.875</TD>
+    <TD class=3D"r =
+data">0.881</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX12></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Association Statistics" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D4 scope=3Dcolgroup>Association of =
+Predicted=20
+      Probabilities and Observed Responses</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Percent Concordant</TH>
+    <TD class=3D"r data">79.0</TD>
+    <TH class=3D"l rowheader" scope=3Drow>Somers' D</TH>
+    <TD class=3D"r data">0.588</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Percent Discordant</TH>
+    <TD class=3D"r data">20.2</TD>
+    <TH class=3D"l rowheader" scope=3Drow>Gamma</TH>
+    <TD class=3D"r data">0.592</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Percent Tied</TH>
+    <TD class=3D"r data">0.8</TD>
+    <TH class=3D"l rowheader" scope=3Drow>Tau-a</TH>
+    <TD class=3D"r data">0.110</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Pairs</TH>
+    <TD class=3D"r data">2.848133E14</TD>
+    <TH class=3D"l rowheader" scope=3Drow>c</TH>
+    <TD class=3D"r =
+data">0.794</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX13></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Wald Test for Contrasts" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D4 scope=3Dcolgroup>Contrast Test=20
+Results</TH></TR>
+  <TR>
+    <TH class=3D"l b header" scope=3Dcol>Contrast</TH>
+    <TH class=3D"r b header" scope=3Dcol>DF</TH>
+    <TH class=3D"r b header" scope=3Dcol>Wald<BR>Chi-Square</TH>
+    <TH class=3D"r b header" =
+scope=3Dcol>Pr&nbsp;&gt;&nbsp;ChiSq</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>GSE vs HFI</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">883448.493</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Commercial Bank vs HFI</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">170052.758</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Ins/Mort Bank vs HFI</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">162494.559</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Other vs HFI</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">384857.322</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Purch vs Refi</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">49706.7680</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Approved vs Not Approved</TH>
+    <TD class=3D"r data">1</TD>
+    <TD class=3D"r data">79202.1573</TD>
+    <TD class=3D"r =
+data">&lt;.0001</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX14></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Estimates for Contrast Rows" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D10 scope=3Dcolgroup>Contrast =
+Estimation and=20
+      Testing Results by Row</TH></TR>
+  <TR>
+    <TH class=3D"l b header" scope=3Dcol>Contrast</TH>
+    <TH class=3D"l b header" scope=3Dcol>Type</TH>
+    <TH class=3D"r b header" scope=3Dcol>Row</TH>
+    <TH class=3D"r b header" scope=3Dcol>Estimate</TH>
+    <TH class=3D"r b header" scope=3Dcol>Standard<BR>Error</TH>
+    <TH class=3D"r b header" scope=3Dcol>Alpha</TH>
+    <TH class=3D"c b header" colSpan=3D2 scope=3Dcolgroup>Confidence =
+Limits</TH>
+    <TH class=3D"r b header" scope=3Dcol>Wald<BR>Chi-Square</TH>
+    <TH class=3D"r b header" =
+scope=3Dcol>Pr&nbsp;&gt;&nbsp;ChiSq</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>GSE vs HFI</TH>
+    <TH class=3D"l data">PARM</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">1.0686</TD>
+    <TD class=3D"r data">0.00114</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">1.0664</TD>
+    <TD class=3D"r data">1.0709</TD>
+    <TD class=3D"r data">883448.493</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>GSE vs HFI</TH>
+    <TH class=3D"l data">EXP</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">2.9114</TD>
+    <TD class=3D"r data">0.00331</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">2.9050</TD>
+    <TD class=3D"r data">2.9179</TD>
+    <TD class=3D"r data">883448.493</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>GSE vs HFI</TH>
+    <TH class=3D"l data">PROB</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.7443</TD>
+    <TD class=3D"r data">0.000216</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.7439</TD>
+    <TD class=3D"r data">0.7448</TD>
+    <TD class=3D"r data">883448.493</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Commercial Bank vs HFI</TH>
+    <TH class=3D"l data">PARM</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.7851</TD>
+    <TD class=3D"r data">0.00190</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.7813</TD>
+    <TD class=3D"r data">0.7888</TD>
+    <TD class=3D"r data">170052.758</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Commercial Bank vs HFI</TH>
+    <TH class=3D"l data">EXP</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">2.1926</TD>
+    <TD class=3D"r data">0.00417</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">2.1844</TD>
+    <TD class=3D"r data">2.2008</TD>
+    <TD class=3D"r data">170052.758</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Commercial Bank vs HFI</TH>
+    <TH class=3D"l data">PROB</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.6868</TD>
+    <TD class=3D"r data">0.000410</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.6860</TD>
+    <TD class=3D"r data">0.6876</TD>
+    <TD class=3D"r data">170052.758</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Ins/Mort Bank vs HFI</TH>
+    <TH class=3D"l data">PARM</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data" noWrap>-1.2681</TD>
+    <TD class=3D"r data">0.00315</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data" noWrap>-1.2743</TD>
+    <TD class=3D"r data" noWrap>-1.2620</TD>
+    <TD class=3D"r data">162494.559</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Ins/Mort Bank vs HFI</TH>
+    <TH class=3D"l data">EXP</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.2814</TD>
+    <TD class=3D"r data">0.000885</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.2796</TD>
+    <TD class=3D"r data">0.2831</TD>
+    <TD class=3D"r data">162494.559</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Ins/Mort Bank vs HFI</TH>
+    <TH class=3D"l data">PROB</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.2196</TD>
+    <TD class=3D"r data">0.000539</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.2185</TD>
+    <TD class=3D"r data">0.2206</TD>
+    <TD class=3D"r data">162494.559</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Other vs HFI</TH>
+    <TH class=3D"l data">PARM</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data" noWrap>-2.0254</TD>
+    <TD class=3D"r data">0.00326</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data" noWrap>-2.0318</TD>
+    <TD class=3D"r data" noWrap>-2.0190</TD>
+    <TD class=3D"r data">384857.322</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Other vs HFI</TH>
+    <TH class=3D"l data">EXP</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.1319</TD>
+    <TD class=3D"r data">0.000431</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.1311</TD>
+    <TD class=3D"r data">0.1328</TD>
+    <TD class=3D"r data">384857.322</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Other vs HFI</TH>
+    <TH class=3D"l data">PROB</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.1166</TD>
+    <TD class=3D"r data">0.000336</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.1159</TD>
+    <TD class=3D"r data">0.1172</TD>
+    <TD class=3D"r data">384857.322</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Purch vs Refi</TH>
+    <TH class=3D"l data">PARM</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.1401</TD>
+    <TD class=3D"r data">0.000628</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.1389</TD>
+    <TD class=3D"r data">0.1413</TD>
+    <TD class=3D"r data">49706.7680</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Purch vs Refi</TH>
+    <TH class=3D"l data">EXP</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">1.1504</TD>
+    <TD class=3D"r data">0.000723</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">1.1490</TD>
+    <TD class=3D"r data">1.1518</TD>
+    <TD class=3D"r data">49706.7680</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Purch vs Refi</TH>
+    <TH class=3D"l data">PROB</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.5350</TD>
+    <TD class=3D"r data">0.000156</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.5347</TD>
+    <TD class=3D"r data">0.5353</TD>
+    <TD class=3D"r data">49706.7680</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Approved vs Not Approved</TH>
+    <TH class=3D"l data">PARM</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data" noWrap>-1.1666</TD>
+    <TD class=3D"r data">0.00415</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data" noWrap>-1.1747</TD>
+    <TD class=3D"r data" noWrap>-1.1585</TD>
+    <TD class=3D"r data">79202.1573</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Approved vs Not Approved</TH>
+    <TH class=3D"l data">EXP</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.3114</TD>
+    <TD class=3D"r data">0.00129</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.3089</TD>
+    <TD class=3D"r data">0.3140</TD>
+    <TD class=3D"r data">79202.1573</TD>
+    <TD class=3D"r data">&lt;.0001</TD></TR>
+  <TR>
+    <TH class=3D"l rowheader" scope=3Drow>Approved vs Not Approved</TH>
+    <TH class=3D"l data">PROB</TH>
+    <TH class=3D"r data">1</TH>
+    <TD class=3D"r data">0.2375</TD>
+    <TD class=3D"r data">0.000751</TD>
+    <TD class=3D"r data">0.05</TD>
+    <TD class=3D"r data">0.2360</TD>
+    <TD class=3D"r data">0.2389</TD>
+    <TD class=3D"r data">79202.1573</TD>
+    <TD class=3D"r =
+data">&lt;.0001</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX15></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Partition" frame=3Dbox>
+  <COLGROUP>
+  <COL></COLGROUP>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D6 scope=3Dcolgroup>Partition for =
+the Hosmer=20
+      and Lemeshow Test</TH></TR>
+  <TR>
+    <TH class=3D"r b header" rowSpan=3D2 scope=3Dcol>Group</TH>
+    <TH class=3D"r b header" rowSpan=3D2 scope=3Dcol>Total</TH>
+    <TH class=3D"c b header" colSpan=3D2 scope=3Dcolgroup>test_subprime =
+=3D 1 <BR></TH>
+    <TH class=3D"c b header" colSpan=3D2 scope=3Dcolgroup>test_subprime =
+=3D 0=20
+  <BR></TH></TR>
+  <TR>
+    <TH class=3D"r b header" scope=3Dcol>Observed</TH>
+    <TH class=3D"r b header" scope=3Dcol>Expected</TH>
+    <TH class=3D"r b header" scope=3Dcol>Observed</TH>
+    <TH class=3D"r b header" scope=3Dcol>Expected</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>1</TH>
+    <TD class=3D"r data">5507100</TD>
+    <TD class=3D"r data">105680</TD>
+    <TD class=3D"r data">37996.88</TD>
+    <TD class=3D"r data">5401420</TD>
+    <TD class=3D"r data">5469103</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>2</TH>
+    <TD class=3D"r data">5533225</TD>
+    <TD class=3D"r data">59465</TD>
+    <TD class=3D"r data">76724.40</TD>
+    <TD class=3D"r data">5473760</TD>
+    <TD class=3D"r data">5456501</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>3</TH>
+    <TD class=3D"r data">5516981</TD>
+    <TD class=3D"r data">87792</TD>
+    <TD class=3D"r data">134851.3</TD>
+    <TD class=3D"r data">5429189</TD>
+    <TD class=3D"r data">5382130</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>4</TH>
+    <TD class=3D"r data">5505966</TD>
+    <TD class=3D"r data">123235</TD>
+    <TD class=3D"r data">216236.3</TD>
+    <TD class=3D"r data">5382731</TD>
+    <TD class=3D"r data">5289730</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>5</TH>
+    <TD class=3D"r data">5356904</TD>
+    <TD class=3D"r data">253375</TD>
+    <TD class=3D"r data">347368.5</TD>
+    <TD class=3D"r data">5103529</TD>
+    <TD class=3D"r data">5009536</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>6</TH>
+    <TD class=3D"r data">5400025</TD>
+    <TD class=3D"r data">456904</TD>
+    <TD class=3D"r data">426277.3</TD>
+    <TD class=3D"r data">4943121</TD>
+    <TD class=3D"r data">4973748</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>7</TH>
+    <TD class=3D"r data">5491407</TD>
+    <TD class=3D"r data">678195</TD>
+    <TD class=3D"r data">576619.3</TD>
+    <TD class=3D"r data">4813212</TD>
+    <TD class=3D"r data">4914788</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>8</TH>
+    <TD class=3D"r data">5616578</TD>
+    <TD class=3D"r data">998244</TD>
+    <TD class=3D"r data">871905.4</TD>
+    <TD class=3D"r data">4618334</TD>
+    <TD class=3D"r data">4744673</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>9</TH>
+    <TD class=3D"r data">5582887</TD>
+    <TD class=3D"r data">1068583</TD>
+    <TD class=3D"r data">1109481</TD>
+    <TD class=3D"r data">4514304</TD>
+    <TD class=3D"r data">4473406</TD></TR>
+  <TR>
+    <TH class=3D"r rowheader" scope=3Drow>10</TH>
+    <TD class=3D"r data">5551148</TD>
+    <TD class=3D"r data">1947655</TD>
+    <TD class=3D"r data">1981684</TD>
+    <TD class=3D"r data">3603493</TD>
+    <TD class=3D"r =
+data">3569464</TD></TR></TBODY></TABLE></DIV></DIV><BR><A=20
+name=3DIDX16></A>
+<DIV>
+<DIV align=3Dcenter>
+<TABLE class=3Dtable borderColor=3D#c1c1c1 cellSpacing=3D0 =
+cellPadding=3D5 rules=3Dall=20
+summary=3D"Procedure Logistic: Chi-Square Test" frame=3Dbox>
+  <COLGROUP>
+  <COL>
+  <COL>
+  <COL></COLGROUP>
+  <THEAD>
+  <TR>
+    <TH class=3D"c b header" colSpan=3D3 scope=3Dcolgroup>Hosmer and =
+Lemeshow=20
+      Goodness-of-Fit<BR>Test</TH></TR>
+  <TR>
+    <TH class=3D"r b header" scope=3Dcol>Chi-Square</TH>
+    <TH class=3D"r b header" scope=3Dcol>DF</TH>
+    <TH class=3D"r b header" =
+scope=3Dcol>Pr&nbsp;&gt;&nbsp;ChiSq</TH></TR></THEAD>
+  <TBODY>
+  <TR>
+    <TD class=3D"r data">257844.787</TD>
+    <TD class=3D"r data">8</TD>
+    <TD=20
+class=3D"r =
+data">&lt;.0001</TD></TR></TBODY></TABLE></DIV></DIV><BR></DIV></BODY></H=
+TML>

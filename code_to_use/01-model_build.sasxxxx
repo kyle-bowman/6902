@@ -1,0 +1,469 @@
+
+libname sasdata "&sasdata.";
+
+proc means data=sasdata.model_data_build noprint nway missing;
+	class asofdate respondent_id state_code county_code inst1;
+	var loan_type_1 - loan_type_3
+		action_taken_1 - action_taken_8
+		type_of_purchaser_0 - type_of_purchaser_9
+		property_type_1 - property_type_3
+		ethinicity_1 - ethinicity_5
+		denial_1 - denial_9
+		loan_purpose_1 - loan_purpose_3
+		applicant_race_1 - applicant_race_8
+		hoepa_status_1 hoepa_status_2
+		occupancy_1 - occupancy_3
+		applicant_sex_1 - applicant_sex_5
+		lien_status_1 - lien_status_4
+		preapproval_1 - preapproval_3
+		subprime_institution hud_subprime
+	;
+	output out=model_aggregate (drop=_type_ rename=(_freq_=count)) sum=;
+run;
+
+proc sql;
+	create table state_abrev as
+		select distinct
+			strip(put(state,z2.)) as state_code
+		,	statename
+	from sashelp.zipcode
+	order by
+		state_code
+;quit;
+
+proc sort data=model_aggregate;by state_code;run;
+
+data modwork.model_aggregate;
+	length asofdate 3 respondent_id $ 12 state_code $ 2 county_code $ 3 statename $ 25;
+	merge model_aggregate (in=ma) state_abrev;
+	by state_code;
+	if ma;
+
+	if subprime_institution gt 0 then sub=1;
+	else sub=0;
+	if hud_subprime gt 0 then hud_sub=1;
+	else hud_sub=0;
+	new_subprime=sub;
+	/*https://en.wikipedia.org/wiki/Golden_West_Financial*/
+	if inst1 in ('WACHOVIA MORTGAGE FSB','WORLD SAVINGS BANK') then new_subprime=1;
+	else if find(inst1,'WACHOVIA') ne 0 then new_subprime=0;
+
+	if substr(inst1,1,%length(%bquote(WELLS FARGO FIN'L)))="WELLS FARGO FIN'L" or substr(inst1,1,16)='WELLS FARGO FINL' then inst1='WELLS FARGO FINL';
+
+run;
+%put %length(%bquote(WELLS FARGO FIN'L));
+proc sort data=modwork.model_aggregate;by asofdate respondent_id state_code county_code;run;
+
+proc means data=modwork.model_aggregate sum;
+	where asofdate=2005 and new_subprime=1;
+	class inst1;
+	var hud_subprime subprime_institution count;
+run;
+
+data model_data_aggregate_2;
+	set model_aggregate;
+	if subprime_institution gt 0 then sub=1;
+	else sub=0;
+run;
+
+proc means data=model_data_aggregate_2;
+	where asofdate=2005;
+	class asofdate sub;
+	var loan_type_1 - loan_type_3
+		action_taken_1 - action_taken_8
+		type_of_purchaser_0 - type_of_purchaser_9
+		property_type_1 - property_type_3
+		ethinicity_1 - ethinicity_5
+		denial_1 - denial_9
+		loan_purpose_1 - loan_purpose_3
+		applicant_race_1 - applicant_race_8
+		hoepa_status_1 hoepa_status_2
+		occupancy_1 - occupancy_3
+		applicant_sex_1 - applicant_sex_5
+		lien_status_1 - lien_status_4
+		preapproval_1 - preapproval_3
+	;
+run;
+
+data modwork.analyze_2004_2007;
+	set sasdata.model_data_build;
+	where asofdate between 2004 and 2007;
+	if subprime_institution=1 and inst1 in ('WACHOVIA MORTGAGE FSB','WORLD SAVINGS BANK') then subprime_institution=1;
+	else if subprime_institution=1 and find(inst1,'WACHOVIA') ne 0 then subprime_institution=0;
+run;
+
+proc means data=modwork.analyze_2005 noprint nway missing;
+	where action_taken ne '1';
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose;
+	var denial_1 - denial_9
+		action_taken_2 - action_taken_8
+	;
+	output out=not_approved_number (drop=_type_ _freq_) sum=;
+run;
+
+proc means data=modwork.analyze_2005 noprint nway missing;
+	where action_taken='1';
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose;
+	var action_taken_1
+	;
+	output out=approved_number (drop=_type_ _freq_) sum=;
+run;
+
+proc means data=modwork.analyze_2005 noprint;
+	where action_taken='1';
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose;
+	output out=inc_quintile 
+		   p20(applicant_income)=inc_p20
+		   p40(applicant_income)=inc_p40
+		   p60(applicant_income)=inc_p60
+		   p80(applicant_income)=inc_p80
+	;
+run;
+
+
+data approval_denial;
+	merge approved_number
+		  not_approved_number
+		  inc_quintile
+		  
+	;
+	by asofdate state_code county_code;
+
+	array n{*} _numeric_;
+
+	do i=1 to dim(n);
+		if missing(n{i}) then n{i}=0;
+	end;
+	drop i;
+
+run;
+
+proc sort data=modwork.analyze_2005 (drop=denial_1 - denial_9 action_taken_1 - action_taken_8)
+		  out=analyze_2005
+		  ;
+	by asofdate state_code county_code;
+run;
+
+proc sort data=sasdata.fred_data out=fred_data;by asofdate state_code county_code;run;
+proc sort data=sasdata.building_permits out=building_permits;by asofdate state_code county_code;run;
+proc sort data=sasdata.zillow_data out=zillow_data;by asofdate state_code county_code;run;
+
+options obs=max;
+data analyze_2005_1;
+	merge analyze_2005 (in=b) /*(drop=denial_1 - denial_9 action_taken_1 - action_taken_8)*/
+		  approval_denial (in=ad)
+		  fred_data (in=fd)
+		  building_permits (in=bp keep=asofdate state_code county_code bldg_perm_1_4 bldg_perm_5plus 
+		  							   change_bldg_perm_1_4 change_bldg_perm_5plus)
+		  zillow_data (in=z keep=asofdate state_code county_code zhvi_sfh median_ppsft
+		  						 change_zhvi_sfh change_median_ppsft)
+	;
+	by asofdate state_code county_code;
+	if b and action_taken='1';
+
+	if missing(applicant_income) or applicant_income=9999 then income_quintile=0;
+	else if applicant_income le inc_p20 then income_quintile=1;
+	else if applicant_income le inc_p40 then income_quintile=2;
+	else if applicant_income le inc_p60 then income_quintile=3;
+	else if applicant_income le inc_p80 then income_quintile=4;
+	else if applicant_income gt inc_p80 then income_quintile=5;
+
+	inc_0=(income_quintile=0);
+	inc_1=(income_quintile=1);
+	inc_2=(income_quintile=2);
+	inc_3=(income_quintile=3);
+	inc_4=(income_quintile=4);
+	inc_5=(income_quintile=5);
+
+run;
+
+data model_population target;
+	set analyze_2005_1;
+
+	if substr(inst1,1,15)='WELLS FARGO FIN' then target=1;
+	else if inst1='WORLD SAVINGS BANK' then target=1;
+	else if inst1='INDYMAC BANK, F.S.B.' then target=1;
+	else if inst1='COUNTRYWIDE BANK, N. A.' then target=1;
+/*	else if inst1='OPTION ONE MORTGAGE CORP' then target=1;*/
+	else if inst1='HOME123 CORPORATION' then target=1;
+	else target=0;
+
+	output model_population;
+	if target=1 then output target;
+run;
+
+proc contents data=target noprint out=target_count (keep=nobs);run;
+
+data _null_;
+	set target_count (obs=1);
+	call symputx('target_count',nobs);
+run;
+
+proc surveyselect data=model_population seed=21804 method=srs n=&target_count. out=non_target;
+	where target=0;
+run;
+
+
+data train test validate;
+	set target
+		non_target
+	;
+
+	random=ranuni(28104);
+
+	if random le .6 then output train;
+	else if random le .75 then output test;
+	else output validate;
+run;
+
+%macro model_fit(selection_method=);
+ods output rsquare=rsquare
+		   modelbuildingsummary=model_build_summary
+		   association=roc_info
+		   parameterestimates=parameter_estimates
+		   lackfitchisq=lackfit_chisq
+		   fitstatistics=fit_statistics
+		   scorefitstat=scored_fit_statistics
+		   responseprofile=response_profile
+;
+proc logistic data=train plots=none;
+	model target(event='1')=
+		/*loan_type_1*/ loan_type_2 - loan_type_4
+		type_of_purchaser_0 - type_of_purchaser_8 /*type_of_purchaser_9*/
+		/*property_type_1*/ property_type_2 property_type_3
+		ethinicity_1 /*ethinicity_2*/ ethinicity_3 - ethinicity_4
+		/*loan_purpose_1*/ loan_purpose_2 - loan_purpose_3
+		applicant_race_1 - applicant_race_4 /*applicant_race_5*/ applicant_race_6 - applicant_race_7
+		hoepa_status_1 /*hoepa_status_2*/
+		/*occupancy_1*/ occupancy_2 - occupancy_3
+		applicant_sex_1 - applicant_sex_3 /*applicant_sex_4*/ 
+		/*lien_status_1*/ lien_status_2 - lien_status_3
+		/*preapproval_1*/ preapproval_2 - preapproval_3
+		action_taken_1 - action_taken_8
+		denial_1 - denial_9
+		inc_0 - inc_4 /* inc_5 */
+		pcpi pcpi_county_200101_chg
+		pi pi_county_200101_chg
+		equifax equifax_county_200101_chg
+		hpi hpi_county_200101_chg
+		peaa peaa_county_200101_chg
+		mhi mhi_county_200101_chg
+		ruc ruc_county_200101_chg
+		pua0t17 pua0t17_county_200101_chg
+		bldg_perm_1_4 change_bldg_perm_1_4 
+		bldg_perm_5plus change_bldg_perm_5plus
+		zhvi_sfh change_zhvi_sfh
+		median_ppsft change_median_ppsft
+		/ rsquare stb lackfit expb parmlabel selection=&selection_method.
+	;
+	score data=validate fitstat;
+run;
+
+data ass1;
+	set roc_info (obs=1 keep=nvalue1 rename=(nvalue1=pct_concordant));
+run;
+data ass2;
+	set roc_info (keep=nvalue1 obs=2 firstobs=2 rename=(nvalue1=pct_discordant));
+run;
+data ass3;
+	set roc_info (keep=nvalue2 obs=1 rename=(nvalue2=somers_d));
+run;
+data ass4;
+	set roc_info (keep=nvalue2 firstobs=4 obs=4 rename=(nvalue2=c));
+run;
+
+data rsquare;
+	set rsquare end=eof;
+
+	if eof;
+	rename nvalue1=rsquare nvalue2=rescaled_rsquare;
+	keep nvalue1 nvalue2;
+run;
+
+data removed_predictors;
+	set model_build_summary end=eof;
+	length removed_predictors $ 10000;
+	retain removed_predictors;
+	removed_predictors=cats(removed_predictors,cats(effectremoved,'|'));
+	if eof;
+	keep removed_predictors;
+run;
+
+data kept_parameters;
+	set parameter_estimates end=eof;
+	length kept_predictors $ 10000;
+	retain kept_predictors;
+	kept_predictors=cats(kept_predictors,cats(variable,'|'));
+	if eof;
+	keep kept_predictors;
+run;
+
+proc sql noprint;
+	select max(step) 
+	into :max_step
+	from fit_statistics
+;quit;
+
+data fit_stats;
+	set fit_statistics end=eof;
+	where step=&max_step.;
+
+	retain aic sbc logliklihood;
+	if criterion='AIC' then aic=interceptandcovariates;
+	else if criterion='SC' then sbc=interceptandcovariates;
+	else if criterion='-2 Log L' then logliklihood=interceptandcovariates;
+
+	keep aic sbc logliklihood;
+	if eof;
+run;
+
+data response_profile;
+	set response_profile end=eof;
+
+	retain target_1 target_0;
+	if strip(outcome)='1' then target_1=count;
+	else if strip(outcome)='0' then target_0=count;
+
+	if eof;
+
+	keep target_1 target_0;
+run;
+
+data scored_fit_statistics;
+	set scored_fit_statistics;
+	drop dataset;
+	rename freq=valid_freq
+		   loglike=valid_loglike
+		   misclass=valid_misclass
+		   auc=valid_auc
+		   aic=valid_aic
+		   aicc=valid_aicc
+		   bic=valid_bic
+		   sc=valid_sc
+		   rsquare=valid_rsquare
+		   adjrsquare=valid_adjrsquare
+		   brierscore=valid_brierscore
+	;
+run;
+	
+data run_stats;
+	length selection_method $ 20;
+	merge ass1 ass2 ass3 ass4 rsquare fit_stats response_profile scored_fit_statistics kept_parameters removed_predictors;
+	selection_method="&selection_method.";
+run;
+
+proc append base=modwork.model_runs data=run_stats;run;
+
+proc datasets lib=work nolist nodetails;
+	delete rsquare
+		   model_build_summary
+		   roc_info
+		   parameter_estimates
+		   lackfit_chisq
+		   fit_statistics
+		   scored_fit_statistics
+		   response_profile
+		   ass1 ass2 ass3 ass4
+		   fit_stats
+		   kept_parameters
+		   removed_parameters
+		   run_stats
+	;
+run;quit;
+
+%mend model_fit;
+
+%model_fit(selection_method=backward);
+%model_fit(selection_method=forward);
+%model_fit(selection_method=stepwise);
+
+
+
+
+
+
+proc freq data=score_subprime;
+	table f_wff_gdw*i_wff_gdw / nocol nocum nopercent;
+run;
+
+
+proc logistic data=train plots=none outmodel=subprime_model;
+	where asofdate=2005;
+	model subprime_institution(event='1')=
+		/*loan_type_1*/ loan_type_2 - loan_type_4
+		type_of_purchaser_0 - type_of_purchaser_9
+		/*property_type_1*/ property_type_2 property_type_3
+		ethinicity_1 /*ethinicity_2*/ ethinicity_3 - ethinicity_4
+		/*loan_purpose_1*/ loan_purpose_2 - loan_purpose_3
+		applicant_race_1 - applicant_race_4 /*applicant_race_5*/ applicant_race_6 - applicant_race_7
+		hoepa_status_1 /*hoepa_status_2*/
+		/*occupancy_1*/ occupancy_2 - occupancy_3
+		applicant_sex_1 - applicant_sex_3 /*applicant_sex_4*/ 
+		/*lien_status_1*/ lien_status_2 - lien_status_3
+		/*preapproval_1*/ preapproval_2 - preapproval_3
+		action_taken_1 - action_taken_8
+		denial_1 - denial_9
+		inc_0 - inc_4 /* inc_5 */
+		pcpi pcpi_county_200101_chg
+		pi pi_county_200101_chg
+		equifax equifax_county_200101_chg
+		hpi hpi_county_200101_chg
+		peaa peaa_county_200101_chg
+		mhi mhi_county_200101_chg
+		ruc ruc_county_200101_chg
+		bldg_perm_1_4 change_bldg_perm_1_4 
+		bldg_perm_5plus change_bldg_perm_5plus
+		zhvi_sfh change_zhvi_sfh
+		median_ppsft change_median_ppsft
+		/ rsquare /*firth*/ stb lackfit expb parmlabel selection=backward outroc=modwork.roc
+	;
+/*	roc;*/
+	score data=validate out=score_subprime;
+run;
+
+
+proc logistic data=train plots=none outmodel=hud_subprime_model;
+	where asofdate=2005;
+	model hud_subprime(event='1')=
+		/*loan_type_1*/ loan_type_2 - loan_type_4
+		type_of_purchaser_0 - type_of_purchaser_9
+		/*property_type_1*/ property_type_2 property_type_3
+		ethinicity_1 /*ethinicity_2*/ ethinicity_3 - ethinicity_4
+		/*loan_purpose_1*/ loan_purpose_2 - loan_purpose_3
+		applicant_race_1 - applicant_race_4 /*applicant_race_5*/ applicant_race_6 - applicant_race_7
+		hoepa_status_1 /*hoepa_status_2*/
+		/*occupancy_1*/ occupancy_2 - occupancy_3
+		applicant_sex_1 - applicant_sex_3 /*applicant_sex_4*/ 
+		/*lien_status_1*/ lien_status_2 - lien_status_3
+		/*preapproval_1*/ preapproval_2 - preapproval_3
+		action_taken_1 - action_taken_8
+		denial_1 - denial_9
+		inc_0 - inc_4 /* inc_5 */
+		pcpi pcpi_county_200101_chg
+		pi pi_county_200101_chg
+		equifax equifax_county_200101_chg
+		hpi hpi_county_200101_chg
+		peaa peaa_county_200101_chg
+		mhi mhi_county_200101_chg
+		ruc ruc_county_200101_chg
+		bldg_perm_1_4 change_bldg_perm_1_4 
+		bldg_perm_5plus change_bldg_perm_5plus
+		zhvi_sfh change_zhvi_sfh
+		median_ppsft change_median_ppsft
+		/ rsquare /*firth*/ stb lackfit expb parmlabel selection=backward outroc=modwork.hud_roc
+	;
+/*	roc;*/
+	score data=validate out=modwork.hud_score_subprime;
+run;
+		
+proc freq data=hud_score_subprime;
+	table f_hud_subprime*i_hud_subprime / nocol nocum nopercent;
+run;
+	
+proc sgplot data=hud_roc;
+	series x=_sensit_ y=_1mspec_;
+run;
+

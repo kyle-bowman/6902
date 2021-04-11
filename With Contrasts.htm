@@ -1,0 +1,4927 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="Generator" content="SAS Software Version 9.4, see www.sas.com">
+<meta http-equiv="Content-type" content="text/html; charset=windows-1252">
+<title>SAS Output</title>
+<style type="text/css">
+<!--
+.aftercaption
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+  padding-top: 4pt;
+}
+.batch
+{
+  background-color: #FAFBFE;
+  border: 1px solid #C1C1C1;
+  border-collapse: separate;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  padding: 7px;
+}
+.beforecaption
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.body
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.bodydate
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  text-align: right;
+  vertical-align: top;
+  width: 100%;
+}
+.bycontentfolder
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.byline
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.bylinecontainer
+{
+  background-color: #FAFBFE;
+  border: 0px solid #000000;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.caption
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.cell
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.container
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.contentfolder
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.contentitem
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.contentproclabel
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.contentprocname
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.contents
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: decimal;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.contentsdate
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.contenttitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: bold;
+}
+.continued
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+  width: 100%;
+}
+.data
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.dataemphasis
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.dataemphasisfixed
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.dataempty
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.datafixed
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.datastrong
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.datastrongfixed
+{
+  background-color: #FFFFFF;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.date
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.document
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+a:link {
+color:#0000FF
+}
+a:visited {
+color:#800080
+}
+a:active {
+color:#800080
+}
+.errorbanner
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.errorcontent
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.errorcontentfixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.extendedpage
+{
+  background-color: #FAFBFE;
+  border: 1pt solid #000000;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+.fatalbanner
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.fatalcontent
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.fatalcontentfixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.folderaction
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.footer
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.footeremphasis
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.footeremphasisfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.footerempty
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.footerfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.footerstrong
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.footerstrongfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.frame
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.graph
+{
+  background-color: #FAFBFE;
+  border: 1px solid #C1C1C1;
+  border-collapse: separate;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.header
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.headeremphasis
+{
+  background-color: #D8DBD3;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.headeremphasisfixed
+{
+  background-color: #D8DBD3;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.headerempty
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.headerfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.headersandfooters
+{
+  background-color: #EDF2F9;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.headerstrong
+{
+  background-color: #D8DBD3;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.headerstrongfixed
+{
+  background-color: #D8DBD3;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.index
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.indexaction
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.indexitem
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.indexprocname
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.indextitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: bold;
+}
+.layoutcontainer
+{
+  border: 0px solid #000000;
+  border-spacing: 30px;
+}
+.layoutregion
+{
+  border: 0px solid #000000;
+  border-spacing: 30px;
+}
+.linecontent
+{
+  background-color: #FAFBFE;
+  border-bottom-width: 1px;
+  border-color: #C1C1C1;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.list
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: disc;
+}
+.list10
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list2
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: circle;
+}
+.list3
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list4
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list5
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list6
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list7
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list8
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.list9
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: disc;
+}
+.listitem10
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem2
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: circle;
+}
+.listitem3
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem4
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem5
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem6
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem7
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem8
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.listitem9
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: square;
+}
+.note
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.notebanner
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.notecontent
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.notecontentfixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.output
+{
+  background-color: #FAFBFE;
+  border: 1px solid #C1C1C1;
+  border-collapse: separate;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.pageno
+{
+  background-color: #FAFBFE;
+  border-spacing: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+  text-align: right;
+  vertical-align: top;
+}
+.pages
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: decimal;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.pagesdate
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.pagesitem
+{
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  list-style-type: none;
+  margin-left: 6pt;
+}
+.pagesproclabel
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.pagesprocname
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.pagestitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: bold;
+}
+.paragraph
+{
+  background-color: #FAFBFE;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.parskip
+{
+  border: 0px solid #000000;
+  border-spacing: 0px;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.prepage
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  text-align: left;
+}
+.proctitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.proctitlefixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowfooter
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowfooteremphasis
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.rowfooteremphasisfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.rowfooterempty
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowfooterfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.rowfooterstrong
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowfooterstrongfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowheader
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowheaderemphasis
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.rowheaderemphasisfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: italic;
+  font-weight: normal;
+}
+.rowheaderempty
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowheaderfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.rowheaderstrong
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.rowheaderstrongfixed
+{
+  background-color: #EDF2F9;
+  border-bottom-width: 1px;
+  border-color: #B0B7BB;
+  border-left-width: 0px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 0px;
+  color: #112277;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemfooter
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter10
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter2
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter3
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter4
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter5
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter6
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter7
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter8
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemfooter9
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.systemtitle
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle10
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle2
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle3
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle4
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle5
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle6
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle7
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle8
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systemtitle9
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: small;
+  font-style: normal;
+  font-weight: bold;
+}
+.systitleandfootercontainer
+{
+  background-color: #FAFBFE;
+  border: 0px solid #000000;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.table
+{
+  border-bottom-width: 0px;
+  border-collapse: collapse;
+  border-color: #C1C1C1;
+  border-left-width: 1px;
+  border-right-width: 0px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-top-width: 1px;
+}
+.top_stacked_value
+{
+  padding-bottom: 1px;
+  border: 0;
+}
+.middle_stacked_value
+{
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 0;
+}
+.bottom_stacked_value
+{
+  padding-top: 1px;
+  border: 0;
+}
+.titleandnotecontainer
+{
+  background-color: #FAFBFE;
+  border: 0px solid #000000;
+  border-spacing: 1px;
+  color: #000000;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+  width: 100%;
+}
+.titlesandfooters
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.usertext
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.warnbanner
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: bold;
+}
+.warncontent
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: Arial, 'Albany AMT', Helvetica, Helv;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.warncontentfixed
+{
+  background-color: #FAFBFE;
+  color: #112277;
+  font-family: 'Courier New', Courier;
+  font-size: x-small;
+  font-style: normal;
+  font-weight: normal;
+}
+.l {text-align: left }
+.c {text-align: center }
+.r {text-align: right }
+.d {text-align: right }
+.j {text-align: justify }
+.t {vertical-align: top }
+.m {vertical-align: middle }
+.b {vertical-align: bottom }
+TD, TH {vertical-align: top }
+.stacked_cell{padding: 0 }
+-->
+</style>
+<script language="javascript" type="text/javascript">
+<!-- 
+function startup(){
+
+}
+function shutdown(){
+
+}
+
+//-->
+</script>
+
+</head>
+<body onload="startup()" onunload="shutdown()" class="body">
+
+<script language="javascript" type="text/javascript">
+<!-- 
+var _info = navigator.userAgent
+var _ie = (_info.indexOf("MSIE") > 0
+          && _info.indexOf("Win") > 0
+          && _info.indexOf("Windows 3.1") < 0);
+var _ie64 = _info.indexOf("x64") > 0
+
+//-->
+</script>
+
+<div class="branch">
+<a name="IDX"></a>
+<table class="systitleandfootercontainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
+<tr>
+<td class="c systemtitle">The SAS System</td>
+</tr>
+</table><br>
+<div class="c proctitle">The LOGISTIC Procedure</div>
+<p>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Model Information">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Model Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Data Set</th>
+<td class="l data">WORK.BUILD_SUBPRIME</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Response Variable</th>
+<td class="l data">test_subprime</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Number of Response Levels</th>
+<td class="l data">2</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Model</th>
+<td class="l data">binary logit</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Optimization Technique</th>
+<td class="l data">Fisher&#39;s scoring</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Likelihood Penalty</th>
+<td class="l data">Firth&#39;s bias correction</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX1"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Observations Summary">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Number of Observations Read</th>
+<td class="r data">7513476</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">7513476</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX2"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Response Profile">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Response Profile</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">Ordered<br/>Value</th>
+<th class="l b header" scope="col">test_subprime</th>
+<th class="r b header" scope="col">Total<br/>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="l data">0</td>
+<td class="r data">4045389</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="l data">1</td>
+<td class="r data">3468087</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>
+<div align="center"><table class="proctitle"><tr><td class="c proctitle">Probability modeled is test_subprime=1.</td></tr></table>
+</div><p>
+</div>
+<br>
+<a name="IDX3"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Class Level Information">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">Class Level Information</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Class</th>
+<th class="l b header" scope="col">Value</th>
+<th class="c b header" colspan="5" scope="colgroup">Design Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">purpose</th>
+<th class="l rowheader" scope="row">PURCHASE</th>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">REFI</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Asian</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Black</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Hispanic</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Other</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">White</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex</th>
+<th class="l rowheader" scope="row">Female</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Male</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Other</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">3</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">lien</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">0</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">3</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">4</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">5</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">COMMERCIAL BANK</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">GSE</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">HELD FOR INVESTMENT</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">INSURANCE/MORTGAGE BANK</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">OTHER</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">PRIVATE SECURITY</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX4"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Convergence Status">
+<colgroup>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" scope="col">Intercept-Only Model Convergence Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c data">Convergence criterion (GCONV=1E-8) satisfied.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX5"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Convergence Status">
+<colgroup>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" scope="col">Model Convergence Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c data">Convergence criterion (GCONV=1E-8) satisfied.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX6"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Fit Statistics">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Model Fit Statistics</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Criterion</th>
+<th class="r b header" scope="col">Intercept Only</th>
+<th class="r b header" scope="col">Intercept and<br/>Covariates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">AIC</th>
+<td class="r data">10371218</td>
+<td class="r data">8240563.2</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">SC</th>
+<td class="r data">10371232</td>
+<td class="r data">8240853.7</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">-2 Log L</th>
+<td class="r data">10371216</td>
+<td class="r data">8240521.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX7"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: R-Square and Max-rescaled R-Square">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">R-Square</th>
+<td class="r data">0.2469</td>
+<th class="l rowheader" scope="row">Max-rescaled R-Square</th>
+<td class="r data">0.3299</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX8"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Global Tests">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Testing Global Null Hypothesis: BETA=0</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Test</th>
+<th class="r b header" scope="col">Chi-Square</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Likelihood Ratio</th>
+<td class="r data">2130694.65</td>
+<td class="r data">20</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Score</th>
+<td class="r data">1869265.83</td>
+<td class="r data">20</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Wald</th>
+<td class="r data">1393629.04</td>
+<td class="r data">20</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX9"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Type 3 Tests">
+<colgroup>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Type 3 Analysis of Effects</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Effect</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Wald<br/>Chi-Square</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<td class="r data">5</td>
+<td class="r data">1142599.00</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">purpose</th>
+<td class="r data">1</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<td class="r data">4</td>
+<td class="r data">93426.3393</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex</th>
+<td class="r data">2</td>
+<td class="r data">4707.6488</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval</th>
+<td class="r data">2</td>
+<td class="r data">36656.4263</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">lien</th>
+<td class="r data">1</td>
+<td class="r data">97091.3474</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<td class="r data">5</td>
+<td class="r data">20256.6652</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX10"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Parameter Estimates">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="10" scope="colgroup">Analysis of Penalized Maximum Likelihood Estimates</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Parameter</th>
+<th class="l b header" scope="col">&nbsp;</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Estimate</th>
+<th class="r b header" scope="col">Standard<br/>Error</th>
+<th class="r b header" scope="col">Wald<br/>Chi-Square</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+<th class="r b header" scope="col">Standardized<br/>Estimate</th>
+<th class="r b header" scope="col">Exp(Est)</th>
+<th class="l b header" scope="col">Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Intercept</th>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.7690</td>
+<td class="r data">0.00310</td>
+<td class="r data">61464.8829</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">0.463</td>
+<td class="l data">Intercept: test_subprime=0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">COMMERCIAL BANK</th>
+<td class="r data">1</td>
+<td class="r data">0.6367</td>
+<td class="r data">0.00287</td>
+<td class="r data">49064.0799</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.1400</td>
+<td class="r data">1.890</td>
+<td class="l data">sold_to_slim COMMERCIAL BANK</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">GSE</th>
+<td class="r data">1</td>
+<td class="r data">0.9244</td>
+<td class="r data">0.00181</td>
+<td class="r data">261521.369</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.3050</td>
+<td class="r data">2.520</td>
+<td class="l data">sold_to_slim GSE</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">HELD FOR INVESTMENT</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.2044</td>
+<td class="r data">0.00169</td>
+<td class="r data">14568.4780</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0716</td>
+<td class="r data">0.815</td>
+<td class="l data">sold_to_slim HELD FOR INVESTMENT</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">INSURANCE/MORTGAGE BANK</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-1.3889</td>
+<td class="r data">0.00370</td>
+<td class="r data">140952.925</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.3098</td>
+<td class="r data">0.249</td>
+<td class="l data">sold_to_slim INSURANCE/MORTGAGE BANK</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">OTHER</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-2.1702</td>
+<td class="r data">0.00370</td>
+<td class="r data">344037.862</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.5550</td>
+<td class="r data">0.114</td>
+<td class="l data">sold_to_slim OTHER</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">purpose</th>
+<th class="l rowheader" scope="row">PURCHASE</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.1415</td>
+<td class="r data">0.00112</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0775</td>
+<td class="r data">0.868</td>
+<td class="l data">purpose PURCHASE</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Asian</th>
+<td class="r data">1</td>
+<td class="r data">0.3091</td>
+<td class="r data">0.00331</td>
+<td class="r data">8699.2773</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0992</td>
+<td class="r data">1.362</td>
+<td class="l data">race_2 Asian</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Black</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.2821</td>
+<td class="r data">0.00276</td>
+<td class="r data">10439.7644</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0986</td>
+<td class="r data">0.754</td>
+<td class="l data">race_2 Black</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Hispanic</th>
+<td class="r data">1</td>
+<td class="r data">0.2630</td>
+<td class="r data">0.00228</td>
+<td class="r data">13269.4949</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.1031</td>
+<td class="r data">1.301</td>
+<td class="l data">race_2 Hispanic</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Other</th>
+<td class="r data">1</td>
+<td class="r data">0.1030</td>
+<td class="r data">0.00272</td>
+<td class="r data">1439.8616</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0411</td>
+<td class="r data">1.109</td>
+<td class="l data">race_2 Other</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex</th>
+<th class="l rowheader" scope="row">Female</th>
+<td class="r data">1</td>
+<td class="r data">0.0834</td>
+<td class="r data">0.00186</td>
+<td class="r data">2020.2329</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0252</td>
+<td class="r data">1.087</td>
+<td class="l data">sex Female</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex</th>
+<th class="l rowheader" scope="row">Male</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.0483</td>
+<td class="r data">0.00174</td>
+<td class="r data">765.9341</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0160</td>
+<td class="r data">0.953</td>
+<td class="l data">sex Male</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.6970</td>
+<td class="r data">0.00413</td>
+<td class="r data">28417.9697</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.1901</td>
+<td class="r data">0.498</td>
+<td class="l data">preapproval 1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data">1</td>
+<td class="r data">0.4683</td>
+<td class="r data">0.00245</td>
+<td class="r data">36410.4930</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.2073</td>
+<td class="r data">1.597</td>
+<td class="l data">preapproval 2</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">lien</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data">0.4604</td>
+<td class="r data">0.00148</td>
+<td class="r data">97091.3474</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.1715</td>
+<td class="r data">1.585</td>
+<td class="l data">lien 1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">0</th>
+<td class="r data">1</td>
+<td class="r data">0.0546</td>
+<td class="r data">0.00297</td>
+<td class="r data">337.1650</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0146</td>
+<td class="r data">1.056</td>
+<td class="l data">bin_income_spread 0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.2181</td>
+<td class="r data">0.00187</td>
+<td class="r data">13655.4711</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0744</td>
+<td class="r data">0.804</td>
+<td class="l data">bin_income_spread 1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.0323</td>
+<td class="r data">0.00186</td>
+<td class="r data">300.9602</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0109</td>
+<td class="r data">0.968</td>
+<td class="l data">bin_income_spread 2</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">3</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.0116</td>
+<td class="r data">0.00186</td>
+<td class="r data">38.7810</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.00393</td>
+<td class="r data">0.988</td>
+<td class="l data">bin_income_spread 3</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">4</th>
+<td class="r data">1</td>
+<td class="r data">0.0341</td>
+<td class="r data">0.00186</td>
+<td class="r data">334.4668</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0115</td>
+<td class="r data">1.035</td>
+<td class="l data">bin_income_spread 4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX11"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Odds Ratios">
+<colgroup>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Odds Ratio Estimates</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Effect</th>
+<th class="r b header" scope="col">Point Estimate</th>
+<th class="c b header" colspan="2" scope="colgroup">95% Wald<br/> Confidence Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      COMMERCIAL BANK         vs PRIVATE SECURITY</th>
+<td class="r data">0.209</td>
+<td class="r data">0.207</td>
+<td class="r data">0.211</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      GSE                     vs PRIVATE SECURITY</th>
+<td class="r data">0.279</td>
+<td class="r data">0.277</td>
+<td class="r data">0.281</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      HELD FOR INVESTMENT     vs PRIVATE SECURITY</th>
+<td class="r data">0.090</td>
+<td class="r data">0.089</td>
+<td class="r data">0.091</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      INSURANCE/MORTGAGE BANK vs PRIVATE SECURITY</th>
+<td class="r data">0.028</td>
+<td class="r data">0.027</td>
+<td class="r data">0.028</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      OTHER                   vs PRIVATE SECURITY</th>
+<td class="r data">0.013</td>
+<td class="r data">0.012</td>
+<td class="r data">0.013</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">purpose           PURCHASE vs REFI</th>
+<td class="r data">0.754</td>
+<td class="r data">0.750</td>
+<td class="r data">0.757</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2            Asian    vs White</th>
+<td class="r data">2.018</td>
+<td class="r data">2.002</td>
+<td class="r data">2.034</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2            Black    vs White</th>
+<td class="r data">1.117</td>
+<td class="r data">1.110</td>
+<td class="r data">1.125</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2            Hispanic vs White</th>
+<td class="r data">1.927</td>
+<td class="r data">1.917</td>
+<td class="r data">1.937</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2            Other    vs White</th>
+<td class="r data">1.642</td>
+<td class="r data">1.632</td>
+<td class="r data">1.653</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex               Female vs Other</th>
+<td class="r data">1.126</td>
+<td class="r data">1.115</td>
+<td class="r data">1.136</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex               Male   vs Other</th>
+<td class="r data">0.987</td>
+<td class="r data">0.978</td>
+<td class="r data">0.996</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval       1 vs 3</th>
+<td class="r data">0.396</td>
+<td class="r data">0.391</td>
+<td class="r data">0.401</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval       2 vs 3</th>
+<td class="r data">1.271</td>
+<td class="r data">1.264</td>
+<td class="r data">1.277</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">lien              1 vs 2</th>
+<td class="r data">2.511</td>
+<td class="r data">2.497</td>
+<td class="r data">2.526</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 0 vs 5</th>
+<td class="r data">0.888</td>
+<td class="r data">0.881</td>
+<td class="r data">0.895</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 1 vs 5</th>
+<td class="r data">0.676</td>
+<td class="r data">0.672</td>
+<td class="r data">0.680</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 2 vs 5</th>
+<td class="r data">0.814</td>
+<td class="r data">0.810</td>
+<td class="r data">0.819</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 3 vs 5</th>
+<td class="r data">0.831</td>
+<td class="r data">0.827</td>
+<td class="r data">0.836</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 4 vs 5</th>
+<td class="r data">0.870</td>
+<td class="r data">0.865</td>
+<td class="r data">0.875</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX12"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Association Statistics">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Association of Predicted Probabilities and Observed Responses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Percent Concordant</th>
+<td class="r data">79.1</td>
+<th class="l rowheader" scope="row">Somers&#39; D</th>
+<td class="r data">0.588</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Percent Discordant</th>
+<td class="r data">20.4</td>
+<th class="l rowheader" scope="row">Gamma</th>
+<td class="r data">0.590</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Percent Tied</th>
+<td class="r data">0.5</td>
+<th class="l rowheader" scope="row">Tau-a</th>
+<td class="r data">0.292</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Pairs</th>
+<td class="r data">1.4029761E13</td>
+<th class="l rowheader" scope="row">c</th>
+<td class="r data">0.794</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX13"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Wald Test for Contrasts">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Contrast Test Results</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Contrast</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Wald<br/>Chi-Square</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">GSE vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">312539.680</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Commercial Bank vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">60860.1004</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Ins/Mort Bank vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">71235.6872</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Other vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">195517.093</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Private Sec vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">14568.4780</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Purch vs Refi</th>
+<td class="r data">1</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs Not Approved</th>
+<td class="r data">1</td>
+<td class="r data">33830.4899</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs N/A</th>
+<td class="r data">1</td>
+<td class="r data">28417.9697</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX14"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Estimates for Contrast Rows">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="10" scope="colgroup">Contrast Estimation and Testing Results by Row</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Contrast</th>
+<th class="l b header" scope="col">Type</th>
+<th class="r b header" scope="col">Row</th>
+<th class="r b header" scope="col">Estimate</th>
+<th class="r b header" scope="col">Standard<br/>Error</th>
+<th class="r b header" scope="col">Alpha</th>
+<th class="c b header" colspan="2" scope="colgroup">Confidence Limits</th>
+<th class="r b header" scope="col">Wald<br/>Chi-Square</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">GSE vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data">1.1288</td>
+<td class="r data">0.00202</td>
+<td class="r data">0.05</td>
+<td class="r data">1.1248</td>
+<td class="r data">1.1328</td>
+<td class="r data">312539.680</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">GSE vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">3.0919</td>
+<td class="r data">0.00624</td>
+<td class="r data">0.05</td>
+<td class="r data">3.0797</td>
+<td class="r data">3.1042</td>
+<td class="r data">312539.680</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">GSE vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.7556</td>
+<td class="r data">0.000373</td>
+<td class="r data">0.05</td>
+<td class="r data">0.7549</td>
+<td class="r data">0.7563</td>
+<td class="r data">312539.680</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Commercial Bank vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data">0.8410</td>
+<td class="r data">0.00341</td>
+<td class="r data">0.05</td>
+<td class="r data">0.8343</td>
+<td class="r data">0.8477</td>
+<td class="r data">60860.1004</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Commercial Bank vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">2.3187</td>
+<td class="r data">0.00790</td>
+<td class="r data">0.05</td>
+<td class="r data">2.3033</td>
+<td class="r data">2.3343</td>
+<td class="r data">60860.1004</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Commercial Bank vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.6987</td>
+<td class="r data">0.000718</td>
+<td class="r data">0.05</td>
+<td class="r data">0.6973</td>
+<td class="r data">0.7001</td>
+<td class="r data">60860.1004</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Ins/Mort Bank vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data" nowrap>-1.1845</td>
+<td class="r data">0.00444</td>
+<td class="r data">0.05</td>
+<td class="r data" nowrap>-1.1932</td>
+<td class="r data" nowrap>-1.1758</td>
+<td class="r data">71235.6872</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Ins/Mort Bank vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">0.3059</td>
+<td class="r data">0.00136</td>
+<td class="r data">0.05</td>
+<td class="r data">0.3032</td>
+<td class="r data">0.3086</td>
+<td class="r data">71235.6872</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Ins/Mort Bank vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.2342</td>
+<td class="r data">0.000796</td>
+<td class="r data">0.05</td>
+<td class="r data">0.2327</td>
+<td class="r data">0.2358</td>
+<td class="r data">71235.6872</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Other vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data" nowrap>-1.9659</td>
+<td class="r data">0.00445</td>
+<td class="r data">0.05</td>
+<td class="r data" nowrap>-1.9746</td>
+<td class="r data" nowrap>-1.9572</td>
+<td class="r data">195517.093</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Other vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">0.1400</td>
+<td class="r data">0.000623</td>
+<td class="r data">0.05</td>
+<td class="r data">0.1388</td>
+<td class="r data">0.1413</td>
+<td class="r data">195517.093</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Other vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.1228</td>
+<td class="r data">0.000479</td>
+<td class="r data">0.05</td>
+<td class="r data">0.1219</td>
+<td class="r data">0.1238</td>
+<td class="r data">195517.093</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Private Sec vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data">0.2044</td>
+<td class="r data">0.00169</td>
+<td class="r data">0.05</td>
+<td class="r data">0.2010</td>
+<td class="r data">0.2077</td>
+<td class="r data">14568.4780</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Private Sec vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">1.2267</td>
+<td class="r data">0.00208</td>
+<td class="r data">0.05</td>
+<td class="r data">1.2227</td>
+<td class="r data">1.2308</td>
+<td class="r data">14568.4780</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Private Sec vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.5509</td>
+<td class="r data">0.000419</td>
+<td class="r data">0.05</td>
+<td class="r data">0.5501</td>
+<td class="r data">0.5517</td>
+<td class="r data">14568.4780</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Purch vs Refi</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data">0.1415</td>
+<td class="r data">0.00112</td>
+<td class="r data">0.05</td>
+<td class="r data">0.1393</td>
+<td class="r data">0.1437</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Purch vs Refi</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">1.1520</td>
+<td class="r data">0.00128</td>
+<td class="r data">0.05</td>
+<td class="r data">1.1495</td>
+<td class="r data">1.1545</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Purch vs Refi</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.5353</td>
+<td class="r data">0.000277</td>
+<td class="r data">0.05</td>
+<td class="r data">0.5348</td>
+<td class="r data">0.5359</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs Not Approved</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data" nowrap>-1.1653</td>
+<td class="r data">0.00634</td>
+<td class="r data">0.05</td>
+<td class="r data" nowrap>-1.1777</td>
+<td class="r data" nowrap>-1.1529</td>
+<td class="r data">33830.4899</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs Not Approved</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">0.3118</td>
+<td class="r data">0.00198</td>
+<td class="r data">0.05</td>
+<td class="r data">0.3080</td>
+<td class="r data">0.3157</td>
+<td class="r data">33830.4899</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs Not Approved</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.2377</td>
+<td class="r data">0.00115</td>
+<td class="r data">0.05</td>
+<td class="r data">0.2355</td>
+<td class="r data">0.2400</td>
+<td class="r data">33830.4899</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs N/A</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data" nowrap>-0.6970</td>
+<td class="r data">0.00413</td>
+<td class="r data">0.05</td>
+<td class="r data" nowrap>-0.7051</td>
+<td class="r data" nowrap>-0.6889</td>
+<td class="r data">28417.9697</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs N/A</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">0.4981</td>
+<td class="r data">0.00206</td>
+<td class="r data">0.05</td>
+<td class="r data">0.4941</td>
+<td class="r data">0.5021</td>
+<td class="r data">28417.9697</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs N/A</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.3325</td>
+<td class="r data">0.000918</td>
+<td class="r data">0.05</td>
+<td class="r data">0.3307</td>
+<td class="r data">0.3343</td>
+<td class="r data">28417.9697</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX15"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Partition">
+<colgroup>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="6" scope="colgroup">Partition for the Hosmer and Lemeshow Test</th>
+</tr>
+<tr>
+<th class="r b header" rowspan="2" scope="col">Group</th>
+<th class="r b header" rowspan="2" scope="col">Total</th>
+<th class="c b header" colspan="2" scope="colgroup">test_subprime = 1   <br/>       </th>
+<th class="c b header" colspan="2" scope="colgroup">test_subprime = 0   <br/>       </th>
+</tr>
+<tr>
+<th class="r b header" scope="col">Observed</th>
+<th class="r b header" scope="col">Expected</th>
+<th class="r b header" scope="col">Observed</th>
+<th class="r b header" scope="col">Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">751518</td>
+<td class="r data">77841</td>
+<td class="r data">44596.16</td>
+<td class="r data">673677</td>
+<td class="r data">706921.8</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">742261</td>
+<td class="r data">73525</td>
+<td class="r data">105882.8</td>
+<td class="r data">668736</td>
+<td class="r data">636378.2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">747627</td>
+<td class="r data">121299</td>
+<td class="r data">192964.8</td>
+<td class="r data">626328</td>
+<td class="r data">554662.2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">752765</td>
+<td class="r data">262420</td>
+<td class="r data">265934.0</td>
+<td class="r data">490345</td>
+<td class="r data">486831.0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">755883</td>
+<td class="r data">344052</td>
+<td class="r data">313606.0</td>
+<td class="r data">411831</td>
+<td class="r data">442277.0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">744965</td>
+<td class="r data">450456</td>
+<td class="r data">390812.9</td>
+<td class="r data">294509</td>
+<td class="r data">354152.1</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">723507</td>
+<td class="r data">447135</td>
+<td class="r data">434640.3</td>
+<td class="r data">276372</td>
+<td class="r data">288866.7</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">712458</td>
+<td class="r data">450151</td>
+<td class="r data">460767.1</td>
+<td class="r data">262307</td>
+<td class="r data">251690.9</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">748732</td>
+<td class="r data">529063</td>
+<td class="r data">537641.5</td>
+<td class="r data">219669</td>
+<td class="r data">211090.5</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">833760</td>
+<td class="r data">712145</td>
+<td class="r data">721254.6</td>
+<td class="r data">121615</td>
+<td class="r data">112505.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX16"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Chi-Square Test">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Hosmer and Lemeshow Goodness-of-Fit<br/>Test</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">Chi-Square</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">100956.427</td>
+<td class="r data">8</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX17"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Fit Statistics for SCORE data.">
+<colgroup>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="12" scope="colgroup">Fit Statistics for SCORE Data</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Data Set</th>
+<th class="r b header" scope="col">Total Frequency</th>
+<th class="r b header" scope="col">Log Likelihood</th>
+<th class="r b header" scope="col">Error Rate</th>
+<th class="r b header" scope="col">AIC</th>
+<th class="r b header" scope="col">AICC</th>
+<th class="r b header" scope="col">BIC</th>
+<th class="r b header" scope="col">SC</th>
+<th class="r b header" scope="col">R-Square</th>
+<th class="r b header" scope="col">Max-Rescaled<br/>R-Square</th>
+<th class="r b header" scope="col">AUC</th>
+<th class="r b header" scope="col">Brier Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">WORK.VALIDATE_SUBPRIME</th>
+<td class="r data">4044779</td>
+<td class="r data" nowrap>-2266776</td>
+<td class="r data">0.2767</td>
+<td class="r data">4533593</td>
+<td class="r data">4533593</td>
+<td class="r data">4533871</td>
+<td class="r data">4533871</td>
+<td class="r data">0.217306</td>
+<td class="r data">0.291749</td>
+<td class="r data">0.793225</td>
+<td class="r data">0.187647</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+</div>
+<div class="branch">
+<p style="page-break-after: always;"><br/></p><hr size="3"/>
+<a name="IDX18"></a>
+<table class="systitleandfootercontainer" width="100%" cellspacing="1" cellpadding="1" rules="none" frame="void" border="0" summary="Page Layout">
+<tr>
+<td class="c systemtitle">The SAS System</td>
+</tr>
+</table><br>
+<div class="c proctitle">The LOGISTIC Procedure</div>
+<p>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Model Information">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="2" scope="colgroup">Model Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Data Set</th>
+<td class="l data">WORK.BUILD_SUBPRIME</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Response Variable</th>
+<td class="l data">test_subprime</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Number of Response Levels</th>
+<td class="l data">2</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Model</th>
+<td class="l data">binary logit</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Optimization Technique</th>
+<td class="l data">Fisher&#39;s scoring</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Likelihood Penalty</th>
+<td class="l data">Firth&#39;s bias correction</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX19"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Observations Summary">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Number of Observations Read</th>
+<td class="r data">7513476</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Number of Observations Used</th>
+<td class="r data">7513476</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX20"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Response Profile">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Response Profile</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">Ordered<br/>Value</th>
+<th class="l b header" scope="col">test_subprime</th>
+<th class="r b header" scope="col">Total<br/>Frequency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="l data">0</td>
+<td class="r data">4045389</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="l data">1</td>
+<td class="r data">3468087</td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>
+<div align="center"><table class="proctitle"><tr><td class="c proctitle">Probability modeled is test_subprime=1.</td></tr></table>
+</div><p>
+</div>
+<br>
+<a name="IDX21"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Class Level Information">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="7" scope="colgroup">Class Level Information</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Class</th>
+<th class="l b header" scope="col">Value</th>
+<th class="c b header" colspan="5" scope="colgroup">Design Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">purpose</th>
+<th class="l rowheader" scope="row">PURCHASE</th>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">REFI</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Asian</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Black</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Hispanic</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Other</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">White</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex</th>
+<th class="l rowheader" scope="row">Female</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Male</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">Other</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">3</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">lien</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">&nbsp;</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">0</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">3</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">4</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">5</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">COMMERCIAL BANK</th>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">GSE</th>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">HELD FOR INVESTMENT</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">INSURANCE/MORTGAGE BANK</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">OTHER</th>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">0</td>
+<td class="r data">1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<th class="l rowheader" scope="row">PRIVATE SECURITY</th>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+<td class="r data" nowrap>-1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX22"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Convergence Status">
+<colgroup>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" scope="col">Intercept-Only Model Convergence Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c data">Convergence criterion (GCONV=1E-8) satisfied.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX23"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Convergence Status">
+<colgroup>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" scope="col">Model Convergence Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c data">Convergence criterion (GCONV=1E-8) satisfied.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX24"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Fit Statistics">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Model Fit Statistics</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Criterion</th>
+<th class="r b header" scope="col">Intercept Only</th>
+<th class="r b header" scope="col">Intercept and<br/>Covariates</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">AIC</th>
+<td class="r data">10371218</td>
+<td class="r data">8240563.2</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">SC</th>
+<td class="r data">10371232</td>
+<td class="r data">8240853.7</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">-2 Log L</th>
+<td class="r data">10371216</td>
+<td class="r data">8240521.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX25"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: R-Square and Max-rescaled R-Square">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">R-Square</th>
+<td class="r data">0.2469</td>
+<th class="l rowheader" scope="row">Max-rescaled R-Square</th>
+<td class="r data">0.3299</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX26"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Global Tests">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Testing Global Null Hypothesis: BETA=0</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Test</th>
+<th class="r b header" scope="col">Chi-Square</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Likelihood Ratio</th>
+<td class="r data">2130694.65</td>
+<td class="r data">20</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Score</th>
+<td class="r data">1869265.83</td>
+<td class="r data">20</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Wald</th>
+<td class="r data">1393629.04</td>
+<td class="r data">20</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX27"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Type 3 Tests">
+<colgroup>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Type 3 Analysis of Effects</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Effect</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Wald<br/>Chi-Square</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<td class="r data">5</td>
+<td class="r data">1142599.00</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">purpose</th>
+<td class="r data">1</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<td class="r data">4</td>
+<td class="r data">93426.3393</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex</th>
+<td class="r data">2</td>
+<td class="r data">4707.6488</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval</th>
+<td class="r data">2</td>
+<td class="r data">36656.4263</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">lien</th>
+<td class="r data">1</td>
+<td class="r data">97091.3474</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<td class="r data">5</td>
+<td class="r data">20256.6652</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX28"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Parameter Estimates">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="10" scope="colgroup">Analysis of Penalized Maximum Likelihood Estimates</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Parameter</th>
+<th class="l b header" scope="col">&nbsp;</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Estimate</th>
+<th class="r b header" scope="col">Standard<br/>Error</th>
+<th class="r b header" scope="col">Wald<br/>Chi-Square</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+<th class="r b header" scope="col">Standardized<br/>Estimate</th>
+<th class="r b header" scope="col">Exp(Est)</th>
+<th class="l b header" scope="col">Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Intercept</th>
+<th class="l rowheader" scope="row">&nbsp;</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.7690</td>
+<td class="r data">0.00310</td>
+<td class="r data">61464.8829</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">&nbsp;</td>
+<td class="r data">0.463</td>
+<td class="l data">Intercept: test_subprime=0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">COMMERCIAL BANK</th>
+<td class="r data">1</td>
+<td class="r data">0.6367</td>
+<td class="r data">0.00287</td>
+<td class="r data">49064.0799</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.1400</td>
+<td class="r data">1.890</td>
+<td class="l data">sold_to_slim COMMERCIAL BANK</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">GSE</th>
+<td class="r data">1</td>
+<td class="r data">0.9244</td>
+<td class="r data">0.00181</td>
+<td class="r data">261521.369</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.3050</td>
+<td class="r data">2.520</td>
+<td class="l data">sold_to_slim GSE</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">HELD FOR INVESTMENT</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.2044</td>
+<td class="r data">0.00169</td>
+<td class="r data">14568.4780</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0716</td>
+<td class="r data">0.815</td>
+<td class="l data">sold_to_slim HELD FOR INVESTMENT</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">INSURANCE/MORTGAGE BANK</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-1.3889</td>
+<td class="r data">0.00370</td>
+<td class="r data">140952.925</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.3098</td>
+<td class="r data">0.249</td>
+<td class="l data">sold_to_slim INSURANCE/MORTGAGE BANK</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim</th>
+<th class="l rowheader" scope="row">OTHER</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-2.1702</td>
+<td class="r data">0.00370</td>
+<td class="r data">344037.862</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.5550</td>
+<td class="r data">0.114</td>
+<td class="l data">sold_to_slim OTHER</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">purpose</th>
+<th class="l rowheader" scope="row">PURCHASE</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.1415</td>
+<td class="r data">0.00112</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0775</td>
+<td class="r data">0.868</td>
+<td class="l data">purpose PURCHASE</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Asian</th>
+<td class="r data">1</td>
+<td class="r data">0.3091</td>
+<td class="r data">0.00331</td>
+<td class="r data">8699.2773</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0992</td>
+<td class="r data">1.362</td>
+<td class="l data">race_2 Asian</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Black</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.2821</td>
+<td class="r data">0.00276</td>
+<td class="r data">10439.7644</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0986</td>
+<td class="r data">0.754</td>
+<td class="l data">race_2 Black</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Hispanic</th>
+<td class="r data">1</td>
+<td class="r data">0.2630</td>
+<td class="r data">0.00228</td>
+<td class="r data">13269.4949</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.1031</td>
+<td class="r data">1.301</td>
+<td class="l data">race_2 Hispanic</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2</th>
+<th class="l rowheader" scope="row">Other</th>
+<td class="r data">1</td>
+<td class="r data">0.1030</td>
+<td class="r data">0.00272</td>
+<td class="r data">1439.8616</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0411</td>
+<td class="r data">1.109</td>
+<td class="l data">race_2 Other</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex</th>
+<th class="l rowheader" scope="row">Female</th>
+<td class="r data">1</td>
+<td class="r data">0.0834</td>
+<td class="r data">0.00186</td>
+<td class="r data">2020.2329</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0252</td>
+<td class="r data">1.087</td>
+<td class="l data">sex Female</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex</th>
+<th class="l rowheader" scope="row">Male</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.0483</td>
+<td class="r data">0.00174</td>
+<td class="r data">765.9341</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0160</td>
+<td class="r data">0.953</td>
+<td class="l data">sex Male</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.6970</td>
+<td class="r data">0.00413</td>
+<td class="r data">28417.9697</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.1901</td>
+<td class="r data">0.498</td>
+<td class="l data">preapproval 1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data">1</td>
+<td class="r data">0.4683</td>
+<td class="r data">0.00245</td>
+<td class="r data">36410.4930</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.2073</td>
+<td class="r data">1.597</td>
+<td class="l data">preapproval 2</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">lien</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data">0.4604</td>
+<td class="r data">0.00148</td>
+<td class="r data">97091.3474</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.1715</td>
+<td class="r data">1.585</td>
+<td class="l data">lien 1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">0</th>
+<td class="r data">1</td>
+<td class="r data">0.0546</td>
+<td class="r data">0.00297</td>
+<td class="r data">337.1650</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0146</td>
+<td class="r data">1.056</td>
+<td class="l data">bin_income_spread 0</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">1</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.2181</td>
+<td class="r data">0.00187</td>
+<td class="r data">13655.4711</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0744</td>
+<td class="r data">0.804</td>
+<td class="l data">bin_income_spread 1</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">2</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.0323</td>
+<td class="r data">0.00186</td>
+<td class="r data">300.9602</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.0109</td>
+<td class="r data">0.968</td>
+<td class="l data">bin_income_spread 2</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">3</th>
+<td class="r data">1</td>
+<td class="r data" nowrap>-0.0116</td>
+<td class="r data">0.00186</td>
+<td class="r data">38.7810</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data" nowrap>-0.00393</td>
+<td class="r data">0.988</td>
+<td class="l data">bin_income_spread 3</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread</th>
+<th class="l rowheader" scope="row">4</th>
+<td class="r data">1</td>
+<td class="r data">0.0341</td>
+<td class="r data">0.00186</td>
+<td class="r data">334.4668</td>
+<td class="r data">&lt;.0001</td>
+<td class="r data">0.0115</td>
+<td class="r data">1.035</td>
+<td class="l data">bin_income_spread 4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX29"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Odds Ratios">
+<colgroup>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Odds Ratio Estimates</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Effect</th>
+<th class="r b header" scope="col">Point Estimate</th>
+<th class="c b header" colspan="2" scope="colgroup">95% Wald<br/> Confidence Limits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      COMMERCIAL BANK         vs PRIVATE SECURITY</th>
+<td class="r data">0.209</td>
+<td class="r data">0.207</td>
+<td class="r data">0.211</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      GSE                     vs PRIVATE SECURITY</th>
+<td class="r data">0.279</td>
+<td class="r data">0.277</td>
+<td class="r data">0.281</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      HELD FOR INVESTMENT     vs PRIVATE SECURITY</th>
+<td class="r data">0.090</td>
+<td class="r data">0.089</td>
+<td class="r data">0.091</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      INSURANCE/MORTGAGE BANK vs PRIVATE SECURITY</th>
+<td class="r data">0.028</td>
+<td class="r data">0.027</td>
+<td class="r data">0.028</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sold_to_slim      OTHER                   vs PRIVATE SECURITY</th>
+<td class="r data">0.013</td>
+<td class="r data">0.012</td>
+<td class="r data">0.013</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">purpose           PURCHASE vs REFI</th>
+<td class="r data">0.754</td>
+<td class="r data">0.750</td>
+<td class="r data">0.757</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2            Asian    vs White</th>
+<td class="r data">2.018</td>
+<td class="r data">2.002</td>
+<td class="r data">2.034</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2            Black    vs White</th>
+<td class="r data">1.117</td>
+<td class="r data">1.110</td>
+<td class="r data">1.125</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2            Hispanic vs White</th>
+<td class="r data">1.927</td>
+<td class="r data">1.917</td>
+<td class="r data">1.937</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">race_2            Other    vs White</th>
+<td class="r data">1.642</td>
+<td class="r data">1.632</td>
+<td class="r data">1.653</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex               Female vs Other</th>
+<td class="r data">1.126</td>
+<td class="r data">1.115</td>
+<td class="r data">1.136</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">sex               Male   vs Other</th>
+<td class="r data">0.987</td>
+<td class="r data">0.978</td>
+<td class="r data">0.996</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval       1 vs 3</th>
+<td class="r data">0.396</td>
+<td class="r data">0.391</td>
+<td class="r data">0.401</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">preapproval       2 vs 3</th>
+<td class="r data">1.271</td>
+<td class="r data">1.264</td>
+<td class="r data">1.277</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">lien              1 vs 2</th>
+<td class="r data">2.511</td>
+<td class="r data">2.497</td>
+<td class="r data">2.526</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 0 vs 5</th>
+<td class="r data">0.888</td>
+<td class="r data">0.881</td>
+<td class="r data">0.895</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 1 vs 5</th>
+<td class="r data">0.676</td>
+<td class="r data">0.672</td>
+<td class="r data">0.680</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 2 vs 5</th>
+<td class="r data">0.814</td>
+<td class="r data">0.810</td>
+<td class="r data">0.819</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 3 vs 5</th>
+<td class="r data">0.831</td>
+<td class="r data">0.827</td>
+<td class="r data">0.836</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">bin_income_spread 4 vs 5</th>
+<td class="r data">0.870</td>
+<td class="r data">0.865</td>
+<td class="r data">0.875</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX30"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Association Statistics">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Association of Predicted Probabilities and Observed Responses</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">Percent Concordant</th>
+<td class="r data">79.1</td>
+<th class="l rowheader" scope="row">Somers&#39; D</th>
+<td class="r data">0.588</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Percent Discordant</th>
+<td class="r data">20.4</td>
+<th class="l rowheader" scope="row">Gamma</th>
+<td class="r data">0.590</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Percent Tied</th>
+<td class="r data">0.5</td>
+<th class="l rowheader" scope="row">Tau-a</th>
+<td class="r data">0.292</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Pairs</th>
+<td class="r data">1.4029761E13</td>
+<th class="l rowheader" scope="row">c</th>
+<td class="r data">0.794</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX31"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Wald Test for Contrasts">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="4" scope="colgroup">Contrast Test Results</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Contrast</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Wald<br/>Chi-Square</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">GSE vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">312539.680</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Commercial Bank vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">60860.1004</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Ins/Mort Bank vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">71235.6872</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Other vs HFI</th>
+<td class="r data">1</td>
+<td class="r data">195517.093</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Purch vs Refi</th>
+<td class="r data">1</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs Not Approved</th>
+<td class="r data">1</td>
+<td class="r data">33830.4899</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX32"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Estimates for Contrast Rows">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="10" scope="colgroup">Contrast Estimation and Testing Results by Row</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Contrast</th>
+<th class="l b header" scope="col">Type</th>
+<th class="r b header" scope="col">Row</th>
+<th class="r b header" scope="col">Estimate</th>
+<th class="r b header" scope="col">Standard<br/>Error</th>
+<th class="r b header" scope="col">Alpha</th>
+<th class="c b header" colspan="2" scope="colgroup">Confidence Limits</th>
+<th class="r b header" scope="col">Wald<br/>Chi-Square</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">GSE vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data">1.1288</td>
+<td class="r data">0.00202</td>
+<td class="r data">0.05</td>
+<td class="r data">1.1248</td>
+<td class="r data">1.1328</td>
+<td class="r data">312539.680</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">GSE vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">3.0919</td>
+<td class="r data">0.00624</td>
+<td class="r data">0.05</td>
+<td class="r data">3.0797</td>
+<td class="r data">3.1042</td>
+<td class="r data">312539.680</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">GSE vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.7556</td>
+<td class="r data">0.000373</td>
+<td class="r data">0.05</td>
+<td class="r data">0.7549</td>
+<td class="r data">0.7563</td>
+<td class="r data">312539.680</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Commercial Bank vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data">0.8410</td>
+<td class="r data">0.00341</td>
+<td class="r data">0.05</td>
+<td class="r data">0.8343</td>
+<td class="r data">0.8477</td>
+<td class="r data">60860.1004</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Commercial Bank vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">2.3187</td>
+<td class="r data">0.00790</td>
+<td class="r data">0.05</td>
+<td class="r data">2.3033</td>
+<td class="r data">2.3343</td>
+<td class="r data">60860.1004</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Commercial Bank vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.6987</td>
+<td class="r data">0.000718</td>
+<td class="r data">0.05</td>
+<td class="r data">0.6973</td>
+<td class="r data">0.7001</td>
+<td class="r data">60860.1004</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Ins/Mort Bank vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data" nowrap>-1.1845</td>
+<td class="r data">0.00444</td>
+<td class="r data">0.05</td>
+<td class="r data" nowrap>-1.1932</td>
+<td class="r data" nowrap>-1.1758</td>
+<td class="r data">71235.6872</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Ins/Mort Bank vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">0.3059</td>
+<td class="r data">0.00136</td>
+<td class="r data">0.05</td>
+<td class="r data">0.3032</td>
+<td class="r data">0.3086</td>
+<td class="r data">71235.6872</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Ins/Mort Bank vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.2342</td>
+<td class="r data">0.000796</td>
+<td class="r data">0.05</td>
+<td class="r data">0.2327</td>
+<td class="r data">0.2358</td>
+<td class="r data">71235.6872</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Other vs HFI</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data" nowrap>-1.9659</td>
+<td class="r data">0.00445</td>
+<td class="r data">0.05</td>
+<td class="r data" nowrap>-1.9746</td>
+<td class="r data" nowrap>-1.9572</td>
+<td class="r data">195517.093</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Other vs HFI</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">0.1400</td>
+<td class="r data">0.000623</td>
+<td class="r data">0.05</td>
+<td class="r data">0.1388</td>
+<td class="r data">0.1413</td>
+<td class="r data">195517.093</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Other vs HFI</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.1228</td>
+<td class="r data">0.000479</td>
+<td class="r data">0.05</td>
+<td class="r data">0.1219</td>
+<td class="r data">0.1238</td>
+<td class="r data">195517.093</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Purch vs Refi</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data">0.1415</td>
+<td class="r data">0.00112</td>
+<td class="r data">0.05</td>
+<td class="r data">0.1393</td>
+<td class="r data">0.1437</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Purch vs Refi</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">1.1520</td>
+<td class="r data">0.00128</td>
+<td class="r data">0.05</td>
+<td class="r data">1.1495</td>
+<td class="r data">1.1545</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Purch vs Refi</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.5353</td>
+<td class="r data">0.000277</td>
+<td class="r data">0.05</td>
+<td class="r data">0.5348</td>
+<td class="r data">0.5359</td>
+<td class="r data">16091.4492</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs Not Approved</th>
+<th class="l data">PARM</th>
+<th class="r data">1</th>
+<td class="r data" nowrap>-1.1653</td>
+<td class="r data">0.00634</td>
+<td class="r data">0.05</td>
+<td class="r data" nowrap>-1.1777</td>
+<td class="r data" nowrap>-1.1529</td>
+<td class="r data">33830.4899</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs Not Approved</th>
+<th class="l data">EXP</th>
+<th class="r data">1</th>
+<td class="r data">0.3118</td>
+<td class="r data">0.00198</td>
+<td class="r data">0.05</td>
+<td class="r data">0.3080</td>
+<td class="r data">0.3157</td>
+<td class="r data">33830.4899</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+<tr>
+<th class="l rowheader" scope="row">Approved vs Not Approved</th>
+<th class="l data">PROB</th>
+<th class="r data">1</th>
+<td class="r data">0.2377</td>
+<td class="r data">0.00115</td>
+<td class="r data">0.05</td>
+<td class="r data">0.2355</td>
+<td class="r data">0.2400</td>
+<td class="r data">33830.4899</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX33"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Partition">
+<colgroup>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="6" scope="colgroup">Partition for the Hosmer and Lemeshow Test</th>
+</tr>
+<tr>
+<th class="r b header" rowspan="2" scope="col">Group</th>
+<th class="r b header" rowspan="2" scope="col">Total</th>
+<th class="c b header" colspan="2" scope="colgroup">test_subprime = 1   <br/>       </th>
+<th class="c b header" colspan="2" scope="colgroup">test_subprime = 0   <br/>       </th>
+</tr>
+<tr>
+<th class="r b header" scope="col">Observed</th>
+<th class="r b header" scope="col">Expected</th>
+<th class="r b header" scope="col">Observed</th>
+<th class="r b header" scope="col">Expected</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="r rowheader" scope="row">1</th>
+<td class="r data">751518</td>
+<td class="r data">77841</td>
+<td class="r data">44596.16</td>
+<td class="r data">673677</td>
+<td class="r data">706921.8</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">2</th>
+<td class="r data">742261</td>
+<td class="r data">73525</td>
+<td class="r data">105882.8</td>
+<td class="r data">668736</td>
+<td class="r data">636378.2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">3</th>
+<td class="r data">747627</td>
+<td class="r data">121299</td>
+<td class="r data">192964.8</td>
+<td class="r data">626328</td>
+<td class="r data">554662.2</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">4</th>
+<td class="r data">752765</td>
+<td class="r data">262420</td>
+<td class="r data">265934.0</td>
+<td class="r data">490345</td>
+<td class="r data">486831.0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">5</th>
+<td class="r data">755883</td>
+<td class="r data">344052</td>
+<td class="r data">313606.0</td>
+<td class="r data">411831</td>
+<td class="r data">442277.0</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">6</th>
+<td class="r data">744965</td>
+<td class="r data">450456</td>
+<td class="r data">390812.9</td>
+<td class="r data">294509</td>
+<td class="r data">354152.1</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">7</th>
+<td class="r data">723507</td>
+<td class="r data">447135</td>
+<td class="r data">434640.3</td>
+<td class="r data">276372</td>
+<td class="r data">288866.7</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">8</th>
+<td class="r data">712458</td>
+<td class="r data">450151</td>
+<td class="r data">460767.1</td>
+<td class="r data">262307</td>
+<td class="r data">251690.9</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">9</th>
+<td class="r data">748732</td>
+<td class="r data">529063</td>
+<td class="r data">537641.5</td>
+<td class="r data">219669</td>
+<td class="r data">211090.5</td>
+</tr>
+<tr>
+<th class="r rowheader" scope="row">10</th>
+<td class="r data">833760</td>
+<td class="r data">712145</td>
+<td class="r data">721254.6</td>
+<td class="r data">121615</td>
+<td class="r data">112505.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX34"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Chi-Square Test">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Hosmer and Lemeshow Goodness-of-Fit<br/>Test</th>
+</tr>
+<tr>
+<th class="r b header" scope="col">Chi-Square</th>
+<th class="r b header" scope="col">DF</th>
+<th class="r b header" scope="col">Pr&nbsp;&gt;&nbsp;ChiSq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">100956.427</td>
+<td class="r data">8</td>
+<td class="r data">&lt;.0001</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+<a name="IDX35"></a>
+<div>
+<div align="center">
+<table class="table" cellspacing="0" cellpadding="5" rules="all" frame="box" bordercolor="#C1C1C1" summary="Procedure Logistic: Fit Statistics for SCORE data.">
+<colgroup>
+<col>
+</colgroup>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="12" scope="colgroup">Fit Statistics for SCORE Data</th>
+</tr>
+<tr>
+<th class="l b header" scope="col">Data Set</th>
+<th class="r b header" scope="col">Total Frequency</th>
+<th class="r b header" scope="col">Log Likelihood</th>
+<th class="r b header" scope="col">Error Rate</th>
+<th class="r b header" scope="col">AIC</th>
+<th class="r b header" scope="col">AICC</th>
+<th class="r b header" scope="col">BIC</th>
+<th class="r b header" scope="col">SC</th>
+<th class="r b header" scope="col">R-Square</th>
+<th class="r b header" scope="col">Max-Rescaled<br/>R-Square</th>
+<th class="r b header" scope="col">AUC</th>
+<th class="r b header" scope="col">Brier Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="l rowheader" scope="row">WORK.VALIDATE_SUBPRIME</th>
+<td class="r data">4044779</td>
+<td class="r data" nowrap>-2266776</td>
+<td class="r data">0.2767</td>
+<td class="r data">4533593</td>
+<td class="r data">4533593</td>
+<td class="r data">4533871</td>
+<td class="r data">4533871</td>
+<td class="r data">0.217306</td>
+<td class="r data">0.291749</td>
+<td class="r data">0.793225</td>
+<td class="r data">0.187647</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<br>
+</div>

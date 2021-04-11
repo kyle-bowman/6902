@@ -1,0 +1,577 @@
+
+proc datasets lib=work nolist nodetails kill;run;quit;
+
+proc sort data=sasdata.fred_data out=fred_data;by state_code county_code asofdate;run;
+proc sort data=sasdata.building_permits out=building_permits;by asofdate state_code county_code;run;
+proc sort data=sasdata.zillow_data out=zillow_data;by state_code county_code asofdate;run;
+
+data zillow_data_adj;
+	merge zillow_data (in=z)
+		  fred_data (in=f keep=state_code county_code asofdate county_hpi_growth state_hpi_growth)
+	;
+	by state_code county_code asofdate;
+	if z;
+
+	zhvi_sfh_hpiadj=zhvi_sfh*county_hpi_growth;
+	median_ppsft_hpiadj=median_ppsft*county_hpi_growth;
+
+	st_zhvi_sfh_hpiadj=st_zhvi_sfh*state_hpi_growth;
+	st_median_ppsft_hpiadj=st_median_ppsft*state_hpi_growth;
+
+	spread_zhvi_sfh_hpiadj=zhvi_sfh_hpiadj-st_zhvi_sfh_hpiadj;
+	spread_median_ppsft_hpiadj=median_ppsft_hpiadj-st_median_ppsft_hpiadj;
+
+	label zhvi_sfh_hpiadj='HPI Adjusted, 2001=0: Zillow Single Family Home Value for County' 
+		  median_ppsft_hpiadj='HPI Adjusted, 2001=0: Zillow Median Price Per Square Foot for County'
+		  st_zhvi_sfh_hpiadj='HPI Adjusted, 2001=0: Zillow Single Family Home Value for State'
+		  st_median_ppsft_hpiadj='HPI Adjusted, 2001=0: Zillow Median Price Per Square Foot for State'
+		  spread_zhvi_sfh_hpiadj='Single Family Home Value, Spread from County to State adjusted for HPI in 2001 Terms'
+		  spread_median_ppsft_hpiadj='Median Price Per Sqft, Spread from County to State adjusted for HPI in 2001 Terms'
+	;
+
+	drop county_hpi_growth state_hpi_growth;
+
+run;
+
+options obs=max;
+data modwork.analyze_2004_2007;
+	set sasdata.model_data_build (in=mb);
+	where asofdate between 2004 and 2007;
+
+
+	if subprime_institution=1 and inst1 in ('WACHOVIA MORTGAGE FSB','WORLD SAVINGS BANK') then subprime_institution=1;
+	else if subprime_institution=1 and find(inst1,'WACHOVIA') ne 0 then subprime_institution=0;
+run;
+
+proc sort data=modwork.analyze_2004_2007;by asofdate state_code county_code;run;
+proc sort data=fred_data;by asofdate state_code county_code;run;
+proc sort data=zillow_data_adj;by asofdate state_code county_code;run;
+
+data attritubes;
+	merge fred_data (keep=state_code county_code asofdate 
+						  county_hpi_growth state_hpi_growth cpiaucsl_nat_200101_pct
+						  equifax equifax_county_200101_chg equifax_population equifax_county_change spread_equifax_population
+						  mhi_adj mhi_county_200101_chg spread_mhhi
+						  ruc ruc_county_200101_chg spread_ruc
+						  pua0t17 pua0t17_county_200101_chg spread_pua0t17
+						  pua5t17 pua5t17_county_200101_chg spread_pua5t17
+						  peaa peaa_county_200101_chg spread_peaa
+						  snap snap_county_200101_chg spread_snap_benefits
+						  spread_st_rent_vac spread_st_own_rate)
+		  zillow_data_adj (keep=state_code county_code asofdate zhvi_sfh_hpiadj median_ppsft_hpiadj spread_zhvi_sfh_hpiadj spread_median_ppsft_hpiadj)
+		  building_permits (keep=state_code county_code asofdate bldg_perm_1_4 change_bldg_perm_1_4 bldg_perm_5plus change_bldg_perm_5plus
+								 spread_1_to_4_units spread_5plus_units)
+	;
+	by asofdate state_code county_code;
+	where asofdate between 2004 and 2007;
+run;
+
+data modwork.analyze_2004_2007;
+	merge modwork.analyze_2004_2007 (in=m)
+		  attritubes (in=a)
+	;
+	by asofdate state_code county_code;
+	if m;
+
+	county_loan_amount_adj=loan_amount*county_hpi_growth;
+	state_loan_amount_adj=loan_amount*state_hpi_growth;
+	spread_loan_amount=county_loan_amount_adj-state_loan_amount_adj;
+	applicant_income_adj=applicant_income*cpiaucsl_nat_200101_pct;
+
+	label county_loan_amount_adj='Loan Amount Adjusted for County HPI Growth, 2001=0'
+		  state_loan_amount_adj='Loan Amount Adjusted for State HPI Growth, 2001=0'
+		  spread_loan_amount='Spread between Adjusted County Loan Amount and Adjusted State Loan Amount'
+		  applicant_income_adj='Applicants Stated Income Adjusted for CPI, 2001=0'
+	;
+run;
+		  
+proc means data=modwork.analyze_2004_2007 noprint nway missing;
+	where action_taken ne '1';
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose;
+	var denial_1 - denial_9
+		action_taken_2 - action_taken_8
+	;
+	output out=not_approved_number (drop=_type_ _freq_) sum=;
+run;
+
+proc means data=modwork.analyze_2004_2007 noprint nway missing;
+	where action_taken='1';
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose;
+	var action_taken_1;
+	output out=approved_number (drop=_type_ _freq_) sum=;
+run;
+
+data purpose_denied (rename=(denial_1=purpose_denial_1
+							 denial_2=purpose_denial_2
+							 denial_3=purpose_denial_3
+							 denial_4=purpose_denial_4
+							 denial_5=purpose_denial_5
+							 denial_6=purpose_denial_6
+							 denial_7=purpose_denial_7
+							 denial_8=purpose_denial_8
+							 denial_9=purpose_denial_9
+							 action_taken_2=purpose_action_taken_2
+							 action_taken_3=purpose_action_taken_3
+							 action_taken_4=purpose_action_taken_4
+							 action_taken_5=purpose_action_taken_5
+						     action_taken_6=purpose_action_taken_6
+							 action_taken_7=purpose_action_taken_7
+							 action_taken_8=purpose_action_taken_8))
+	 denied (drop=loan_purpose)
+	;
+	set not_approved_number;
+
+
+	if not missing(loan_purpose) then output purpose_denied;
+	if missing(loan_purpose) then output denied;
+
+run;
+
+data purpose_approved (rename=(action_taken_1=purpose_action_taken_1))
+	 approved (drop=loan_purpose)
+	;
+	set approved_number;
+
+	if not missing(loan_purpose) then output purpose_approved ;
+	if missing(loan_purpose) then output approved;
+
+run;
+
+/* lets first add the CPI to this so that we can level things out to be in terms of 2001 dollars. */
+proc means data=modwork.analyze_2004_2007 noprint;
+	where action_taken='1' and coalesce(applicant_income,0) not in (0,9999);
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose;
+	output out=inc_quintile 
+		   p20(applicant_income_adj)=inc_p20
+		   p40(applicant_income_adj)=inc_p40
+		   p60(applicant_income_adj)=inc_p60
+		   p80(applicant_income_adj)=inc_p80
+	;
+run;
+
+data purpose_inc (rename=(inc_p20=purpose_inc_p20
+						  inc_p40=purpose_inc_p40
+						  inc_p60=purpose_inc_p60
+						  inc_p80=purpose_inc_p80))
+	 inc (drop=loan_purpose)
+	;
+	set inc_quintile;
+
+	if not missing(loan_purpose) then output purpose_inc;
+	if missing(loan_purpose) then output inc;
+
+	drop _type_ _freq_;
+
+run;
+
+proc means data=modwork.analyze_2004_2007 noprint;
+	where action_taken='1' and not missing(spread_loan_amount);
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose;
+	output out=loan_amount_quintile 
+		   p20(spread_loan_amount)=loan_amount_p20
+		   p40(spread_loan_amount)=loan_amount_p40
+		   p60(spread_loan_amount)=loan_amount_p60
+		   p80(spread_loan_amount)=loan_amount_p80
+	;
+run;
+
+data purpose_loan_amount (rename=(loan_amount_p20=purpose_loan_amount_p20
+								  loan_amount_p40=purpose_loan_amount_p40
+								  loan_amount_p60=purpose_loan_amount_p60
+								  loan_amount_p80=purpose_loan_amount_p80))
+	 loan_amount (drop=loan_purpose)
+	;
+	set loan_amount_quintile;
+
+
+	if not missing(loan_purpose) then output purpose_loan_amount;
+	if missing(loan_purpose) then output loan_amount;
+
+	drop _type_ _freq_;
+
+run;
+
+options obs=max;
+data modwork.analyze_2004_2007 modwork.train modwork.validate;
+	if _n_=0 then set modwork.analyze_2004_2007 (drop=denial_1 - denial_9 action_taken_1 - action_taken_8);
+	if _n_=1 then do;
+		declare hash lp_deny(dataset:'purpose_denied');
+			lp_deny.definekey('asofdate','state_code','county_code','loan_purpose');
+			lp_deny.definedata('purpose_denial_1','purpose_denial_2','purpose_denial_3','purpose_denial_4','purpose_denial_5',
+							'purpose_denial_6','purpose_denial_7','purpose_denial_8','purpose_denial_9',
+							'purpose_action_taken_2','purpose_action_taken_3','purpose_action_taken_4','purpose_action_taken_5',
+							'purpose_action_taken_6','purpose_action_taken_7','purpose_action_taken_8')
+			;
+			lp_deny.definedone();
+		call missing(purpose_denial_1,purpose_denial_2,purpose_denial_3,purpose_denial_4,purpose_denial_5,
+					 purpose_denial_6,purpose_denial_7,purpose_denial_8,purpose_denial_9,
+					 purpose_action_taken_2,purpose_action_taken_3,purpose_action_taken_4,purpose_action_taken_5,
+					 purpose_action_taken_6,purpose_action_taken_7,purpose_action_taken_8)
+		;
+		declare hash deny(dataset:'denied');
+			deny.definekey('asofdate','state_code','county_code');
+			deny.definedata('denial_1','denial_2','denial_3','denial_4','denial_5',
+							'denial_6','denial_7','denial_8','denial_9',
+							'action_taken_2','action_taken_3','action_taken_4','action_taken_5',
+							'action_taken_6','action_taken_7','action_taken_8')
+			;
+			deny.definedone();
+		call missing(denial_1,denial_2,denial_3,denial_4,denial_5,
+					 denial_6,denial_7,denial_8,denial_9,
+					 action_taken_2,action_taken_3,action_taken_4,action_taken_5,
+					 action_taken_6,action_taken_7,action_taken_8)
+		;
+		declare hash lp_approve(dataset:'purpose_approved');
+			lp_approve.definekey('asofdate','state_code','county_code','loan_purpose');
+			lp_approve.definedata('purpose_action_taken_1');
+			lp_approve.definedone();
+		call missing(purpose_action_taken_1);
+		declare hash approve(dataset:'approved');
+			approve.definekey('asofdate','state_code','county_code');
+			approve.definedata('action_taken_1');
+			approve.definedone();
+		call missing(action_taken_1);
+		declare hash lp_amt(dataset:'purpose_loan_amount');
+			lp_amt.definekey('asofdate','state_code','county_code','loan_purpose');
+			lp_amt.definedata('purpose_loan_amount_p20','purpose_loan_amount_p40','purpose_loan_amount_p60',
+							  'purpose_loan_amount_p80')
+			;
+			lp_amt.definedone();
+		call missing(purpose_loan_amount_p20,purpose_loan_amount_p40,purpose_loan_amount_p60,
+					 purpose_loan_amount_p80)
+		;
+		declare hash amt(dataset:'loan_amount');
+			amt.definekey('asofdate','state_code','county_code');
+			amt.definedata('loan_amount_p20','loan_amount_p40','loan_amount_p60',
+						   'loan_amount_p80')
+			;
+			amt.definedone();
+		call missing(loan_amount_p20,loan_amount_p40,loan_amount_p60,
+					 loan_amount_p80)
+		;
+		declare hash lp_inc(dataset:'purpose_inc');
+			lp_inc.definekey('asofdate','state_code','county_code','loan_purpose');
+			lp_inc.definedata('purpose_inc_p20','purpose_inc_p40','purpose_inc_p60',
+							  'purpose_inc_p80')
+			;
+			lp_inc.definedone();
+		call missing(purpose_inc_p20,purpose_inc_p40,purpose_inc_p60,
+					 purpose_inc_p80)
+		;
+		declare hash inc(dataset:'inc');
+			inc.definekey('asofdate','state_code','county_code');
+			inc.definedata('inc_p20','inc_p40','inc_p60',
+						   'inc_p80')
+			;
+			inc.definedone();
+		call missing(inc_p20,inc_p40,inc_p60,inc_p80);
+	end;
+
+	set modwork.analyze_2004_2007 (drop=denial_1 - denial_9 action_taken_1 - action_taken_8);
+
+	rc=lp_deny.find();
+	rc=deny.find();
+	rc=lp_approve.find();
+	rc=approve.find();
+	rc=lp_amt.find();
+	rc=amt.find();
+	rc=lp_inc.find();
+	rc=inc.find();
+
+	/* All in income quintile */
+	length income_quintile bin_inc_0-bin_inc_5 3;
+	if missing(applicant_income) or applicant_income=9999 then income_quintile=0;
+	else if applicant_income_adj le inc_p20 then income_quintile=1;
+	else if applicant_income_adj le inc_p40 then income_quintile=2;
+	else if applicant_income_adj le inc_p60 then income_quintile=3;
+	else if applicant_income_adj le inc_p80 then income_quintile=4;
+	else if applicant_income_adj gt inc_p80 then income_quintile=5;
+
+	bin_inc_0=(income_quintile=0);
+	bin_inc_1=(income_quintile=1);
+	bin_inc_2=(income_quintile=2);
+	bin_inc_3=(income_quintile=3);
+	bin_inc_4=(income_quintile=4);
+	bin_inc_5=(income_quintile=5);
+
+	/* income quintile by loan purpose */
+	length purpose_income_quintile bin_purpose_inc_0-bin_purpose_inc_5 3;
+
+	if missing(applicant_income) or applicant_income=9999 then purpose_income_quintile=0;
+	else if applicant_income_adj le purpose_inc_p20 then purpose_income_quintile=1;
+	else if applicant_income_adj le purpose_inc_p40 then purpose_income_quintile=2;
+	else if applicant_income_adj le purpose_inc_p60 then purpose_income_quintile=3;
+	else if applicant_income_adj le purpose_inc_p80 then purpose_income_quintile=4;
+	else if applicant_income_adj gt purpose_inc_p80 then purpose_income_quintile=5;
+
+	bin_purpose_inc_0=(purpose_income_quintile=0);
+	bin_purpose_inc_1=(purpose_income_quintile=1);
+	bin_purpose_inc_2=(purpose_income_quintile=2);
+	bin_purpose_inc_3=(purpose_income_quintile=3);
+	bin_purpose_inc_4=(purpose_income_quintile=4);
+	bin_purpose_inc_5=(purpose_income_quintile=5);
+
+	drop rc;
+
+	random=ranuni(28104);
+
+	output modwork.analyze_2004_2007;
+	if random le .6 then output modwork.train;
+	else output modwork.validate;
+
+run;
+
+data modwork.train_action_taken_1;
+	set modwork.train;
+	where action_taken='1';
+run;
+
+data modwork.validate_action_taken_1;
+	set modwork.validate;
+	where action_taken='1';
+run;
+
+proc sort data=modwork.train_action_taken_1;by loan_purpose;run;
+proc sort data=modwork.validate_action_taken_1;by loan_purpose;run;
+
+proc means data=modwork.train noprint nway missing;
+	where subprime_institution=1 and action_taken='1';
+	class inst1;
+	var asofdate;
+	output out=subprime_counts n=;
+run;
+
+%macro model_fit(selection_method=);
+ods output rsquare=rsquare
+		   modelbuildingsummary=model_build_summary
+		   association=roc_info
+		   parameterestimates=parameter_estimates
+		   lackfitchisq=lackfit_chisq
+		   fitstatistics=fit_statistics
+		   scorefitstat=scored_fit_statistics
+		   responseprofile=response_profile
+;
+proc logistic data=modwork.train plots=none;
+	where random le .2 and action_taken='1';
+	model subprime_institution(event='1')=
+		/*loan_type_1*/ loan_type_2 - loan_type_4
+		type_of_purchaser_0 - type_of_purchaser_8 /*type_of_purchaser_9*/
+		/*property_type_1*/ property_type_2 property_type_3
+		ethinicity_1 /*ethinicity_2*/ ethinicity_3 - ethinicity_4
+		/*loan_purpose_1*/ loan_purpose_2 - loan_purpose_3
+		applicant_race_1 - applicant_race_4 /*applicant_race_5*/ applicant_race_6 - applicant_race_7
+		hoepa_status_1 /*hoepa_status_2*/
+		/*occupancy_1*/ occupancy_2 - occupancy_3
+		applicant_sex_1 - applicant_sex_3 /*applicant_sex_4*/ 
+		/*lien_status_1*/ lien_status_2 - lien_status_3
+		/*preapproval_1*/ preapproval_2 - preapproval_3
+		action_taken_1 - action_taken_8
+		denial_1 - denial_9
+		bin_inc_0 - bin_inc_4 /* bin_inc_5 */
+		equifax_county_200101_chg
+		spread_st_rent_vac
+		spread_st_own_rate
+		spread_peaa
+		spread_pua0t17
+		spread_pua5t17
+		spread_snap_benefits
+		spread_ruc
+		spread_zhvi_sfh_hpiadj
+		spread_median_ppsft_hpiadj
+		change_bldg_perm_1_4
+		change_bldg_perm_5plus
+		spread_loan_amount
+		/ rsquare stb lackfit expb parmlabel selection=&selection_method.
+	;
+	score data=modwork.validate (where=(random le 0.8 and action_taken='1')) fitstat;
+run;
+data ass1;
+	set roc_info (obs=1 keep=nvalue1 rename=(nvalue1=pct_concordant));
+run;
+data ass2;
+	set roc_info (keep=nvalue1 obs=2 firstobs=2 rename=(nvalue1=pct_discordant));
+run;
+data ass3;
+	set roc_info (keep=nvalue2 obs=1 rename=(nvalue2=somers_d));
+run;
+data ass4;
+	set roc_info (keep=nvalue2 firstobs=4 obs=4 rename=(nvalue2=c));
+run;
+
+data rsquare;
+	set rsquare end=eof;
+
+	if eof;
+	rename nvalue1=rsquare nvalue2=rescaled_rsquare;
+	keep nvalue1 nvalue2;
+run;
+
+data removed_predictors;
+	set model_build_summary end=eof;
+	length removed_predictors $ 10000;
+	retain removed_predictors;
+	removed_predictors=cats(removed_predictors,cats(effectremoved,'|'));
+	if eof;
+	keep removed_predictors;
+run;
+
+data kept_parameters;
+	set parameter_estimates end=eof;
+	length kept_predictors $ 10000;
+	retain kept_predictors;
+	kept_predictors=cats(kept_predictors,cats(variable,'|'));
+	if eof;
+	keep kept_predictors;
+run;
+
+proc sql noprint;
+	select max(step) 
+	into :max_step
+	from fit_statistics
+;quit;
+
+data fit_stats;
+	set fit_statistics end=eof;
+	where step=&max_step.;
+
+	retain aic sbc logliklihood;
+	if criterion='AIC' then aic=interceptandcovariates;
+	else if criterion='SC' then sbc=interceptandcovariates;
+	else if criterion='-2 Log L' then logliklihood=interceptandcovariates;
+
+	keep aic sbc logliklihood;
+	if eof;
+run;
+
+data response_profile;
+	set response_profile end=eof;
+
+	retain target_1 target_0;
+	if strip(outcome)='1' then target_1=count;
+	else if strip(outcome)='0' then target_0=count;
+
+	if eof;
+
+	keep target_1 target_0;
+run;
+
+data scored_fit_statistics;
+	set scored_fit_statistics;
+	drop dataset;
+	rename freq=valid_freq
+		   loglike=valid_loglike
+		   misclass=valid_misclass
+		   auc=valid_auc
+		   aic=valid_aic
+		   aicc=valid_aicc
+		   bic=valid_bic
+		   sc=valid_sc
+		   rsquare=valid_rsquare
+		   adjrsquare=valid_adjrsquare
+		   brierscore=valid_brierscore
+	;
+run;
+	
+data run_stats;
+	length selection_method $ 20;
+	merge ass1 ass2 ass3 ass4 rsquare fit_stats response_profile scored_fit_statistics kept_parameters removed_predictors;
+	selection_method="&selection_method.";
+run;
+
+proc append base=modwork.model_runs data=run_stats;run;
+
+proc datasets lib=work nolist nodetails;
+	delete rsquare
+		   model_build_summary
+		   roc_info
+		   parameter_estimates
+		   lackfit_chisq
+		   fit_statistics
+		   scored_fit_statistics
+		   response_profile
+		   ass1 ass2 ass3 ass4
+		   fit_stats
+		   kept_parameters
+		   removed_parameters
+		   run_stats
+	;
+run;quit;
+
+%mend model_fit;
+
+%model_fit(selection_method=backward);
+%model_fit(selection_method=forward);
+%model_fit(selection_method=stepwise);
+
+proc logistic data=modwork.train plots=none;
+	where random le .2 and action_taken='1';
+	model subprime_institution(event='1')=
+		/*loan_type_1*/ loan_type_2 - loan_type_4
+		type_of_purchaser_0 - type_of_purchaser_8 /*type_of_purchaser_9*/
+		/*property_type_1*/ property_type_2 property_type_3
+		ethinicity_1 /*ethinicity_2*/ ethinicity_3 - ethinicity_4
+		/*loan_purpose_1*/ loan_purpose_2 - loan_purpose_3
+		applicant_race_1 - applicant_race_4 /*applicant_race_5*/ applicant_race_6 - applicant_race_7
+		hoepa_status_1 /*hoepa_status_2*/
+		/*occupancy_1*/ occupancy_2 - occupancy_3
+		applicant_sex_1 - applicant_sex_3 /*applicant_sex_4*/ 
+		/*lien_status_1*/ lien_status_2 - lien_status_3
+		/*preapproval_1*/ preapproval_2 - preapproval_3
+		action_taken_1 - action_taken_8
+		denial_1 - denial_9
+		bin_inc_0 - bin_inc_4 /* bin_inc_5 */
+		equifax_county_200101_chg
+		spread_st_rent_vac
+		spread_st_own_rate
+		spread_peaa
+		spread_pua0t17
+		spread_pua5t17
+		spread_snap_benefits
+		spread_ruc
+		spread_zhvi_sfh_hpiadj
+		spread_median_ppsft_hpiadj
+		change_bldg_perm_1_4
+		change_bldg_perm_5plus
+		spread_loan_amount
+		/ rsquare stb lackfit expb parmlabel selection=backward /*outroc=total_roc*/
+	;
+	score data=modwork.validate (where=(random le 0.8 and action_taken='1')) fitstat;
+run;
+
+proc hplogistic data=modwork.train;
+	where random le .1;
+	model subprime_institution(event='1')=
+		/*loan_type_1*/ loan_type_2 - loan_type_4
+		type_of_purchaser_0 - type_of_purchaser_8 /*type_of_purchaser_9*/
+		/*property_type_1*/ property_type_2 property_type_3
+		ethinicity_1 /*ethinicity_2*/ ethinicity_3 - ethinicity_4
+		/*loan_purpose_1*/ loan_purpose_2 - loan_purpose_3
+		applicant_race_1 - applicant_race_4 /*applicant_race_5*/ applicant_race_6 - applicant_race_7
+		hoepa_status_1 /*hoepa_status_2*/
+		/*occupancy_1*/ occupancy_2 - occupancy_3
+		applicant_sex_1 - applicant_sex_3 /*applicant_sex_4*/ 
+		/*lien_status_1*/ lien_status_2 - lien_status_3
+		/*preapproval_1*/ preapproval_2 - preapproval_3
+		action_taken_1 - action_taken_8
+		denial_1 - denial_9
+		bin_inc_0 - bin_inc_4 /* bin_inc_5 */
+		equifax_county_200101_chg
+		spread_st_rent_vac
+		spread_st_own_rate
+		spread_peaa
+		spread_pua0t17
+		spread_pua5t17
+		spread_snap_benefits
+		spread_ruc
+		spread_zhvi_sfh_hpiadj
+		spread_median_ppsft_hpiadj
+		change_bldg_perm_1_4
+		change_bldg_perm_5plus
+		spread_loan_amount
+		/ rsquare lackfit
+	;
+run;

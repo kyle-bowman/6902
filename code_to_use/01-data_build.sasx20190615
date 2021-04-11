@@ -1,0 +1,1883 @@
+
+proc datasets lib=work nolist nodetails kill;run;quit;
+
+/********************************************/
+/*------------------------------------------*/
+/* Census data
+/*------------------------------------------*/
+/********************************************/
+
+%macro census_import(file,out);
+data census_&out.;
+    length asofdate 3 census_tract_number $ 9; 
+    infile "&data_path.&file." obs=max;
+    input asofdate 1-4
+          msa_of_property $ 5-9
+          state_code $ 10-11
+          county_code $ 12-14
+          census_tract_number $ 15-20
+          principal_city_flag $ 21
+          small_county_flag $ 22
+          split_tract_flag $ 23
+          urban_rural_flag $ 25
+          msa_median_family_income 26-33
+          msa_mdean_household_income 34-41
+          msa_median_family_income_pct 42-47
+          hud_median_family_income 48-55
+          population 56-63
+          families_population 64-71
+          households_population 72-79
+          female_population 80-87
+          male_population 88-95
+          minority_population 96-103 
+          minority_percentage 104-109
+          hispanic_population 302-309
+          white_population 382-389
+          black_population 390-397
+          american_indian_population 398-405
+          pacific_island_population 414-421
+          other_race_population 422-429
+          two_or_more_race_population 430-437
+          rural_farm 582-589
+          rural_non_farm 590-597
+          male_householder 630-637
+          female_householder 638-645
+          x1 2358-2365 x2 2366-2373 x3 2374-2381 x4 2382-2389 x5 2390-2397 x6 2398-2405 x7 2406-2413 x8 2414-2421
+          male_high_school_population 2422-2429 
+          y1 2430-2437 y2 2438-2445
+          male_assoc_deg_population 2446-2453
+          male_college_population 2454-2461
+          z1 2462-2469 z2 2470-2477 z3 2478-2485
+
+          a1 2494-2501 a2 2502-2509 a3 2510-2517 a4 2518-2525 a5 2526-2533 a6 2534-2541 a7 2542-2549 a8 2550-2557
+          female_high_school_population 2558-2565
+          b1 2566-2573 b2 2574-2581
+          female_assoc_deg_population 2582-2589
+          female_college_population 2590-2597 
+          c1 2598-2605 c2 2606-2613 c3 2614-2621
+
+          avg_total_income 5894-5901
+          avg_income_black 5910-5917
+          avg_income_histpanic 5918-5925
+          avg_income_white 5926-5933
+
+          total_housing_units 6876-6883
+          total_occupied 6948-6955
+          total_vacant 6956-6963
+            
+          total_occupied_housing 6964-6971
+          total_owner_occupied 6972-6979
+          total_renter_occupied 6980-6987
+
+          total_vacant_housing 6988-6995
+          total_vacant_for_rent 6996-7003
+          total_vacant_for_sale 7004-7011
+          total_sold_vacant 7012-7019
+          total_recreational_vacant 7020-7027
+
+          total_mobile_homes 7116-7123
+          total_1_to_4 7132-7139
+
+    ;
+
+    /* reclassify the 99999 from the CENSUS null definition so that we can match the LARS... */
+    if msa_of_property='99999' then msa_of_property='NA';
+    male_non_highschool_pop=sum(x1,x2,x3,x4,x5,x6,x7,x8);
+    male_some_college_population=sum(y1,y2);
+    male_post_grad_population=sum(z1,z2,z3);
+    female_non_highschool_pop=sum(a1,a2,a3,a4,a5,a6,a7,a8);
+    female_some_college_population=sum(b1,b2);
+    female_post_grad_population=sum(c1,c2,c3);
+
+    drop x1 x2 x3 x4 x5 x6 x7 x8 y1 y2 z1 z2 z3
+         a1 a2 a3 a4 a5 a6 a7 a8 b1 b2 c1 c2 c3
+    ;
+
+run;
+
+proc append base=census_data data=census_&out.;run;
+
+proc datasets lib=work nolist nodetails;
+    delete census_&out.;
+run;quit;
+
+%mend census_import;
+
+proc datasets lib=work nolist nodetails;
+    delete census_data;
+run;quit;
+
+%census_import(census2004_all.DAT,out=2004);
+%census_import(census2005_all.DAT,out=2005);
+%census_import(census2006_all.DAT,out=2006);
+%census_import(census2006_all.DAT,out=2007);
+
+/* 
+for the extension, the census data in ascii format is not avaliable in later years.  2007 forward,
+the census tract information was appended to the loan level lars files below.  for the purposes of this
+exercise, we can truncate the variables prior down to the avaliable from the lars files.
+*/
+
+data census_data;
+	set census_data;
+	keep asofdate census_tract_number msa_of_property state_code county_code
+		 hud_median_family_income population 
+		 minority_percentage /* translates to minority_population in lars, recode to this name */
+		 total_owner_occupied /* translates to total 1-4 owner occupied units */
+		 total_1_to_4 /* translates to number_of_1_to_4_family_units */
+	;
+	rename total_1_to_4=number_of_1_to_4_family_units;
+run;
+
+/********************************************/
+/*------------------------------------------*/
+/* LARS data
+/*------------------------------------------*/
+/********************************************/
+
+proc datasets lib=work nolist nodetails kill;run;quit;
+/* Pre 2007 conversion to CSV. */
+%macro lars_import(file,out);
+data &out.;
+    length asofdate 3 census_tract_number orig_census_tract_number $ 9 respondent_id $ 12;
+    infile "&data_path.&file." obs=max;
+    input asofdate 1-4
+          orig_respondent_id $ 5-14
+          agency_code $ 15
+          loan_type $ 16
+          loan_purpose $ 17
+          occupancy $ 18
+          c_amount_of_loan $ 19-23
+          action_taken $ 24
+          msa_of_property $ 25-29
+          state_code $ 30-31
+          county_code $ 32-34
+          census_tract_number $ 35-41
+          applicant_sex $ 42
+          co_applicant_sex $ 43
+          c_applicant_income $ 44-47
+          type_of_purchaser $ 48
+          denial_reason_1 $ 49
+          denial_reason_2 $ 50
+          denial_reason_3 $ 51
+          edit_status $ 52
+          property_type $ 53
+          preapproval $ 54
+          ethinicity $ 55
+          co_ethinicity $ 56
+          applicant_race $ 57
+          co_applicant_race $ 62
+          c_rate_spread $ 67-71
+          hoepa_status $ 72
+          lien_status $ 73
+          sequence_number 74-80
+    ;
+
+	respondent_id=cats(orig_respondent_id,'-',agency_code);
+    if anyalpha(c_applicant_income) then applicant_income=.;
+    else applicant_income=input(c_applicant_income,8.)*1000;
+    if anyalpha(c_amount_of_loan) then loan_amount=.;
+    else loan_amount=input(c_amount_of_loan,8.)*1000;
+
+    if c_rate_spread='NA' then rate_spread=.A;
+    else if prxmatch('/\d\d\.\d\d/',c_rate_spread) ne 0 then rate_spread=input(c_rate_spread,8.);
+    else rate_spread=.X;
+        
+    if agency_code not in ('1','2','3','4','5','6','7') then error='01';
+    else if loan_type not in ('1','2','3','4') then error='02';
+    else if property_type not in ('1','2','3') then error='03';
+    else if loan_purpose not in ('1','2','3') then error='04';
+    else if lien_status='3' and loan_purpose ne '2' then error='05';
+    else if occupancy not in ('1','2','3') then error='06';
+    else if coalesce(loan_amount,0) le 0 then error='07';
+    else if preapproval not in ('1','2','3') then error='08';
+    else if loan_purpose='1' and action_taken='6' and preapproval ne '3' then error'09';
+    else if loan_purpose in ('2','3') and preapproval ne '3' then error='10';
+    else if action_taken in ('7','8') and preapproval ne '1' then error='11';
+    else if (   denial_reason_1 in ('1','2','3','4','5','6','7','8','9')
+             or denial_reason_2 in ('1','2','3','4','5','6','7','8','9')
+             or denial_reason_3 in ('1','2','3','4','5','6','7','8','9'))
+             and action_taken not in ('3','7') then error='12';
+    else if preapproval='1' and action_taken not in ('1','2','3','4','5','7','8') then error='13';
+    else if preapproval='2' and action_taken not in ('1','2','3','4','5') then error='14';
+    else if preapproval='3' and action_taken not in ('1','2','3','4','5','6') then error='15';
+    else if ethinicity not in ('1','2','3','4') then error='16';
+    else if co_ethinicity not in ('1','2','3','4','5') then error='17';
+    else if co_ethinicity ne '5' and (co_applicant_sex='5' or co_applicant_race='8') then error='18';
+    else if applicant_race not in ('1','2','3','4','5','6','7') then error='19';
+    else if co_applicant_race not in ('1','2','3','4','5','6','7','8') then error='20';
+    else if co_applicant_race ne '8' and (co_ethinicity='5' or co_applicant_sex='5') then error='21';
+    else if applicant_sex not in ('1','2','3','4') then error='22';
+    else if co_applicant_sex not in ('1','2','3','4','5') then error='23';
+    else if co_applicant_sex ne '5' and (co_ethinicity='5' or co_applicant_race='8') then error='24';
+    else if coalesce(applicant_income,0) lt 0 then error='25';
+    else if property_type='3' and not missing(applicant_income) then error='26';
+    else if type_of_purchaser not in ('0','1','2','3','4','5','6','7','8','9') then error='27';
+    else if type_of_purchaser in ('1','2','3','4','5','6','7','8','9') and action_taken not in ('1','6') then error='28';
+    else if type_of_purchaser='2' and loan_type not in ('2','3','4') then error='29';
+    else if (agency_code in ('2','3','5','7') or agency_code in ('1','4') and action_taken not in ('3','7'))
+             and 
+            (   denial_reason_1 not in ('1','2','3','4','5','6','7','8','9','')
+             or denial_reason_2 not in ('1','2','3','4','5','6','7','8','9','')
+             or denial_reason_3 not in ('1','2','3','4','5','6','7','8','9','')) then error='30';
+    else if agency_code in ('1','4') and action_taken not in ('3','7') and not missing(denial_reason_1) then error='31';
+    else if action_taken in ('2','3','4','5','6','7','8') and rate_spread ne .A then error='32';
+    else if action_taken in ('2','3','4','5','7','8') and hoepa_status ne '2' then error='33';
+    else if hoepa_status not in ('1','2') then error='34';
+    else if loan_purpose='1' and hoepa_status ne '2' then error='35';
+    else if lien_status='3' and hoepa_status ne '2' then error='36';
+    else if lien_status not in ('1','2','3','4') then error='37';
+    else if loan_purpose in ('1','3') and lien_status not in ('1','2','4') then error='38';
+    else if action_taken in ('1','2','3','4','5','7','8') and lien_status not in ('1','2','3') then error='39';
+    else if action_taken='6' and lien_status ne '4' then error='40';
+    /* come back to rate_spread. */
+    else if lien_status='1' and (rate_spread lt 3  or rate_spread gt 99.99 or rate_spread=.X) then error='41';
+    else if lien_status='2' and (rate_spread lt 5 or rate_spread gt 99.99 or rate_spread=.X) then error='42';
+    else if lien_status='3' and c_rate_spread ne 'NA' then error='43';
+
+    orig_census_tract_number=census_tract_number;
+    census_tract_number=strip(compress(orig_census_tract_number,,'kd'));
+    
+    drop c_amount_of_loan c_applicant_income orig_respondent_id;
+run;
+
+proc append base=model_data_build data=&out.;run;
+
+proc datasets lib=work nolist nodetails;
+    delete &out.;
+run;quit;
+
+%mend lars_import;
+
+%lars_import(f2004lar.public.dat,lars_2004);
+%lars_import(LARS.FINAL.2005.DAT,lars_2005);
+%lars_import(LARS.FINAL.2006.DAT,lars_2006);
+/*%lars_import(lars.final.2007.dat,lars_2007);*/
+
+%macro lars_import_csv(csv);
+proc import file="&data_path.&csv."
+			out=hmda_lar
+			dbms=csv
+			replace
+			;
+run;
+
+data hmda_lar_format;
+	length asofdate 3
+		   census_tract_number $ 9
+		   orig_census_tract_number $ 9
+		   respondent_id $ 12
+		   agency_code $ 1
+		   loan_type $ 1
+		   loan_purpose $ 1
+		   occupancy $ 1
+		   action_taken $ 1
+		   msa_of_property $ 5
+		   state_code $ 2
+		   county_code $ 3
+		   applicant_sex $ 1
+		   co_applicant_sex $ 1
+		   type_of_purchaser $ 1
+		   denial_reason_1 $ 1
+		   denial_reason_2 $ 1
+		   denial_reason_3 $ 1
+		   edit_status $ 1
+		   property_type $ 1
+		   preapproval $ 1
+		   ethinicity $ 1
+		   co_ethinicity $ 1
+		   applicant_race $ 1
+		   co_applicant_race $ 1
+		   hoepa_status $ 1
+		   lien_status  $ 1
+		   sequence_number 8
+		   loan_amount 8
+		   loan_amount 8
+		   rate_spread 8
+		   c_rate_spread $ 5
+	;
+	set hmda_lar (obs=max
+		 keep=agency_code respondent_id loan_type loan_purpose owner_occupancy loan_amount_000s action_taken
+			  msamd state_code county_code census_tract_number applicant_sex co_applicant_sex
+			  applicant_income_000s purchaser_type denial_reason_1 denial_reason_2 denial_reason_3 edit_status
+			  property_type preapproval applicant_ethnicity co_applicant_ethnicity applicant_race_1
+			  co_applicant_race_1 rate_spread hoepa_status lien_status sequence_number as_of_year
+			  /* for census only */
+			  hud_median_family_income number_of_1_to_4_family_units number_of_owner_occupied_units
+			  minority_population population
+		 rename=(sequence_number=c_sequence_number 
+				 rate_spread=x_rate_spread 
+			     census_tract_number=orig_census_tract_number
+				 action_taken=c_action_taken
+				 agency_code=c_agency_code
+				 applicant_sex=c_applicant_sex
+				 co_applicant_sex=c_co_applicant_sex
+				 county_code=c_county_code
+				 denial_reason_1=c_denial_reason_1
+			     denial_reason_2=c_denial_reason_2
+				 denial_reason_3=c_denial_reason_3
+				 edit_status=c_edit_status
+				 hoepa_status=c_hoepa_status
+				 lien_status=c_lien_status
+				 loan_purpose=c_loan_purpose
+				 loan_type=c_loan_type
+				 preapproval=c_preapproval
+				 property_type=c_property_type
+				 respondent_id=c_respondent_id
+				 state_code=c_state_code
+			  	 hud_median_family_income=c_hud_median_family_income
+				 number_of_1_to_4_family_units=c_number_of_1_to_4_family_units
+				 number_of_owner_occupied_units=c_total_owner_occupied
+			  	 minority_population=c_minority_population
+				 population=c_population
+				 loan_amount_000s=c_loan_amount_000s
+			));
+
+	asofdate=input(as_of_year,8.);
+	occupancy=owner_occupancy;
+    if missing(c_loan_amount_000s) then loan_amount=.;
+    else loan_amount=input(c_loan_amount_000s,8.)*1000;
+	if missing(msamd) then msa_of_property='NA';
+	else msa_of_property=msamd;
+    if anyalpha(applicant_income_000s) then applicant_income=.;
+	else if missing(applicant_income_000s) then applicant_income=.;
+    else applicant_income=input(applicant_income_000s,8.)*1000;
+
+	type_of_purchaser=purchaser_type;
+	ethinicity=applicant_ethnicity;
+	co_ethinicity=co_applicant_ethnicity;
+	applicant_race=applicant_race_1;
+	co_applicant_race=co_applicant_race_1;
+	sequence_number=input(c_sequence_number,12.);
+	/* below is needed to stop initialization warning... */
+	c_rate_spread=x_rate_spread;
+    if c_rate_spread='' then rate_spread=.X;
+/*    else if prxmatch('/\d\d\/',c_rate_spread) ne 0 then rate_spread=input(c_rate_spread,8.);*/
+	else if not missing(c_rate_spread) then rate_spread=input(c_rate_spread,8.);
+    else rate_spread=.X;
+
+    census_tract_number=strip(compress(orig_census_tract_number,,'kd'));
+
+	/* renamed to conicide with lengths... */
+	action_taken=c_action_taken;
+	agency_code=c_agency_code;
+	applicant_sex=c_applicant_sex;
+	co_applicant_sex=c_co_applicant_sex;
+	if missing(c_county_code) then county_code='';
+	else if length(c_county_code)=1 then county_code=cats('00',c_county_code);
+	else if length(c_county_code)=2 then county_code=cats('0',c_county_code);
+	else county_code=c_county_code;
+	denial_reason_1=c_denial_reason_1;
+	denial_reason_2=c_denial_reason_2;
+	denial_reason_3=c_denial_reason_3;
+	edit_status=c_edit_status;
+	hoepa_status=c_hoepa_status;
+	lien_status=c_lien_status;
+	loan_purpose=c_loan_purpose;
+	loan_type=c_loan_type;
+	preapproval=c_preapproval;
+	property_type=c_property_type;
+	respondent_id=c_respondent_id;
+	respondent_id=cats(respondent_id,'-',agency_code);
+	if missing(c_state_code) then state_code='';
+	else if length(c_state_code)=1 then state_code=cats('0',c_state_code);
+	else state_code=c_state_code;
+
+
+    if agency_code not in ('1','2','3','4','5','6','7') then error='01';
+    else if loan_type not in ('1','2','3','4') then error='02';
+    else if property_type not in ('1','2','3') then error='03';
+    else if loan_purpose not in ('1','2','3') then error='04';
+    else if lien_status='3' and loan_purpose ne '2' then error='05';
+    else if occupancy not in ('1','2','3') then error='06';
+    else if coalesce(loan_amount,0) le 0 then error='07';
+    else if preapproval not in ('1','2','3') then error='08';
+    else if loan_purpose='1' and action_taken='6' and preapproval ne '3' then error'09';
+    else if loan_purpose in ('2','3') and preapproval ne '3' then error='10';
+    else if action_taken in ('7','8') and preapproval ne '1' then error='11';
+    else if (   denial_reason_1 in ('1','2','3','4','5','6','7','8','9')
+             or denial_reason_2 in ('1','2','3','4','5','6','7','8','9')
+             or denial_reason_3 in ('1','2','3','4','5','6','7','8','9'))
+             and action_taken not in ('3','7') then error='12';
+    else if preapproval='1' and action_taken not in ('1','2','3','4','5','7','8') then error='13';
+    else if preapproval='2' and action_taken not in ('1','2','3','4','5') then error='14';
+    else if preapproval='3' and action_taken not in ('1','2','3','4','5','6') then error='15';
+    else if ethinicity not in ('1','2','3','4') then error='16';
+    else if co_ethinicity not in ('1','2','3','4','5') then error='17';
+    else if co_ethinicity ne '5' and (co_applicant_sex='5' or co_applicant_race='8') then error='18';
+    else if applicant_race not in ('1','2','3','4','5','6','7') then error='19';
+    else if co_applicant_race not in ('1','2','3','4','5','6','7','8') then error='20';
+    else if co_applicant_race ne '8' and (co_ethinicity='5' or co_applicant_sex='5') then error='21';
+    else if applicant_sex not in ('1','2','3','4') then error='22';
+    else if co_applicant_sex not in ('1','2','3','4','5') then error='23';
+    else if co_applicant_sex ne '5' and (co_ethinicity='5' or co_applicant_race='8') then error='24';
+    else if coalesce(applicant_income,0) lt 0 then error='25';
+    else if property_type='3' and not missing(applicant_income) then error='26';
+    else if type_of_purchaser not in ('0','1','2','3','4','5','6','7','8','9') then error='27';
+    else if type_of_purchaser in ('1','2','3','4','5','6','7','8','9') and action_taken not in ('1','6') then error='28';
+    else if type_of_purchaser='2' and loan_type not in ('2','3','4') then error='29';
+    else if (agency_code in ('2','3','5','7') or agency_code in ('1','4') and action_taken not in ('3','7'))
+             and 
+            (   denial_reason_1 not in ('1','2','3','4','5','6','7','8','9','')
+             or denial_reason_2 not in ('1','2','3','4','5','6','7','8','9','')
+             or denial_reason_3 not in ('1','2','3','4','5','6','7','8','9','')) then error='30';
+    else if agency_code in ('1','4') and action_taken not in ('3','7') and not missing(denial_reason_1) then error='31';
+    else if action_taken in ('2','3','4','5','6','7','8') and rate_spread ne .X then error='32';
+    else if action_taken in ('2','3','4','5','7','8') and hoepa_status ne '2' then error='33';
+    else if hoepa_status not in ('1','2') then error='34';
+    else if loan_purpose='1' and hoepa_status ne '2' then error='35';
+    else if lien_status='3' and hoepa_status ne '2' then error='36';
+    else if lien_status not in ('1','2','3','4') then error='37';
+    else if loan_purpose in ('1','3') and lien_status not in ('1','2','4') then error='38';
+    else if action_taken in ('1','2','3','4','5','7','8') and lien_status not in ('1','2','3') then error='39';
+    else if action_taken='6' and lien_status ne '4' then error='40';
+    /* come back to rate_spread. */
+    else if lien_status='1' and (rate_spread lt 3  or rate_spread gt 99.99 or rate_spread=.X) then error='41';
+    else if lien_status='2' and (rate_spread lt 5 or rate_spread gt 99.99 or rate_spread=.X) then error='42';
+    else if lien_status='3' and c_rate_spread ne 'NA' then error='43';
+	
+	/* for census data... */
+	if missing(c_hud_median_family_income) then hud_median_family_income=.;
+	else hud_median_family_income=input(c_hud_median_family_income,8.);
+	if missing(c_number_of_1_to_4_family_units) then number_of_1_to_4_family_units=.;
+	else number_of_1_to_4_family_units=input(c_number_of_1_to_4_family_units,8.);
+	if missing(c_total_owner_occupied) then total_owner_occupied=.;
+	else total_owner_occupied=input(c_total_owner_occupied,8.);
+	if missing(c_minority_population) then minority_population=.;
+	else minority_population=input(c_minority_population,8.);
+	if missing(c_population) then population=.;
+	else population=input(c_population,8.);
+
+	keep  asofdate respondent_id agency_code loan_type loan_purpose action_taken msa_of_property state_code county_code 
+          census_tract_number applicant_sex co_applicant_sex denial_reason_1 denial_reason_2 denial_reason_3 
+          edit_status property_type preapproval ethinicity co_ethinicity applicant_race co_applicant_race 
+          hoepa_status lien_status sequence_number orig_census_tract_number
+		  error occupancy loan_amount msa_of_property applicant_income rate_spread
+		  type_of_purchaser c_rate_spread
+
+		  /* drop for append */
+
+		  hud_median_family_income number_of_1_to_4_family_units total_owner_occupied
+		  minority_population population
+	;
+run;
+
+proc append base=model_data_build 
+			data=hmda_lar_format (drop=hud_median_family_income number_of_1_to_4_family_units total_owner_occupied
+		  							   minority_population population)
+	;
+run;
+
+/* before deleting the formatted data... run it through a proc means, agg on asofdate census_tract_number
+   msa_of_property state_code county_code
+*/
+
+proc means data=hmda_lar_format noprint nway missing;
+	class asofdate census_tract_number msa_of_property state_code county_code;
+	output out=census_agg (drop=_type_ _freq_)
+		   mean(hud_median_family_income)=hud_median_family_income
+		   mean(number_of_1_to_4_family_units)=number_of_1_to_4_family_units
+		   mean(total_owner_occupied)=total_owner_occupied
+		   mean(minority_population)=minority_percentage
+		   mean(population)=population
+	;
+run;
+
+proc append base=census_data data=census_agg;run;
+
+proc datasets lib=work nolist nodetails;
+	delete hmda_lar hmda_lar_format census_agg;
+run;quit;
+
+%mend;
+
+%lars_import_csv(hmda_lar_2007.csv);
+%lars_import_csv(hmda_lar_2008.csv);
+%lars_import_csv(hmda_lar_2009.csv);
+%lars_import_csv(hmda_lar_2010.csv);
+%lars_import_csv(hmda_lar_2011.csv);
+%lars_import_csv(hmda_lar_2012.csv);
+%lars_import_csv(hmda_lar_2013.csv);
+%lars_import_csv(hmda_lar_2014.csv);
+%lars_import_csv(hmda_lar_2015.csv);
+%lars_import_csv(hmda_lar_2016.csv);
+%lars_import_csv(hmda_lar_2017.csv);
+
+proc sort data=model_data_build;by asofdate respondent_id state_code county_code;run;
+
+data model_data_build (sortedby=asofdate respondent_id state_code county_code);
+	set model_data_build (obs=max);
+	by asofdate respondent_id state_code county_code;
+
+	length loan_type_1 - loan_type_4 3;
+	loan_type_1=(loan_type='1');
+	loan_type_2=(loan_type='2');
+	loan_type_3=(loan_type='3');
+	loan_type_4=(loan_type='4');
+
+	label loan_type_1='Conventional (any loan other than FHA, VA or FmHA loans)'
+		  loan_type_2='FHA-insured (Federal Housing Administration)'
+		  loan_type_3='VA-guranteed (Veterans Administration)'
+		  loan_type_4='Farm Service Agency and the Rural Housing Service'
+	;
+
+	length action_taken_1-action_taken_8 3;
+	action_taken_1=(action_taken='1');
+	action_taken_2=(action_taken='2');
+	action_taken_3=(action_taken='3');
+	action_taken_4=(action_taken='4');
+	action_taken_5=(action_taken='5');
+	action_taken_6=(action_taken='6');
+	action_taken_7=(action_taken='7');
+	action_taken_8=(action_taken='8');
+
+	label action_taken_1='Loan originated'
+		  action_taken_2='Application approved but not accepted'
+		  action_taken_3='Application denied by financial institution'
+		  action_taken_4='Application withdrawn by applicant'
+		  action_taken_5='File closed for incompleteness'
+		  action_taken_6='Loan purchased by your institution'
+		  action_taken_7='Preapproval request denied by financial institution'
+		  action_taken_8='Preapproval request approved but not accepted (optional reporting)'
+	;
+
+	length type_of_purchaser_0-type_of_purchaser_9 3;
+	type_of_purchaser_0=(type_of_purchaser='0');
+	type_of_purchaser_1=(type_of_purchaser='1');
+	type_of_purchaser_2=(type_of_purchaser='2');
+	type_of_purchaser_3=(type_of_purchaser='3');
+	type_of_purchaser_4=(type_of_purchaser='4');
+	type_of_purchaser_5=(type_of_purchaser='5');
+	type_of_purchaser_6=(type_of_purchaser='6');
+	type_of_purchaser_7=(type_of_purchaser='7');
+	type_of_purchaser_8=(type_of_purchaser='8');
+	type_of_purchaser_9=(type_of_purchaser='9');
+
+	label type_of_purchaser_0='Loan was not originated or was not sold in calendar year'
+		  type_of_purchaser_1='Fannie Mae'
+		  type_of_purchaser_2='Ginnie Mae'
+		  type_of_purchaser_3='Freddie Mac'
+		  type_of_purchaser_4='Farmer Mac'
+		  type_of_purchaser_5='Private Securitization'
+		  type_of_purchaser_6='Commercial bank, savings bank or savings association'
+		  type_of_purchaser_7='Life insurance company, credit union, mortgage bank or finance company'
+		  type_of_purchaser_8='Affiliate institution'
+		  type_of_purchaser_9='Other type of purchaser'
+	;
+
+	length property_type_1 - property_type_3 3;
+	property_type_1=(property_type='1');
+	property_type_2=(property_type='2');
+	property_type_3=(property_type='3');
+
+	label property_type_1='One to four-family'
+		  property_type_2='Manufactured housing'
+		  property_type_3='Multifamily'
+	;
+
+	length ethinicity_1-ethinicity_5 3;
+	ethinicity_1=(ethinicity='1');
+	ethinicity_2=(ethinicity='2');
+	ethinicity_3=(ethinicity='3');
+	ethinicity_4=(ethinicity='4');
+	ethinicity_5=(ethinicity='5');
+
+	label ethinicity_1='Hispanic or Latino'
+		  ethinicity_2='Not Hispanic or Latino'
+		  ethinicity_3='Information not provided'
+		  ethinicity_4='Not applicable'
+		  ethinicity_5='No-co-applicant'
+	;
+	
+	length denial_1-denial_9 3;
+	denial_1=(denial_reason_1='1' or denial_reason_2='1' or denial_reason_3='1');
+	denial_2=(denial_reason_1='2' or denial_reason_2='2' or denial_reason_3='2');
+	denial_3=(denial_reason_1='3' or denial_reason_2='3' or denial_reason_3='3');
+	denial_4=(denial_reason_1='4' or denial_reason_2='4' or denial_reason_3='4');
+	denial_5=(denial_reason_1='5' or denial_reason_2='5' or denial_reason_3='5');
+	denial_6=(denial_reason_1='6' or denial_reason_2='6' or denial_reason_3='6');
+	denial_7=(denial_reason_1='7' or denial_reason_2='7' or denial_reason_3='7');
+	denial_8=(denial_reason_1='8' or denial_reason_2='8' or denial_reason_3='8');
+	denial_9=(denial_reason_1='9' or denial_reason_2='9' or denial_reason_3='9');
+
+	label denial_1='Debt-to-income ratio'
+		  denial_2='Employment history'
+		  denial_3='Credit history'
+		  denial_4='Collateral'
+		  denial_5='Insufficient cash (down-payment, closing costs)'
+		  denial_6='Unverifiable information'
+		  denial_7='Credit application denied'
+		  denial_8='Mortgage insurance denied'
+		  denial_9='Other'
+	;
+
+	length loan_purpose_1-loan_purpose_3 3;
+	loan_purpose_1=(loan_purpose='1');
+	loan_purpose_2=(loan_purpose='2');
+	loan_purpose_3=(loan_purpose='3');
+
+	label loan_purpose_1='Home Purchase'
+		  loan_purpose_2='Home improvement'
+		  loan_purpose_3='Refinancing'
+	;
+
+	length applicant_race_1-applicant_race_8 3;
+	applicant_race_1=(applicant_race='1');
+	applicant_race_2=(applicant_race='2');
+	applicant_race_3=(applicant_race='3');
+	applicant_race_4=(applicant_race='4');
+	applicant_race_5=(applicant_race='5');
+	applicant_race_6=(applicant_race='6');
+	applicant_race_7=(applicant_race='7');
+	applicant_race_8=(applicant_race='8');
+
+	label applicant_race_1='American Indian or Alaskan Native'
+		  applicant_race_2='Asian'
+		  applicant_race_3='Black'
+		  applicant_race_4='Hawaiian or Pacific Islander'
+		  applicant_race_5='White'
+		  applicant_race_6='Information not provided'
+		  applicant_race_7='Not applicable'
+		  applicant_race_8='No co-applicant'
+	;
+
+	length hoepa_status_1-hoepa_status_2 3;
+	hoepa_status_1=(hoepa_status='1');
+	hoepa_status_2=(hoepa_status='2');
+
+	label hoepa_status_1='HOEPA loan'
+		  hoepa_status_2='Not a HOEPA loan'
+	;
+
+	length occupancy_1-occupancy_3 3;
+	occupancy_1=(occupancy='1');
+	occupancy_2=(occupancy='2');
+	occupancy_3=(occupancy='3');
+
+	label occupancy_1='Owner-occupied as a principal dwelling'
+		  occupancy_2='Not owner-occupied'
+		  occupancy_3='Not applicable'
+	;
+
+	length applicant_sex_1-applicant_sex_5 3;
+	applicant_sex_1=(applicant_sex='1');
+	applicant_sex_2=(applicant_sex='2');
+	applicant_sex_3=(applicant_sex='3');
+	applicant_sex_4=(applicant_sex='4');
+	applicant_sex_5=(applicant_sex='5');
+		
+	label applicant_sex_1='Male'
+		  applicant_sex_2='Female'
+		  applicant_sex_3='Information not provided'
+		  applicant_sex_4='Not applicable'
+		  applicant_sex_5='No co-applicant'
+	;
+
+	length lien_status_1-lien_status_4 3;
+	lien_status_1=(lien_status='1');
+	lien_status_2=(lien_status='2');
+	lien_status_3=(lien_status='3');
+	lien_status_4=(lien_status='4');
+
+	label lien_status_1='Secured by first lien'
+		  lien_status_2='Secured by a subordinate lien'
+		  lien_status_3='Not secured by a lien'
+		  lien_status_4='Not applicable (purchased loans)'
+	;
+
+	length preapproval_1-preapproval_3 3;
+	preapproval_1=(preapproval='1');
+	preapproval_2=(preapproval='2');
+	preapproval_3=(preapproval='3');
+
+	label preapproval_1='Preapproval was requested'
+		  preapproval_2='Preapproval was not requested'
+		  preapproval_3='Not applicable'
+	;
+
+run;
+
+proc sort data=sasdata.investor_list out=fail_list;by asofdate respondent_id;run;
+proc sort data=sasdata.hud_subprime_investor out=hud_subprime;by asofdate respondent_id;run;
+
+data investor_list;
+	merge fail_list (in=fl keep=asofdate respondent_id institution_name subprime)
+		  hud_subprime (in=hs keep=asofdate respondent_id)
+	;
+	by asofdate respondent_id;
+	where asofdate ge 2004;
+	if fl;
+
+	length hud_subprime 3;
+
+	if 2004 le asofdate le 2005 then do;
+		if hs then hud_subprime=1;
+		else hud_subprime=0;
+	end;
+	else hud_subprime=.X;
+
+	/* missing respondent_id */
+	if missing(subprime) then subprime=0;
+
+	label institution_name='Lending Institution'
+		  subprime='Failed Institution Subprime'
+		  hud_subprime='HUD Subprime'
+	;
+
+run;
+
+data sasdata.model_data_build (sortedby=asofdate respondent_id state_code county_code);
+	merge model_data_build (in=md)
+		  investor_list (in=il)
+	;
+	by asofdate respondent_id;
+	if md;
+
+	length state_abrev $ 2 division $ 10 region $ 10;
+	if state_code='01' then state_abrev='AL'; 
+	else if state_code='02' then state_abrev='AK'; 
+	else if state_code='04' then state_abrev='AZ'; 
+	else if state_code='05' then state_abrev='AR'; 
+	else if state_code='06' then state_abrev='CA'; 
+	else if state_code='08' then state_abrev='CO'; 
+	else if state_code='09' then state_abrev='CT'; 
+	else if state_code='10' then state_abrev='DE'; 
+	else if state_code='11' then state_abrev='DC'; 
+	else if state_code='12' then state_abrev='FL'; 
+	else if state_code='13' then state_abrev='GA'; 
+	else if state_code='15' then state_abrev='HI'; 
+	else if state_code='16' then state_abrev='ID'; 
+	else if state_code='17' then state_abrev='IL'; 
+	else if state_code='18' then state_abrev='IN'; 
+	else if state_code='19' then state_abrev='IA'; 
+	else if state_code='20' then state_abrev='KS'; 
+	else if state_code='21' then state_abrev='KY'; 
+	else if state_code='22' then state_abrev='LA'; 
+	else if state_code='23' then state_abrev='ME'; 
+	else if state_code='24' then state_abrev='MD'; 
+	else if state_code='25' then state_abrev='MA'; 
+	else if state_code='26' then state_abrev='MI'; 
+	else if state_code='27' then state_abrev='MN'; 
+	else if state_code='28' then state_abrev='MS'; 
+	else if state_code='29' then state_abrev='MO'; 
+	else if state_code='30' then state_abrev='MT'; 
+	else if state_code='31' then state_abrev='NE'; 
+	else if state_code='32' then state_abrev='NV'; 
+	else if state_code='33' then state_abrev='NH'; 
+	else if state_code='34' then state_abrev='NJ'; 
+	else if state_code='35' then state_abrev='NM'; 
+	else if state_code='36' then state_abrev='NY'; 
+	else if state_code='37' then state_abrev='NC'; 
+	else if state_code='38' then state_abrev='ND'; 
+	else if state_code='39' then state_abrev='OH'; 
+	else if state_code='40' then state_abrev='OK'; 
+	else if state_code='41' then state_abrev='OR'; 
+	else if state_code='42' then state_abrev='PA'; 
+	else if state_code='44' then state_abrev='RI'; 
+	else if state_code='45' then state_abrev='SC'; 
+	else if state_code='46' then state_abrev='SD'; 
+	else if state_code='47' then state_abrev='TN'; 
+	else if state_code='48' then state_abrev='TX'; 
+	else if state_code='49' then state_abrev='UT'; 
+	else if state_code='50' then state_abrev='VT'; 
+	else if state_code='51' then state_abrev='VA'; 
+	else if state_code='53' then state_abrev='WA'; 
+	else if state_code='54' then state_abrev='WV'; 
+	else if state_code='55' then state_abrev='WI'; 
+	else if state_code='56' then state_abrev='WY'; 
+	else if state_code='64' then state_abrev='FM'; 
+	else if state_code='66' then state_abrev='GU'; 
+	else if state_code='68' then state_abrev='MH'; 
+	else if state_code='69' then state_abrev='MP'; 
+	else if state_code='70' then state_abrev='PW'; 
+	else if state_code='72' then state_abrev='PR'; 
+	else if state_code='78' then state_abrev='VI'; 
+
+	if state_abrev in ('CT','ME','MA','NH','RI','VT') then division='Division 1';
+	else if state_abrev in ('NJ','NY','PA') then division='Division 2';
+	else if state_abrev in ('IL','IN','MI','OH','WI') then division='Division 3';
+	else if state_abrev in ('IA','KS','MN','MO','NE','ND','SD') then division='Division 4';
+	else if state_abrev in ('DE','FL','GA','MD','NC','SC','VA','DC','WV') then division='Division 5';
+	else if state_abrev in ('AL','KY','MS','TN') then division='Division 6';
+	else if state_abrev in ('AR','LA','OK','TX') then division='Division 7';
+	else if state_abrev in ('AZ','CO','ID','MT','NV','NM','UT','WY') then division='Division 8';
+	else if state_abrev in ('AK','CA','HI','OR','WA') then division='Division 9';
+
+	if division in ('Division 1','Division 2') then region='North East';
+	else if division in ('Division 3','Division 4') then region='Mid West';
+	else if division in ('Division 5','Division 6','Division 7') then region='South';
+	else if division in ('Division 8','Division 9') then region='West';
+
+run;
+
+proc sort data=sasdata.model_data_build;by asofdate state_code county_code;run;
+
+proc sort data=sasdata.fred_data out=fred_data;by state_code county_code asofdate;run;
+proc sort data=sasdata.building_permits out=building_permits nodup dupout=permits_dups;by asofdate state_code county_code;run;
+proc sort data=sasdata.zillow_data out=zillow_data;by state_code county_code asofdate;run;
+
+data zillow_data_adj;
+	merge zillow_data (in=z)
+		  fred_data (in=f keep=state_code county_code asofdate county_hpi_growth state_hpi_growth)
+	;
+	by state_code county_code asofdate;
+	if z;
+
+	zhvi_sfh_hpiadj=zhvi_sfh*county_hpi_growth;
+	median_ppsft_hpiadj=median_ppsft*county_hpi_growth;
+
+	st_zhvi_sfh_hpiadj=st_zhvi_sfh*state_hpi_growth;
+	st_median_ppsft_hpiadj=st_median_ppsft*state_hpi_growth;
+
+	spread_zhvi_sfh_hpiadj=zhvi_sfh_hpiadj-st_zhvi_sfh_hpiadj;
+	spread_median_ppsft_hpiadj=median_ppsft_hpiadj-st_median_ppsft_hpiadj;
+
+	label zhvi_sfh_hpiadj='HPI Adjusted, 2001=0: Zillow Single Family Home Value for County' 
+		  median_ppsft_hpiadj='HPI Adjusted, 2001=0: Zillow Median Price Per Square Foot for County'
+		  st_zhvi_sfh_hpiadj='HPI Adjusted, 2001=0: Zillow Single Family Home Value for State'
+		  st_median_ppsft_hpiadj='HPI Adjusted, 2001=0: Zillow Median Price Per Square Foot for State'
+		  spread_zhvi_sfh_hpiadj='Single Family Home Value, Spread from County to State adjusted for HPI in 2001 Terms'
+		  spread_median_ppsft_hpiadj='Median Price Per Sqft, Spread from County to State adjusted for HPI in 2001 Terms'
+	;
+
+	drop county_hpi_growth state_hpi_growth;
+
+run;
+
+proc sort data=fred_data;by asofdate state_code county_code;run;
+proc sort data=zillow_data_adj;by asofdate state_code county_code;run;
+
+data attritubes;
+	merge fred_data (keep=state_code county_code asofdate 
+						  county_hpi_growth state_hpi_growth cpiaucsl_nat_200101_pct
+						  equifax equifax_county_200101_chg equifax_population equifax_county_change spread_equifax_population
+						  mhi_adj mhi_county_200101_chg spread_mhhi
+						  ruc ruc_county_200101_chg spread_ruc
+						  pua0t17 pua0t17_county_200101_chg spread_pua0t17
+						  pua5t17 pua5t17_county_200101_chg spread_pua5t17
+						  peaa peaa_county_200101_chg spread_peaa
+						  snap snap_county_200101_chg spread_snap_benefits
+						  spread_st_rent_vac spread_st_own_rate)
+		  zillow_data_adj (keep=state_code county_code asofdate zhvi_sfh_hpiadj median_ppsft_hpiadj spread_zhvi_sfh_hpiadj spread_median_ppsft_hpiadj)
+		  building_permits (keep=state_code county_code asofdate bldg_perm_1_4 change_bldg_perm_1_4 bldg_perm_5plus change_bldg_perm_5plus
+								 spread_1_to_4_units spread_5plus_units)
+	;
+	by asofdate state_code county_code;
+run;
+
+data sasdata.model_data_build_with_econ;
+	merge sasdata.model_data_build (in=m)
+		  attritubes (in=a)
+	;
+	by asofdate state_code county_code;
+	where asofdate between 2004 and 2017;
+	if m;
+
+	county_loan_amount_adj=loan_amount*county_hpi_growth;
+	state_loan_amount_adj=loan_amount*state_hpi_growth;
+	spread_loan_amount=county_loan_amount_adj-state_loan_amount_adj;
+	applicant_income_adj=applicant_income*cpiaucsl_nat_200101_pct;
+
+	label county_loan_amount_adj='Loan Amount Adjusted for County HPI Growth, 2001=0'
+		  state_loan_amount_adj='Loan Amount Adjusted for State HPI Growth, 2001=0'
+		  spread_loan_amount='Spread between Adjusted County Loan Amount and Adjusted State Loan Amount'
+		  applicant_income_adj='Applicants Stated Income Adjusted for CPI, 2001=0'
+	;
+run;	
+
+proc means data=sasdata.model_data_build_with_econ noprint nway missing;
+	where action_taken ne '1';
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose
+		  asofdate*state_code asofdate*state_code*loan_purpose
+	;
+	var denial_1 - denial_9
+		action_taken_2 - action_taken_8
+	;
+	output out=not_approved_number (drop=_type_ _freq_) sum=;
+run;
+
+proc means data=sasdata.model_data_build_with_econ noprint nway missing;
+	where action_taken='1';
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose
+		  asofdate*state_code asofdate*state_code*loan_purpose
+	;
+	var action_taken_1;
+	output out=approved_number (drop=_type_ _freq_) sum=;
+run;
+
+data purpose_denied (rename=(denial_1=purpose_denial_1
+							 denial_2=purpose_denial_2
+							 denial_3=purpose_denial_3
+							 denial_4=purpose_denial_4
+							 denial_5=purpose_denial_5
+							 denial_6=purpose_denial_6
+							 denial_7=purpose_denial_7
+							 denial_8=purpose_denial_8
+							 denial_9=purpose_denial_9
+							 action_taken_2=purpose_action_taken_2
+							 action_taken_3=purpose_action_taken_3
+							 action_taken_4=purpose_action_taken_4
+							 action_taken_5=purpose_action_taken_5
+						     action_taken_6=purpose_action_taken_6
+							 action_taken_7=purpose_action_taken_7
+							 action_taken_8=purpose_action_taken_8))
+	 denied (drop=loan_purpose)
+	 state_purpose_denied (rename=(denial_1=st_purpose_denial_1
+							 	   denial_2=st_purpose_denial_2
+							 	   denial_3=st_purpose_denial_3
+							 	   denial_4=st_purpose_denial_4
+							 	   denial_5=st_purpose_denial_5
+							 	   denial_6=st_purpose_denial_6
+							 	   denial_7=st_purpose_denial_7
+							 	   denial_8=st_purpose_denial_8
+							 	   denial_9=st_purpose_denial_9
+							 	   action_taken_2=st_purpose_action_taken_2
+							 	   action_taken_3=st_purpose_action_taken_3
+							 	   action_taken_4=st_purpose_action_taken_4
+							 	   action_taken_5=st_purpose_action_taken_5
+						     	   action_taken_6=st_purpose_action_taken_6
+							 	   action_taken_7=st_purpose_action_taken_7
+							 	   action_taken_8=st_purpose_action_taken_8)
+						    drop=county_code)
+	 state_denied (rename=(denial_1=st_denial_1
+						   denial_2=st_denial_2
+						   denial_3=st_denial_3
+						   denial_4=st_denial_4
+						   denial_5=st_denial_5
+						   denial_6=st_denial_6
+						   denial_7=st_denial_7
+						   denial_8=st_denial_8
+						   denial_9=st_denial_9
+						   action_taken_2=st_action_taken_2
+						   action_taken_3=st_action_taken_3
+						   action_taken_4=st_action_taken_4
+						   action_taken_5=st_action_taken_5
+						   action_taken_6=st_action_taken_6
+						   action_taken_7=st_action_taken_7
+						   action_taken_8=st_action_taken_8)
+				    drop=loan_purpose county_code)
+	;
+	set not_approved_number;
+
+	if not missing(county_code) then do;
+		if not missing(loan_purpose) then output purpose_denied;
+		if missing(loan_purpose) then output denied;
+	end;
+	else if missing(county_code) then do;
+		if not missing(loan_purpose) then output state_purpose_denied;
+		if missing(loan_purpose) then output state_denied;
+	end;
+
+run;
+
+data purpose_approved (rename=(action_taken_1=purpose_action_taken_1))
+	 approved (drop=loan_purpose)
+	 state_purpose_approved (drop=county_code rename=(action_taken_1=st_purpose_action_taken_1))
+	 state_approved (drop=loan_purpose county_code rename=(action_taken_1=st_action_taken_1)
+	;
+	set approved_number;
+
+	if not missing(county_code) then do;
+		if not missing(loan_purpose) then output purpose_approved ;
+		if missing(loan_purpose) then output approved;
+	end;
+	else if missing(county_code) then do;
+		if not missing(loan_purpose) then output state_purpose_approved ;
+		if missing(loan_purpose) then output state_approved;
+	end;
+run;
+
+/* lets first add the CPI to this so that we can level things out to be in terms of 2001 dollars. */
+proc means data=sasdata.model_data_build_with_econ noprint missing;
+	where action_taken='1' and coalesce(applicant_income,0) not in (0,9999);
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose
+		  asofdate*state_code asofdate*state_code*loan_purpose
+	;
+	output out=inc_quintile 
+		   p20(applicant_income_adj)=inc_p20
+		   p40(applicant_income_adj)=inc_p40
+		   p60(applicant_income_adj)=inc_p60
+		   p80(applicant_income_adj)=inc_p80
+	;
+run;
+
+data purpose_inc (rename=(inc_p20=purpose_inc_p20
+						  inc_p40=purpose_inc_p40
+						  inc_p60=purpose_inc_p60
+						  inc_p80=purpose_inc_p80))
+	 inc (drop=loan_purpose)
+	 state_purpose_inc (rename=(inc_p20=st_purpose_inc_p20
+						  		inc_p40=st_purpose_inc_p40
+						  		inc_p60=st_purpose_inc_p60
+						  		inc_p80=st_purpose_inc_p80)
+						drop=county_code)
+	 state_inc (rename=(inc_p20=st_inc_p20
+						inc_p40=st_inc_p40
+						inc_p60=st_inc_p60
+						inc_p80=st_inc_p80)
+				drop=loan_purpose county_code)
+	;
+	set inc_quintile;
+
+	if not missing(county_code) then do;
+		if not missing(loan_purpose) then output purpose_inc;
+		if missing(loan_purpose) then output inc;
+	end;
+	else if missing(county_code) then do;
+		if not missing(loan_purpose) then output purpose_inc;
+		if missing(loan_purpose) then output inc;
+	end;
+	drop _type_ _freq_;
+
+run;
+
+proc means data=sasdata.model_data_build_with_econ noprint missing;
+	where action_taken='1' and not missing(spread_loan_amount);
+	class asofdate state_code county_code loan_purpose;
+	types asofdate*state_code*county_code asofdate*state_code*county_code*loan_purpose
+		  asofdate*state_code asofdate*state_code*loan_purpose
+	;
+	output out=loan_amount_quintile 
+		   p20(spread_loan_amount)=loan_amount_p20
+		   p40(spread_loan_amount)=loan_amount_p40
+		   p60(spread_loan_amount)=loan_amount_p60
+		   p80(spread_loan_amount)=loan_amount_p80
+	;
+run;
+
+data purpose_loan_amount (rename=(loan_amount_p20=purpose_loan_amount_p20
+								  loan_amount_p40=purpose_loan_amount_p40
+								  loan_amount_p60=purpose_loan_amount_p60
+								  loan_amount_p80=purpose_loan_amount_p80))
+	 loan_amount (drop=loan_purpose)
+	;
+	set loan_amount_quintile;
+
+
+	if not missing(loan_purpose) then output purpose_loan_amount;
+	if missing(loan_purpose) then output loan_amount;
+
+	drop _type_ _freq_;
+
+run;
+
+data sasdata.model_data_build_with_econ sasdata.train sasdata.validate;
+	if _n_=0 then set sasdata.model_data_build_with_econ (drop=denial_1 - denial_9 action_taken_1 - action_taken_8);
+	if _n_=1 then do;
+		declare hash lp_deny(dataset:'purpose_denied');
+			lp_deny.definekey('asofdate','state_code','county_code','loan_purpose');
+			lp_deny.definedata('purpose_denial_1','purpose_denial_2','purpose_denial_3','purpose_denial_4','purpose_denial_5',
+							'purpose_denial_6','purpose_denial_7','purpose_denial_8','purpose_denial_9',
+							'purpose_action_taken_2','purpose_action_taken_3','purpose_action_taken_4','purpose_action_taken_5',
+							'purpose_action_taken_6','purpose_action_taken_7','purpose_action_taken_8')
+			;
+			lp_deny.definedone();
+		call missing(purpose_denial_1,purpose_denial_2,purpose_denial_3,purpose_denial_4,purpose_denial_5,
+					 purpose_denial_6,purpose_denial_7,purpose_denial_8,purpose_denial_9,
+					 purpose_action_taken_2,purpose_action_taken_3,purpose_action_taken_4,purpose_action_taken_5,
+					 purpose_action_taken_6,purpose_action_taken_7,purpose_action_taken_8)
+		;
+		declare hash deny(dataset:'denied');
+			deny.definekey('asofdate','state_code','county_code');
+			deny.definedata('denial_1','denial_2','denial_3','denial_4','denial_5',
+							'denial_6','denial_7','denial_8','denial_9',
+							'action_taken_2','action_taken_3','action_taken_4','action_taken_5',
+							'action_taken_6','action_taken_7','action_taken_8')
+			;
+			deny.definedone();
+		call missing(denial_1,denial_2,denial_3,denial_4,denial_5,
+					 denial_6,denial_7,denial_8,denial_9,
+					 action_taken_2,action_taken_3,action_taken_4,action_taken_5,
+					 action_taken_6,action_taken_7,action_taken_8)
+		;
+		declare hash lp_approve(dataset:'purpose_approved');
+			lp_approve.definekey('asofdate','state_code','county_code','loan_purpose');
+			lp_approve.definedata('purpose_action_taken_1');
+			lp_approve.definedone();
+		call missing(purpose_action_taken_1);
+		declare hash approve(dataset:'approved');
+			approve.definekey('asofdate','state_code','county_code');
+			approve.definedata('action_taken_1');
+			approve.definedone();
+		call missing(action_taken_1);
+		declare hash lp_amt(dataset:'purpose_loan_amount');
+			lp_amt.definekey('asofdate','state_code','county_code','loan_purpose');
+			lp_amt.definedata('purpose_loan_amount_p20','purpose_loan_amount_p40','purpose_loan_amount_p60',
+							  'purpose_loan_amount_p80')
+			;
+			lp_amt.definedone();
+		call missing(purpose_loan_amount_p20,purpose_loan_amount_p40,purpose_loan_amount_p60,
+					 purpose_loan_amount_p80)
+		;
+		declare hash amt(dataset:'loan_amount');
+			amt.definekey('asofdate','state_code','county_code');
+			amt.definedata('loan_amount_p20','loan_amount_p40','loan_amount_p60',
+						   'loan_amount_p80')
+			;
+			amt.definedone();
+		call missing(loan_amount_p20,loan_amount_p40,loan_amount_p60,
+					 loan_amount_p80)
+		;
+		declare hash lp_inc(dataset:'purpose_inc');
+			lp_inc.definekey('asofdate','state_code','county_code','loan_purpose');
+			lp_inc.definedata('purpose_inc_p20','purpose_inc_p40','purpose_inc_p60',
+							  'purpose_inc_p80')
+			;
+			lp_inc.definedone();
+		call missing(purpose_inc_p20,purpose_inc_p40,purpose_inc_p60,
+					 purpose_inc_p80)
+		;
+		declare hash inc(dataset:'inc');
+			inc.definekey('asofdate','state_code','county_code');
+			inc.definedata('inc_p20','inc_p40','inc_p60',
+						   'inc_p80')
+			;
+			inc.definedone();
+		call missing(inc_p20,inc_p40,inc_p60,inc_p80);
+	end;
+
+	set sasdata.model_data_build_with_econ (drop=denial_1 - denial_9 action_taken_1 - action_taken_8);
+	by asofdate state_code county_code;
+
+	rc=lp_deny.find();
+	rc=deny.find();
+	rc=lp_approve.find();
+	rc=approve.find();
+	rc=lp_amt.find();
+	rc=amt.find();
+	rc=lp_inc.find();
+	rc=inc.find();
+
+	/* All in income quintile */
+	length income_quintile bin_inc_0-bin_inc_5 3;
+	if missing(applicant_income) or applicant_income=9999 then income_quintile=0;
+	else if applicant_income_adj le inc_p20 then income_quintile=1;
+	else if applicant_income_adj le inc_p40 then income_quintile=2;
+	else if applicant_income_adj le inc_p60 then income_quintile=3;
+	else if applicant_income_adj le inc_p80 then income_quintile=4;
+	else if applicant_income_adj gt inc_p80 then income_quintile=5;
+
+	bin_inc_0=(income_quintile=0);
+	bin_inc_1=(income_quintile=1);
+	bin_inc_2=(income_quintile=2);
+	bin_inc_3=(income_quintile=3);
+	bin_inc_4=(income_quintile=4);
+	bin_inc_5=(income_quintile=5);
+
+	/* income quintile by loan purpose */
+	length purpose_income_quintile bin_purpose_inc_0-bin_purpose_inc_5 3;
+
+	if missing(applicant_income) or applicant_income=9999 then purpose_income_quintile=0;
+	else if applicant_income_adj le purpose_inc_p20 then purpose_income_quintile=1;
+	else if applicant_income_adj le purpose_inc_p40 then purpose_income_quintile=2;
+	else if applicant_income_adj le purpose_inc_p60 then purpose_income_quintile=3;
+	else if applicant_income_adj le purpose_inc_p80 then purpose_income_quintile=4;
+	else if applicant_income_adj gt purpose_inc_p80 then purpose_income_quintile=5;
+
+	bin_purpose_inc_0=(purpose_income_quintile=0);
+	bin_purpose_inc_1=(purpose_income_quintile=1);
+	bin_purpose_inc_2=(purpose_income_quintile=2);
+	bin_purpose_inc_3=(purpose_income_quintile=3);
+	bin_purpose_inc_4=(purpose_income_quintile=4);
+	bin_purpose_inc_5=(purpose_income_quintile=5);
+
+	drop rc;
+
+	random=ranuni(28104);
+
+	output sasdata.model_data_build_with_econ;
+	if random le .6 then output sasdata.train;
+	else output sasdata.validate;
+
+run;
+
+proc sort data=sasdata.train;by asofdate state_code county_code loan_purpose;run;
+proc sort data=sasdata.validate;by asofdate state_code county_code loan_purpose;run;
+
+data sasdata.train_2004_2007;
+	set sasdata.train;
+	where action_taken='1' and asofdate between 2004 and 2007;
+run;
+
+data sasdata.validate_2004_2007;
+	set sasdata.validate;
+	where action_taken='1' and asofdate between 2004 and 2007;
+run;
+
+proc sql;
+	create table dups as
+		select
+			asofdate
+		,	state_code
+		,	county_code
+	from attritubes
+	group by
+		asofdate
+	,	state_code
+	,	county_code
+	having count(county_code) gt 1
+;quit;
+
+
+proc sql;
+	create table investor_list as
+		select
+			asofdate
+		,	respondent_id
+		,	inst1
+		,	subprime_institution
+	from sasdata.investor_list
+	where asofdate ge 2004
+	order by
+		asofdate
+	,	respondent_id
+;quit;
+
+
+		  
+
+proc sql;
+	create table permits_1_4 as 
+		select
+			date as asofdate length=3
+		,	state_code
+		,	county_code
+		,	sum(unit_1_bldgs,unit_2_bldgs,unit_34_bldgs) as permits_1to4_bldgs
+		,	sum(unit_1_units,unit_2_units,unit_34_units) as permits_1to4_units
+	from sasdata.permits
+	order by
+		state_code
+	,	county_code
+	,	asofdate
+;quit;
+proc sort data=sasdata.zillow_data out=zillow_data;by state_code county_code asofdate;run;
+proc sort data=sasdata.fred_data_final out=fred_data;by state_code county_code asofdate;run;
+
+/* obtain year 2001 values */
+data permits_1_4_2001;
+	set permits_1_4;
+	by state_code county_code asofdate ;
+	where asofdate=2001;
+	rename permits_1to4_bldgs=permits_1to4_bldgs_2001
+		   permits_1to4_units=permits_1to4_units_2001
+	;
+	drop asofdate;
+run;
+data permits_1_4_change;
+	merge permits_1_4 (in=b)
+		  permits_1_4_2001 (in=_2001)
+	;
+	by state_code county_code;
+	if b and _2001;
+
+	chg_permits_1to4_bldgs=permits_1to4_bldgs_2001-permits_1to4_bldgs;
+	chg_permits_1to4_units=permits_1to4_units_2001-permits_1to4_units;
+
+run;
+
+data zillow_data_2001;
+	set zillow_data;
+	where asofdate=2001;
+	rename zhvi_toptier=zhvi_toptier_2001
+		   zhvi_singlefamily=zhvi_singlefamily_2001
+		   zhvi_bottomtier=zhvi_bottomtier_2001
+		   zhvi_median_ppsft=zhvi_median_ppsft_2001
+	       us_zhvi_toptier=us_zhvi_toptier_2001
+		   us_zhvi_singlefamily=us_zhvi_singlefamily_2001
+		   us_zhvi_bottomtier=us_zhvi_bottomtier_2001
+		   us_zhvi_median_ppsft=us_zhvi_median_ppsft_2001
+	;
+	drop asofdate;
+run;
+
+data zillow_data_change;
+	merge zillow_data (in=b)
+		  zillow_data_2001 (in=_2001)
+	;
+	by state_code county_code;
+
+	chg_zhvi_toptier=zhvi_toptier_2001-zhvi_toptier;
+	chg_zhvi_singlefamily=zhvi_singlefamily_2001-zhvi_singlefamily;
+	chg_zhvi_bottomtier=zhvi_bottomtier_2001-zhvi_bottomtier;
+	chg_zhvi_median_ppsft=zhvi_median_ppsft_2001-zhvi_median_ppsft;
+	chg_us_zhvi_toptier=us_zhvi_toptier_2001-us_zhvi_toptier;
+	chg_us_zhvi_singlefamily=us_zhvi_singlefamily_2001-us_zhvi_singlefamily;
+	chg_us_zhvi_bottomtier=us_zhvi_bottomtier_2001-us_zhvi_bottomtier;
+	chg_us_zhvi_median_ppsft=us_zhvi_median_ppsft_2001-us_zhvi_median_ppsft;
+
+	pct_zhvi_toptier=divide(chg_zhvi_toptier,zhvi_toptier_2001);
+	pct_zhvi_singlefamily=divide(chg_zhvi_singlefamily,zhvi_singlefamily_2001);
+	pct_zhvi_bottomtier=divide(chg_zhvi_bottomtier,zhvi_bottomtier_2001);
+	pct_zhvi_median_ppsft=divide(chg_zhvi_median_ppsft,zhvi_median_ppsft_2001);
+	pct_us_zhvi_toptier=divide(chg_us_zhvi_toptier,us_zhvi_toptier_2001);
+	pct_us_zhvi_singlefamily=divide(chg_us_zhvi_singlefamily,us_zhvi_singlefamily_2001);
+	pct_us_zhvi_bottomtier=divide(chg_us_zhvi_bottomtier,us_zhvi_bottomtier_2001);
+	pct_us_zhvi_median_ppsft=divide(chg_us_zhvi_median_ppsft,us_zhvi_median_ppsft_2001);
+	format pct_: percent9.2;
+
+run;
+
+proc sort data=zillow_data_change;by asofdate state_code county_code;run;
+proc sort data=permits_1_4_change;by asofdate state_code county_code;run;
+proc sort data=fred_data;by asofdate state_code county_code;run;
+
+
+options obs=max;
+data model_data_build_1;
+	length respondent orig_respondent_id $ 12 inst1 institution $ 100 subprime_institution 3;
+	if _n_=1 then do;
+		declare hash sp(dataset:'sasdata.subprime_institution');
+			sp.definekey('asofdate','orig_respondent_id');
+			sp.definedata('inst1','subprime_institution');
+			sp.definedone();
+		call missing(orig_respondent_id,inst1,subprime_institution);
+	end;
+
+	merge model_data_build (in=master)
+		  fred_data (in=fred)
+		  permits_1_4_change (in=perm)
+		  zillow_data_change (in=zillow)
+	;
+	by asofdate state_code county_code;
+	where asofdate in (2004,2005,2006,2007);
+	if master;
+
+	respondent=cats(respondent_id,'-',agency_code);
+
+	rc_sp=sp.find(key:asofdate,key:cats(respondent_id,'-',agency_code));
+	institution=inst1;
+	drop orig_respondent_id inst1 rc_sp;
+
+	/* setup binary */
+	length loan_type_1 loan_type_2 loan_type_3 loan_type_4 
+		   action_taken_1 action_taken_2 action_taken_3 action_taken_4 action_taken_5 action_taken_6 action_taken_7 action_taken_8
+		   type_of_purchaser_0 type_of_purchaser_1 type_of_purchaser_2 type_of_purchaser_3 type_of_purchaser_4 
+		   type_of_purchaser_5 type_of_purchaser_6 type_of_purchaser_7 type_of_purchaser_8 type_of_purchaser_9
+		   property_type_1 property_type_2 property_type_3
+		   ethinicity_1 ethinicity_2 ethinicity_3
+		   co_borrower
+		   denial_1 denial_2 denial_3 denial_4 denial_5 denial_6 denial_7 denial_8 denial_9
+		   loan_purpose_1 loan_purpose_2 loan_purpose_3
+		   applicant_race_1 applicant_race_2 applicant_race_3 applicant_race_4 applicant_race_5 applicant_race_6 applicant_race_7
+		   lien_status_1 lien_status_2 lien_status_3
+		   preapproval_1 preapproval_2 preapproval_3
+		   3
+	;
+
+	loan_type_1=(loan_type='1');
+	loan_type_2=(loan_type='2');
+	loan_type_3=(loan_type='3');
+	loan_type_4=(loan_type='4');
+
+	action_taken_1=(action_taken='1');
+	action_taken_2=(action_taken='2');
+	action_taken_3=(action_taken='3');
+	action_taken_4=(action_taken='4');
+	action_taken_5=(action_taken='5');
+	action_taken_6=(action_taken='6');
+	action_taken_7=(action_taken='7');
+	action_taken_8=(action_taken='8');
+
+	type_of_purchaser_0=(type_of_purchaser='0');
+	type_of_purchaser_1=(type_of_purchaser='1');
+	type_of_purchaser_2=(type_of_purchaser='2');
+	type_of_purchaser_3=(type_of_purchaser='3');
+	type_of_purchaser_4=(type_of_purchaser='4');
+	type_of_purchaser_5=(type_of_purchaser='5');
+	type_of_purchaser_6=(type_of_purchaser='6');
+	type_of_purchaser_7=(type_of_purchaser='7');
+	type_of_purchaser_8=(type_of_purchaser='8');
+	type_of_purchaser_9=(type_of_purchaser='9');
+
+	property_type_1=(property_type='1');
+	property_type_2=(property_type='2');
+	property_type_3=(property_type='3');
+
+	ethinicity_1=(ethinicity='1');
+	ethinicity_2=(ethinicity='2');
+	ethinicity_3=(ethinicity='3');
+
+	co_borrower=(co_ethinicity ne '5' or co_applicant_race ne '8');
+
+	denial_1=(denial_reason_1='1' or denial_reason_2='1' or denial_reason_3='1');
+	denial_2=(denial_reason_1='2' or denial_reason_2='2' or denial_reason_3='2');
+	denial_3=(denial_reason_1='3' or denial_reason_2='3' or denial_reason_3='3');
+	denial_4=(denial_reason_1='4' or denial_reason_2='4' or denial_reason_3='4');
+	denial_5=(denial_reason_1='5' or denial_reason_2='5' or denial_reason_3='5');
+	denial_6=(denial_reason_1='6' or denial_reason_2='6' or denial_reason_3='6');
+	denial_7=(denial_reason_1='7' or denial_reason_2='7' or denial_reason_3='7');
+	denial_8=(denial_reason_1='8' or denial_reason_2='8' or denial_reason_3='8');
+	denial_9=(denial_reason_1='9' or denial_reason_2='9' or denial_reason_3='9');
+
+	loan_purpose_1=(loan_purpose='1');
+	loan_purpose_2=(loan_purpose='2');
+	loan_purpose_3=(loan_purpose='3');
+
+	applicant_race_1=(applicant_race='1');
+	applicant_race_2=(applicant_race='2');
+	applicant_race_3=(applicant_race='3');
+	applicant_race_4=(applicant_race='4');
+	applicant_race_5=(applicant_race='5');
+	applicant_race_6=(applicant_race='6');
+	applicant_race_7=(applicant_race='7');
+
+	lien_status_1=(lien_status='1');
+	lien_status_2=(lien_status='2');
+	lien_status_3=(lien_status='3');
+
+	preapproval_1=(preapproval='1');
+	preapproval_2=(preapproval='2');
+	preapproval_3=(preapproval='3');
+
+run;
+
+
+
+
+
+
+
+proc sort data=model_data_build;by asofdate respondent_id sequence_number;run;
+proc sort data=sasdata.hud_subprime_investor out=hud_subprime_investor;by asofdate respondent_id;run;
+
+data model_data_build_1;
+	merge model_data_build (in=mas)
+		  hud_subprime_investor (in=si 
+								 keep=asofdate respondent_id investor_name
+								 rename=(investor_name=hud_subprime_investor))
+	;
+	by asofdate respondent_id;
+	if mas;
+    length hud_subprime $ 1;
+    if mas and si then hud_subprime='1';
+    else hud_subprime='0';
+    if lien_status='1' and rate_spread ge 3 then hmda_high_price='1';
+    else if lien_status='2' and rate_spread ge 5 then hmda_high_price='1';
+    else hmda_high_price='0';
+
+	if lien_status='1'
+		and property_type='1'
+		and action_taken='1'
+		and state_code not in ('2','15','72')
+		and (loan_type in ('2','3','4') and (hud_subprime='1' or hmda_high_price='1') or loan_type='1')
+		then use_for_model='1';
+	else use_for_model='0';
+
+	if missing(applicant_income) or applicant_income=9999 then loan_to_income=.;
+	else if missing(loan_amount) or loan_amount lt 1 then loan_to_income=.;
+	else loan_to_income=divide(loan_amount,applicant_income);
+
+run;
+
+proc means data=model_data_build_1 noprint nway missing;
+    where use_for_model='1';
+    class asofdate state_code county_code;
+    output out=income_quintile (drop=_type_ _freq_)
+           p20(applicant_income)=p20_county_inc
+           p40(applicant_income)=p40_county_inc
+           p60(applicant_income)=p60_county_inc
+           p80(applicant_income)=p80_county_inc
+           p20(loan_to_income)=p20_loan_to_income
+           q1(loan_to_income)=q1_loan_to_income
+           p40(loan_to_income)=p40_loan_to_income
+           median(loan_to_income)=q2_loan_to_income
+           p60(loan_to_income)=p60_loan_to_income
+           q3(loan_to_income)=q3_loan_to_income
+           p80(loan_to_income)=p80_loan_to_income
+    ;
+run;
+
+proc sort data=model_data_build_1;by asofdate state_code county_code;run;
+
+data sasdata.hmda_data_stack;
+    merge model_data_build_1 (in=m)
+          income_quintile (in=ic)
+    ;
+    by asofdate state_code county_code;
+
+    if loan_purpose in ('2','3') then refi='1'; /* home improvements and refi. */
+    else refi='0';
+    if loan_purpose='1' then purch='1'; /* purchase */
+    else purch='0';
+    if coalesce(loan_amount,0) ge 25000 then above_25k='1';
+    else above_25k='0';
+
+    length target_hmda_high_price target_hud_subprime
+           black hispanic
+           missing_income 
+           first_income_quintile second_income_quintile third_income_quintile 
+           fourth_income_quintile fifth_income_quintile 
+           income_quintile lti_quintile 
+           interaction_quintile_00
+           interaction_quintile_11 interaction_quintile_12 interaction_quintile_13 interaction_quintile_14 interaction_quintile_15
+           interaction_quintile_21 interaction_quintile_22 interaction_quintile_23 interaction_quintile_24 interaction_quintile_25
+           interaction_quintile_31 interaction_quintile_32 interaction_quintile_33 interaction_quintile_34 interaction_quintile_35
+           interaction_quintile_41 interaction_quintile_42 interaction_quintile_43 interaction_quintile_44 interaction_quintile_45
+           interaction_quintile_51 interaction_quintile_52 interaction_quintile_53 interaction_quintile_54 interaction_quintile_55
+           q_loan_to_income_0-q_loan_to_income_3
+           q_interaction_00 q_interaction_11-q_interaction_13 q_interaction_21-q_interaction_23
+           q_interaction_31-q_interaction_33 q_interaction_41-q_interaction_43 q_interaction_51-q_interaction_53
+           s_loan_to_income_0-s_loan_to_income_4
+           s_interaction_00
+           s_interaction_11-s_interaction_14 s_interaction_21-s_interaction_24
+           s_interaction_31-s_interaction_34 s_interaction_41-s_interaction_44 s_interaction_41-s_interaction_44
+           3
+    ;
+    target_hmda_high_price=(hmda_high_price='1');
+    target_hud_subprime=(hud_subprime='1');
+
+    black=(applicant_race='3');
+    hispanic=(ethinicity='1');
+
+    if missing(applicant_income) or applicant_income=9999 then do;
+        missing_income=1;
+        lti_quintile=0;
+        income_quintile=0;
+    end;
+    else do;
+        first_income_quintile=0;
+        second_income_quintile=0;
+        third_income_quintile=0;
+        fourth_income_quintile=0;
+        fifth_income_quintile=0;
+
+        if applicant_income le p20_county_inc then first_income_quintile=1;
+        else if applicant_income le p40_county_inc then second_income_quintile=1;
+        else if applicant_income le p60_county_inc then third_income_quintile=1;
+        else if applicant_income le p80_county_inc then fourth_income_quintile=1;
+        else if applicant_income gt p80_county_inc then fifth_income_quintile=1;
+
+        if first_income_quintile=1 then income_quintile=1;
+        else if second_income_quintile=1 then income_quintile=2;
+        else if third_income_quintile=1 then income_quintile=3;
+        else if fourth_income_quintile=1 then income_quintile=4;
+        else if fifth_income_quintile=1 then income_quintile=5;
+
+        first_lti_quintile=0;
+        second_lti_quintile=0;
+        third_lti_quintile=0;
+        fourth_lti_quintile=0;
+        fifth_lti_quintile=0;
+
+        if missing(loan_amount) then missing_loan_amount=1;
+        else if loan_to_income le p20_loan_to_income then first_lti_quintile=1;
+        else if loan_to_income le p40_loan_to_income then second_lti_quintile=1;
+        else if loan_to_income le p60_loan_to_income then third_lti_quintile=1;
+        else if loan_to_income le p80_loan_to_income then fourth_lti_quintile=1;
+        else if loan_to_income gt p80_loan_to_income then fifth_lti_quintile=1;
+
+        if missing_loan_amount=1 then lti_quintile=0;
+        else if first_lti_quintile=1 then lti_quintile=1;
+        else if second_lti_quintile=1 then lti_quintile=2;
+        else if third_lti_quintile=1 then lti_quintile=3;
+        else if fourth_lti_quintile=1 then lti_quintile=4;
+        else if fifth_lti_quintile=1 then lti_quintile=5;
+
+        interaction_quintile_00=0;
+        interaction_quintile_11=0;
+        interaction_quintile_12=0;
+        interaction_quintile_13=0;
+        interaction_quintile_14=0;
+        interaction_quintile_15=0;
+        interaction_quintile_21=0;
+        interaction_quintile_22=0;
+        interaction_quintile_23=0;
+        interaction_quintile_24=0;
+        interaction_quintile_25=0;
+        interaction_quintile_31=0;
+        interaction_quintile_32=0;
+        interaction_quintile_33=0;
+        interaction_quintile_34=0;
+        interaction_quintile_35=0;
+        interaction_quintile_41=0;
+        interaction_quintile_42=0;
+        interaction_quintile_43=0;
+        interaction_quintile_44=0;
+        interaction_quintile_45=0;
+        interaction_quintile_51=0;
+        interaction_quintile_52=0;
+        interaction_quintile_53=0;
+        interaction_quintile_54=0;
+        interaction_quintile_55=0;
+
+        if lti_quintile=0 and income_quintile=0 then interaction_quintile_00=1;
+
+        else if lti_quintile=1 and income_quintile=1 then interaction_quintile_11=1;
+        else if lti_quintile=1 and income_quintile=2 then interaction_quintile_12=1;
+        else if lti_quintile=1 and income_quintile=3 then interaction_quintile_13=1;
+        else if lti_quintile=1 and income_quintile=4 then interaction_quintile_14=1;
+        else if lti_quintile=1 and income_quintile=5 then interaction_quintile_15=1;
+
+        else if lti_quintile=2 and income_quintile=1 then interaction_quintile_21=1;
+        else if lti_quintile=2 and income_quintile=2 then interaction_quintile_22=1;
+        else if lti_quintile=2 and income_quintile=3 then interaction_quintile_23=1;
+        else if lti_quintile=2 and income_quintile=4 then interaction_quintile_24=1;
+        else if lti_quintile=2 and income_quintile=5 then interaction_quintile_25=1;
+
+        else if lti_quintile=3 and income_quintile=1 then interaction_quintile_31=1;
+        else if lti_quintile=3 and income_quintile=2 then interaction_quintile_32=1;
+        else if lti_quintile=3 and income_quintile=3 then interaction_quintile_33=1;
+        else if lti_quintile=3 and income_quintile=4 then interaction_quintile_34=1;
+        else if lti_quintile=3 and income_quintile=5 then interaction_quintile_35=1;
+
+        else if lti_quintile=4 and income_quintile=1 then interaction_quintile_41=1;
+        else if lti_quintile=4 and income_quintile=2 then interaction_quintile_42=1;
+        else if lti_quintile=4 and income_quintile=3 then interaction_quintile_43=1;
+        else if lti_quintile=4 and income_quintile=4 then interaction_quintile_44=1;
+        else if lti_quintile=4 and income_quintile=5 then interaction_quintile_45=1;
+
+        else if lti_quintile=5 and income_quintile=1 then interaction_quintile_51=1;
+        else if lti_quintile=5 and income_quintile=2 then interaction_quintile_52=1;
+        else if lti_quintile=5 and income_quintile=3 then interaction_quintile_53=1;
+        else if lti_quintile=5 and income_quintile=4 then interaction_quintile_54=1;
+        else if lti_quintile=5 and income_quintile=5 then interaction_quintile_55=1;
+
+        /* additional binning for loan_to_income */
+
+        /* really busting these out by 1/3. */
+        q_loan_to_income_0=0;
+        q_loan_to_income_1=0;
+        q_loan_to_income_2=0;
+        q_loan_to_income_3=0;
+
+        if missing(loan_amount) then q_loan_to_income_0=1;
+        else if loan_to_income le q1_loan_to_income then q_loan_to_income_1=1;
+        else if loan_to_income le q2_loan_to_income then q_loan_to_income_2=1;
+        *else if loan_to_income gt q3_loan_to_income then q_loan_to_income_3=1 seriously, what is wrong with me...;
+        else if loan_to_income gt q2_loan_to_income then q_loan_to_income_3=1;
+	
+        q_interaction_00=0;
+
+        q_interaction_11=0;
+        q_interaction_12=0;
+        q_interaction_13=0;
+
+        q_interaction_21=0;
+        q_interaction_22=0;
+        q_interaction_23=0;
+
+        q_interaction_31=0;
+        q_interaction_32=0;
+        q_interaction_33=0;
+
+        q_interaction_41=0;
+        q_interaction_42=0;
+        q_interaction_43=0;
+
+        q_interaction_51=0;
+        q_interaction_52=0;
+        q_interaction_53=0;
+
+        if lti_quintile=0 and income_quintile=0 then q_interaction_00=1;
+        else if income_quintile=1 and q_loan_to_income_1=1 then q_interaction_11=1;
+        else if income_quintile=1 and q_loan_to_income_2=1 then q_interaction_12=1;
+        else if income_quintile=1 and q_loan_to_income_3=1 then q_interaction_13=1;
+
+        else if income_quintile=2 and q_loan_to_income_1=1 then q_interaction_21=1;
+        else if income_quintile=2 and q_loan_to_income_2=1 then q_interaction_22=1;
+        else if income_quintile=2 and q_loan_to_income_3=1 then q_interaction_23=1;
+
+        else if income_quintile=3 and q_loan_to_income_1=1 then q_interaction_31=1;
+        else if income_quintile=3 and q_loan_to_income_2=1 then q_interaction_32=1;
+        else if income_quintile=3 and q_loan_to_income_3=1 then q_interaction_33=1;
+
+        else if income_quintile=4 and q_loan_to_income_1=1 then q_interaction_41=1;
+        else if income_quintile=4 and q_loan_to_income_2=1 then q_interaction_42=1;
+        else if income_quintile=4 and q_loan_to_income_3=1 then q_interaction_43=1;
+
+        else if income_quintile=5 and q_loan_to_income_1=1 then q_interaction_51=1;
+        else if income_quintile=5 and q_loan_to_income_2=1 then q_interaction_52=1;
+        else if income_quintile=5 and q_loan_to_income_3=1 then q_interaction_53=1;
+
+        /* really busting these out by bottom 20, 21-40, 41-80 then 80+. */
+
+        s_loan_to_income_0=0;
+        s_loan_to_income_1=0;
+        s_loan_to_income_2=0;
+        s_loan_to_income_3=0;
+        s_loan_to_income_4=0;
+
+        if missing(loan_amount) then s_loan_to_income_0=1;
+        else if loan_to_income le p20_loan_to_income then s_loan_to_income_1=1;
+        else if loan_to_income le p40_loan_to_income then s_loan_to_income_2=1;
+        else if loan_to_income le p80_loan_to_income then s_loan_to_income_3=1;
+        else if loan_to_income gt p80_loan_to_income then s_loan_to_income_4=1;
+
+        s_interaction_00=0;
+
+        s_interaction_11=0;
+        s_interaction_12=0;
+        s_interaction_13=0;
+        s_interaction_14=0;
+
+        s_interaction_21=0;
+        s_interaction_22=0;
+        s_interaction_23=0;
+        s_interaction_24=0;
+
+        s_interaction_31=0;
+        s_interaction_32=0;
+        s_interaction_33=0;
+        s_interaction_34=0;
+
+        s_interaction_41=0;
+        s_interaction_42=0;
+        s_interaction_43=0;
+        s_interaction_44=0;
+
+        s_interaction_51=0;
+        s_interaction_52=0;
+        s_interaction_53=0;
+        s_interaction_54=0;
+
+        if lti_quintile=0 and income_quintile=0 then s_interaction_00=1;
+        else if income_quintile=1 and s_loan_to_income_1=1 then s_interaction_11=1;
+        else if income_quintile=1 and s_loan_to_income_2=1 then s_interaction_12=1;
+        else if income_quintile=1 and s_loan_to_income_3=1 then s_interaction_13=1;
+        else if income_quintile=1 and s_loan_to_income_4=1 then s_interaction_14=1;
+
+        else if income_quintile=2 and s_loan_to_income_1=1 then s_interaction_21=1;
+        else if income_quintile=2 and s_loan_to_income_2=1 then s_interaction_22=1;
+        else if income_quintile=2 and s_loan_to_income_3=1 then s_interaction_23=1;
+        else if income_quintile=2 and s_loan_to_income_4=1 then s_interaction_24=1;
+
+        else if income_quintile=3 and s_loan_to_income_1=1 then s_interaction_31=1;
+        else if income_quintile=3 and s_loan_to_income_2=1 then s_interaction_32=1;
+        else if income_quintile=3 and s_loan_to_income_3=1 then s_interaction_33=1;
+        else if income_quintile=3 and s_loan_to_income_4=1 then s_interaction_34=1;
+
+        else if income_quintile=4 and s_loan_to_income_1=1 then s_interaction_41=1;
+        else if income_quintile=4 and s_loan_to_income_2=1 then s_interaction_42=1;
+        else if income_quintile=4 and s_loan_to_income_3=1 then s_interaction_43=1;
+        else if income_quintile=4 and s_loan_to_income_4=1 then s_interaction_44=1;
+
+        else if income_quintile=5 and s_loan_to_income_1=1 then s_interaction_51=1;
+        else if income_quintile=5 and s_loan_to_income_2=1 then s_interaction_52=1;
+        else if income_quintile=5 and s_loan_to_income_3=1 then s_interaction_53=1;
+        else if income_quintile=5 and s_loan_to_income_4=1 then s_interaction_54=1;
+
+    end;
+
+run;
+
+proc means data=sasdata.hmda_data_stack noprint nway missing;
+    class msa_of_property state_code county_code asofdate lien_status property_type action_taken loan_type
+          type_of_purchaser hud_subprime hmda_high_price refi loan_purpose purch above_25k occupancy use_for_model
+    ;
+    output out=sasdata.hmda_model_cohort
+           n(asofdate)=count
+           sum(target_hmda_high_price)=target_hmda_high_price
+           sum(target_hud_subprime)=target_hud_subprime
+           sum(black)=black
+           sum(hispanic)=hispanic
+           sum(missing_income)=missing_income
+           sum(first_income_quintile)=first_income_quintile
+           sum(second_income_quintile)=second_income_quintile
+           sum(third_income_quintile)=third_income_quintile
+           sum(fourth_income_quintile)=fourth_income_quintile
+           sum(fifth_income_quintile)=fifth_income_quintile
+
+           sum(first_lti_quintile)=first_lti_quintile
+           sum(second_lti_quintile)=second_lti_quintile
+           sum(third_lti_quintile)=third_lti_quintile
+           sum(fourth_lti_quintile)=fourth_lti_quintile
+           sum(fifth_lti_quintile)=fifth_lti_quintile
+
+           sum(interaction_quintile_00)=interaction_quintile_00
+
+           sum(interaction_quintile_11)=interaction_quintile_11
+           sum(interaction_quintile_12)=interaction_quintile_12
+           sum(interaction_quintile_13)=interaction_quintile_13
+           sum(interaction_quintile_14)=interaction_quintile_14
+           sum(interaction_quintile_15)=interaction_quintile_15
+
+           sum(interaction_quintile_21)=interaction_quintile_21
+           sum(interaction_quintile_22)=interaction_quintile_22
+           sum(interaction_quintile_23)=interaction_quintile_23
+           sum(interaction_quintile_24)=interaction_quintile_24
+           sum(interaction_quintile_25)=interaction_quintile_25
+
+           sum(interaction_quintile_31)=interaction_quintile_31
+           sum(interaction_quintile_32)=interaction_quintile_32
+           sum(interaction_quintile_33)=interaction_quintile_33
+           sum(interaction_quintile_34)=interaction_quintile_34
+           sum(interaction_quintile_35)=interaction_quintile_35
+
+           sum(interaction_quintile_41)=interaction_quintile_41
+           sum(interaction_quintile_42)=interaction_quintile_42
+           sum(interaction_quintile_43)=interaction_quintile_43
+           sum(interaction_quintile_44)=interaction_quintile_44
+           sum(interaction_quintile_45)=interaction_quintile_45
+
+           sum(interaction_quintile_51)=interaction_quintile_51
+           sum(interaction_quintile_52)=interaction_quintile_52
+           sum(interaction_quintile_53)=interaction_quintile_53
+           sum(interaction_quintile_54)=interaction_quintile_54
+           sum(interaction_quintile_55)=interaction_quintile_55
+
+           sum(q_loan_to_income_0)=q_loan_to_income_0
+           sum(q_loan_to_income_1)=q_loan_to_income_1
+           sum(q_loan_to_income_2)=q_loan_to_income_2
+           sum(q_loan_to_income_3)=q_loan_to_income_3
+
+           sum(q_interaction_00)=q_interaction_00
+           sum(q_interaction_11)=q_interaction_11
+           sum(q_interaction_12)=q_interaction_12
+           sum(q_interaction_13)=q_interaction_13
+
+           sum(q_interaction_21)=q_interaction_21
+           sum(q_interaction_22)=q_interaction_22
+           sum(q_interaction_23)=q_interaction_23
+
+           sum(q_interaction_31)=q_interaction_31
+           sum(q_interaction_32)=q_interaction_32
+           sum(q_interaction_33)=q_interaction_33
+
+           sum(q_interaction_41)=q_interaction_41
+           sum(q_interaction_42)=q_interaction_42
+           sum(q_interaction_43)=q_interaction_43
+
+           sum(q_interaction_51)=q_interaction_51
+           sum(q_interaction_52)=q_interaction_52
+           sum(q_interaction_53)=q_interaction_53
+
+           sum(s_loan_to_income_0)=s_loan_to_income_0
+           sum(s_loan_to_income_1)=s_loan_to_income_1
+           sum(s_loan_to_income_2)=s_loan_to_income_2
+           sum(s_loan_to_income_3)=s_loan_to_income_3
+           sum(s_loan_to_income_4)=s_loan_to_income_4
+
+           sum(s_interaction_00)=s_interaction_00
+           sum(s_interaction_11)=s_interaction_11
+           sum(s_interaction_12)=s_interaction_12
+           sum(s_interaction_13)=s_interaction_13
+           sum(s_interaction_14)=s_interaction_14
+
+           sum(s_interaction_21)=s_interaction_21
+           sum(s_interaction_22)=s_interaction_22
+           sum(s_interaction_23)=s_interaction_23
+           sum(s_interaction_24)=s_interaction_24
+
+           sum(s_interaction_31)=s_interaction_31
+           sum(s_interaction_32)=s_interaction_32
+           sum(s_interaction_33)=s_interaction_33
+           sum(s_interaction_34)=s_interaction_34
+
+           sum(s_interaction_41)=s_interaction_41
+           sum(s_interaction_42)=s_interaction_42
+           sum(s_interaction_43)=s_interaction_43
+           sum(s_interaction_44)=s_interaction_44
+
+           sum(s_interaction_51)=s_interaction_51
+           sum(s_interaction_52)=s_interaction_52
+           sum(s_interaction_53)=s_interaction_53
+           sum(s_interaction_54)=s_interaction_54
+
+    ;
+run;
+
+proc sort data=census_data out=sasdata.census_data;by asofdate census_tract_number msa_of_property state_code county_code;run;
+
